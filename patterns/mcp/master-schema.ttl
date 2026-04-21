@@ -1,0 +1,295 @@
+@prefix : <http://example.org/mcp#> .
+@prefix mcp: <http://example.org/mcp#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.org/mcp#> .
+
+<http://example.org/mcp#> rdf:type owl:Ontology ;
+                           rdfs:comment "Template ontology derived from patterns/mcp/master-schema.graphml. Update the base IRI as needed." .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/mcp#hasClass
+mcp:hasClass rdf:type owl:ObjectProperty ;
+             rdfs:domain mcp:Resource ;
+             rdfs:range mcp:Class .
+
+
+###  http://example.org/mcp#hasFileLocation
+mcp:hasFileLocation rdf:type owl:ObjectProperty ;
+                    rdfs:domain mcp:Metadata ;
+                    rdfs:range mcp:Location .
+
+
+###  http://example.org/mcp#hasMetadata
+mcp:hasMetadata rdf:type owl:ObjectProperty ;
+                rdfs:domain mcp:Resource ,
+                            mcp:Tool ;
+                rdfs:range mcp:Metadata .
+
+
+###  http://example.org/mcp#hasNextTool
+mcp:hasNextTool rdf:type owl:ObjectProperty ;
+                rdfs:domain mcp:Tool ;
+                rdfs:range mcp:Tool .
+
+
+###  http://example.org/mcp#hasParameter
+mcp:hasParameter rdf:type owl:ObjectProperty ;
+                 rdfs:domain mcp:Tool ;
+                 rdfs:range mcp:Parameter .
+
+
+###  http://example.org/mcp#hasResource
+mcp:hasResource rdf:type owl:ObjectProperty ;
+                rdfs:domain mcp:API ;
+                rdfs:range mcp:Resource .
+
+
+###  http://example.org/mcp#hasTool
+mcp:hasTool rdf:type owl:ObjectProperty ;
+            rdfs:domain mcp:API ;
+            rdfs:range mcp:Tool .
+
+
+###  http://example.org/mcp#isOfType
+mcp:isOfType rdf:type owl:ObjectProperty ;
+             rdfs:domain mcp:Parameter ;
+             rdfs:range mcp:Type .
+
+
+###  http://example.org/mcp#metadataFormat
+mcp:metadataFormat rdf:type owl:ObjectProperty ;
+                   rdfs:domain mcp:Metadata ;
+                   rdfs:range mcp:Format .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.org/mcp#fileLocationAsString
+mcp:fileLocationAsString rdf:type owl:DatatypeProperty ;
+                         rdfs:domain mcp:Location ;
+                         rdfs:range xsd:string .
+
+
+###  http://example.org/mcp#hasClassName
+mcp:hasClassName rdf:type owl:DatatypeProperty ;
+                 rdfs:domain mcp:Class ;
+                 rdfs:range xsd:string .
+
+
+###  http://example.org/mcp#hasDescription
+mcp:hasDescription rdf:type owl:DatatypeProperty ;
+                   rdfs:domain mcp:Metadata ;
+                   rdfs:range xsd:string .
+
+
+###  http://example.org/mcp#hasName
+mcp:hasName rdf:type owl:DatatypeProperty ;
+            rdfs:domain mcp:Metadata ;
+            rdfs:range xsd:string .
+
+
+###  http://example.org/mcp#hasParameterName
+mcp:hasParameterName rdf:type owl:DatatypeProperty ;
+                     rdfs:domain mcp:Parameter ;
+                     rdfs:range xsd:string .
+
+
+###  http://example.org/mcp#hasResourceDescription
+mcp:hasResourceDescription rdf:type owl:DatatypeProperty ;
+                           rdfs:domain mcp:Resource ;
+                           rdfs:range xsd:string .
+
+
+###  http://example.org/mcp#hasResourceName
+mcp:hasResourceName rdf:type owl:DatatypeProperty ;
+                    rdfs:domain mcp:Resource ;
+                    rdfs:range xsd:string .
+
+
+###  http://example.org/mcp#hasTag
+mcp:hasTag rdf:type owl:DatatypeProperty ;
+           rdfs:domain mcp:Metadata ;
+           rdfs:range xsd:string .
+
+
+###  http://example.org/mcp#hasToolDescription
+mcp:hasToolDescription rdf:type owl:DatatypeProperty ;
+                       rdfs:domain mcp:Tool ;
+                       rdfs:range xsd:string .
+
+
+###  http://example.org/mcp#hasToolName
+mcp:hasToolName rdf:type owl:DatatypeProperty ;
+                rdfs:domain mcp:Tool ;
+                rdfs:range xsd:string .
+
+
+###  http://example.org/mcp#hasValue
+mcp:hasValue rdf:type owl:DatatypeProperty ;
+             rdfs:domain mcp:Type ;
+             rdfs:range rdfs:Literal .
+
+
+###  http://example.org/mcp#hasWeight
+mcp:hasWeight rdf:type owl:DatatypeProperty ;
+              rdfs:domain mcp:Tool ;
+              rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/mcp#API
+mcp:API rdf:type owl:Class .
+
+
+###  http://example.org/mcp#Binary
+mcp:Binary rdf:type owl:Class ;
+           rdfs:subClassOf mcp:Class .
+
+
+###  http://example.org/mcp#Boolean
+mcp:Boolean rdf:type owl:Class ;
+            rdfs:subClassOf mcp:Type .
+
+
+###  http://example.org/mcp#Class
+mcp:Class rdf:type owl:Class .
+
+
+###  http://example.org/mcp#Directory
+mcp:Directory rdf:type owl:Class ;
+              rdfs:subClassOf mcp:Class .
+
+
+###  http://example.org/mcp#File
+mcp:File rdf:type owl:Class ;
+         rdfs:subClassOf mcp:Class .
+
+
+###  http://example.org/mcp#Float
+mcp:Float rdf:type owl:Class ;
+          rdfs:subClassOf mcp:Type .
+
+
+###  http://example.org/mcp#Format
+mcp:Format rdf:type owl:Class .
+
+
+###  http://example.org/mcp#Http
+mcp:Http rdf:type owl:Class ;
+         rdfs:subClassOf mcp:Class .
+
+
+###  http://example.org/mcp#Integer
+mcp:Integer rdf:type owl:Class ;
+            rdfs:subClassOf mcp:Type .
+
+
+###  http://example.org/mcp#Location
+mcp:Location rdf:type owl:Class .
+
+
+###  http://example.org/mcp#Metadata
+mcp:Metadata rdf:type owl:Class .
+
+
+###  http://example.org/mcp#Parameter
+mcp:Parameter rdf:type owl:Class .
+
+
+###  http://example.org/mcp#Resource
+mcp:Resource rdf:type owl:Class .
+
+
+###  http://example.org/mcp#String
+mcp:String rdf:type owl:Class ;
+           rdfs:subClassOf mcp:Type .
+
+
+###  http://example.org/mcp#Text
+mcp:Text rdf:type owl:Class ;
+         rdfs:subClassOf mcp:Class .
+
+
+###  http://example.org/mcp#Tool
+mcp:Tool rdf:type owl:Class .
+
+
+###  http://example.org/mcp#Type
+mcp:Type rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/mcp#api_1
+mcp:api_1 rdf:type owl:NamedIndividual ;
+          mcp:hasResource mcp:resource_1 ;
+          mcp:hasTool mcp:tool_1 .
+
+
+###  http://example.org/mcp#class_1
+mcp:class_1 rdf:type owl:NamedIndividual ;
+            mcp:hasClassName "CLASS_NAME" .
+
+
+###  http://example.org/mcp#format_1
+mcp:format_1 rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/mcp#location_1
+mcp:location_1 rdf:type owl:NamedIndividual ;
+               mcp:fileLocationAsString "FILE_OR_URL" .
+
+
+###  http://example.org/mcp#metadata_1
+mcp:metadata_1 rdf:type owl:NamedIndividual ;
+               mcp:hasFileLocation mcp:location_1 ;
+               mcp:metadataFormat mcp:format_1 ;
+               mcp:hasDescription "METADATA_DESCRIPTION" ;
+               mcp:hasName "METADATA_NAME" ;
+               mcp:hasTag "METADATA_TAG" .
+
+
+###  http://example.org/mcp#parameter_1
+mcp:parameter_1 rdf:type owl:NamedIndividual ;
+                mcp:isOfType mcp:type_1 ;
+                mcp:hasParameterName "PARAMETER_NAME" .
+
+
+###  http://example.org/mcp#resource_1
+mcp:resource_1 rdf:type owl:NamedIndividual ;
+               mcp:hasClass mcp:class_1 ;
+               mcp:hasMetadata mcp:metadata_1 ;
+               mcp:hasResourceDescription "RESOURCE_DESCRIPTION" ;
+               mcp:hasResourceName "RESOURCE_NAME" .
+
+
+###  http://example.org/mcp#tool_1
+mcp:tool_1 rdf:type owl:NamedIndividual ;
+           mcp:hasMetadata mcp:metadata_1 ;
+           mcp:hasParameter mcp:parameter_1 ;
+           mcp:hasToolDescription "TOOL_DESCRIPTION" ;
+           mcp:hasToolName "TOOL_NAME" ;
+           mcp:hasWeight 1 .
+
+
+###  http://example.org/mcp#type_1
+mcp:type_1 rdf:type owl:NamedIndividual ,
+                    mcp:String ;
+           mcp:hasValue "EXAMPLE_VALUE" .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
