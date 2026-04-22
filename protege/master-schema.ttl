@@ -1,0 +1,455 @@
+@prefix : <http://kastle-lab/mcp-blend#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix mcpblend: <http://kastle-lab/mcp-blend#> .
+@base <http://kastle-lab/mcp-blend#> .
+
+<http://kastle-lab/mcp-blend#> rdf:type owl:Ontology ;
+                                dcterms:created "2026-04-21"^^xsd:date ;
+                                dcterms:description "Ontology for describing Model Context Protocol APIs, tools, resources, metadata, parameters, locations, and value types."@en ;
+                                dcterms:modified "2026-04-21"^^xsd:date ;
+                                dcterms:title "MCP Blend Ontology"@en ;
+                                vann:preferredNamespacePrefix "mcpblend" ;
+                                vann:preferredNamespaceUri "http://kastle-lab/mcp-blend#" ;
+                                rdfs:comment "Core vocabulary for modeling Model Context Protocol APIs, their tools, exposed resources, and the metadata and parameter types used to describe them."@en ;
+                                rdfs:label "MCP Blend Ontology"@en ;
+                                owl:versionInfo "0.1.0" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://kastle-lab/mcp-blend#hasClass
+mcpblend:hasClass rdf:type owl:ObjectProperty ;
+                  rdfs:domain mcpblend:Resource ;
+                  rdfs:range mcpblend:Class ;
+                  rdfs:comment "Associates a resource with a resource class that characterizes its representation or transport."@en ;
+                  rdfs:label "has class"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasFileLocation
+mcpblend:hasFileLocation rdf:type owl:ObjectProperty ;
+                         rdfs:domain mcpblend:Metadata ;
+                         rdfs:range mcpblend:Location ;
+                         rdfs:comment "Associates metadata with a file path or URL where it can be found."@en ;
+                         rdfs:label "has file location"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasMetadata
+mcpblend:hasMetadata rdf:type owl:ObjectProperty ;
+                     rdfs:domain mcpblend:Resource ,
+                                 mcpblend:Tool ;
+                     rdfs:range mcpblend:Metadata ;
+                     rdfs:comment "Attaches a metadata record to a tool or resource."@en ;
+                     rdfs:label "has metadata"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasNextTool
+mcpblend:hasNextTool rdf:type owl:ObjectProperty ,
+                              owl:IrreflexiveProperty ;
+                     rdfs:domain mcpblend:Tool ;
+                     rdfs:range mcpblend:Tool ;
+                     rdfs:comment "Links a tool to another tool that follows it in a sequence or workflow."@en ;
+                     rdfs:label "has next tool"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasParameter
+mcpblend:hasParameter rdf:type owl:ObjectProperty ;
+                      rdfs:domain mcpblend:Tool ;
+                      rdfs:range mcpblend:Parameter ;
+                      rdfs:comment "Associates a tool with one of its input parameters."@en ;
+                      rdfs:label "has parameter"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasResource
+mcpblend:hasResource rdf:type owl:ObjectProperty ;
+                     rdfs:domain mcpblend:API ;
+                     rdfs:range mcpblend:Resource ;
+                     rdfs:comment "Associates an API with a resource that it exposes."@en ;
+                     rdfs:label "has resource"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasTool
+mcpblend:hasTool rdf:type owl:ObjectProperty ;
+                 rdfs:domain mcpblend:API ;
+                 rdfs:range mcpblend:Tool ;
+                 rdfs:comment "Associates an API with a tool that it exposes."@en ;
+                 rdfs:label "has tool"@en .
+
+
+###  http://kastle-lab/mcp-blend#isOfType
+mcpblend:isOfType rdf:type owl:ObjectProperty ;
+                  rdfs:domain mcpblend:Parameter ;
+                  rdfs:range mcpblend:Type ;
+                  rdfs:comment "Associates a parameter with the value type it accepts."@en ;
+                  rdfs:label "is of type"@en .
+
+
+###  http://kastle-lab/mcp-blend#metadataFormat
+mcpblend:metadataFormat rdf:type owl:ObjectProperty ;
+                        rdfs:domain mcpblend:Metadata ;
+                        rdfs:range mcpblend:Format ;
+                        rdfs:comment "Associates metadata with the format used to encode or serialize it."@en ;
+                        rdfs:label "metadata format"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://kastle-lab/mcp-blend#fileLocationAsString
+mcpblend:fileLocationAsString rdf:type owl:DatatypeProperty ;
+                              rdfs:domain mcpblend:Location ;
+                              rdfs:range xsd:string ;
+                              rdfs:comment "Stores a file path or URL as a literal string."@en ;
+                              rdfs:label "file location as string"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasClassName
+mcpblend:hasClassName rdf:type owl:DatatypeProperty ;
+                      rdfs:domain mcpblend:Class ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Stores the name of a resource class."@en ;
+                      rdfs:label "has class name"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasDescription
+mcpblend:hasDescription rdf:type owl:DatatypeProperty ;
+                        rdfs:domain mcpblend:Metadata ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "Stores a free-text description in a metadata record."@en ;
+                        rdfs:label "has description"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasName
+mcpblend:hasName rdf:type owl:DatatypeProperty ;
+                 rdfs:domain mcpblend:Metadata ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Stores a human-readable name in a metadata record."@en ;
+                 rdfs:label "has name"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasParameterName
+mcpblend:hasParameterName rdf:type owl:DatatypeProperty ;
+                          rdfs:domain mcpblend:Parameter ;
+                          rdfs:range xsd:string ;
+                          rdfs:comment "Stores the name of a tool parameter."@en ;
+                          rdfs:label "has parameter name"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasResourceDescription
+mcpblend:hasResourceDescription rdf:type owl:DatatypeProperty ;
+                                rdfs:domain mcpblend:Resource ;
+                                rdfs:range xsd:string ;
+                                rdfs:comment "Stores a free-text description of a resource."@en ;
+                                rdfs:label "has resource description"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasResourceName
+mcpblend:hasResourceName rdf:type owl:DatatypeProperty ;
+                         rdfs:domain mcpblend:Resource ;
+                         rdfs:range xsd:string ;
+                         rdfs:comment "Stores the human-readable name of a resource."@en ;
+                         rdfs:label "has resource name"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasTag
+mcpblend:hasTag rdf:type owl:DatatypeProperty ;
+                rdfs:domain mcpblend:Metadata ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Stores a tag associated with a metadata record."@en ;
+                rdfs:label "has tag"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasToolDescription
+mcpblend:hasToolDescription rdf:type owl:DatatypeProperty ;
+                            rdfs:domain mcpblend:Tool ;
+                            rdfs:range xsd:string ;
+                            rdfs:comment "Stores a free-text description of a tool."@en ;
+                            rdfs:label "has tool description"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasToolName
+mcpblend:hasToolName rdf:type owl:DatatypeProperty ;
+                     rdfs:domain mcpblend:Tool ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "Stores the human-readable name of a tool."@en ;
+                     rdfs:label "has tool name"@en .
+
+
+###  http://kastle-lab/mcp-blend#hasValue
+mcpblend:hasValue rdf:type owl:DatatypeProperty ;
+                  rdfs:domain mcpblend:Type ;
+                  rdfs:range rdfs:Literal ;
+                  rdfs:comment "Stores a literal example or default value for a type instance."@en ;
+                  rdfs:label "has value"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://kastle-lab/mcp-blend#API
+mcpblend:API rdf:type owl:Class ;
+             rdfs:comment "A Model Context Protocol API that exposes tools and resources."@en ;
+             rdfs:label "API"@en .
+
+
+###  http://kastle-lab/mcp-blend#Binary
+mcpblend:Binary rdf:type owl:Class ;
+                rdfs:subClassOf mcpblend:Class ;
+                rdfs:comment "A resource class for raw bytes content."@en ;
+                rdfs:label "Binary"@en .
+
+
+###  http://kastle-lab/mcp-blend#Boolean
+mcpblend:Boolean rdf:type owl:Class ;
+                 rdfs:subClassOf mcpblend:Type ;
+                 rdfs:comment "A scalar type representing true or false values."@en ;
+                 rdfs:label "Boolean"@en .
+
+
+###  http://kastle-lab/mcp-blend#Class
+mcpblend:Class rdf:type owl:Class ;
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty mcpblend:hasClassName ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:string
+                               ] ;
+               rdfs:comment "A category used to classify a resource, such as file, directory, text, binary, or HTTP."@en ;
+               rdfs:label "Class"@en .
+
+
+###  http://kastle-lab/mcp-blend#Directory
+mcpblend:Directory rdf:type owl:Class ;
+                   rdfs:subClassOf mcpblend:Class ;
+                   rdfs:comment "A resource class for filesystem directories that lists files in a local directory."@en ;
+                   rdfs:label "Directory"@en .
+
+
+###  http://kastle-lab/mcp-blend#File
+mcpblend:File rdf:type owl:Class ;
+              rdfs:subClassOf mcpblend:Class ;
+              rdfs:comment "A resource class for filesystem file content."@en ;
+              rdfs:label "File"@en .
+
+
+###  http://kastle-lab/mcp-blend#Float
+mcpblend:Float rdf:type owl:Class ;
+               rdfs:subClassOf mcpblend:Type ;
+               rdfs:comment "A numeric type with fractional precision."@en ;
+               rdfs:label "Float"@en .
+
+
+###  http://kastle-lab/mcp-blend#Format
+mcpblend:Format rdf:type owl:Class ;
+                rdfs:comment "An encoding or serialization format associated with metadata."@en ;
+                rdfs:label "Format"@en .
+
+
+###  http://kastle-lab/mcp-blend#Http
+mcpblend:Http rdf:type owl:Class ;
+              rdfs:subClassOf mcpblend:Class ;
+              rdfs:comment "A resource class for content accessed over HTTP."@en ;
+              rdfs:label "HTTP"@en .
+
+
+###  http://kastle-lab/mcp-blend#Integer
+mcpblend:Integer rdf:type owl:Class ;
+                 rdfs:subClassOf mcpblend:Type ;
+                 rdfs:comment "A numeric type representing whole numbers."@en ;
+                 rdfs:label "Integer"@en .
+
+
+###  http://kastle-lab/mcp-blend#Location
+mcpblend:Location rdf:type owl:Class ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty mcpblend:fileLocationAsString ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ;
+                  rdfs:comment "A resolvable location such as a file path or URL."@en ;
+                  rdfs:label "Location"@en .
+
+
+###  http://kastle-lab/mcp-blend#Metadata
+mcpblend:Metadata rdf:type owl:Class ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty mcpblend:hasDescription ;
+                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty mcpblend:hasFileLocation ;
+                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass mcpblend:Location
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty mcpblend:hasName ;
+                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty mcpblend:metadataFormat ;
+                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass mcpblend:Format
+                                  ] ;
+                  rdfs:comment "Descriptive information attached to a tool or resource."@en ;
+                  rdfs:label "Metadata"@en .
+
+
+###  http://kastle-lab/mcp-blend#Parameter
+mcpblend:Parameter rdf:type owl:Class ;
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty mcpblend:hasParameterName ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange xsd:string
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty mcpblend:isOfType ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass mcpblend:Type
+                                   ] ;
+                   rdfs:comment "An input parameter accepted by a tool."@en ;
+                   rdfs:label "Parameter"@en .
+
+
+###  http://kastle-lab/mcp-blend#Resource
+mcpblend:Resource rdf:type owl:Class ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty mcpblend:hasClass ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass mcpblend:Class
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty mcpblend:hasResourceDescription ;
+                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty mcpblend:hasResourceName ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ;
+                  rdfs:comment "A read only data source."@en ;
+                  rdfs:label "Resource"@en .
+
+
+###  http://kastle-lab/mcp-blend#String
+mcpblend:String rdf:type owl:Class ;
+                rdfs:subClassOf mcpblend:Type ;
+                rdfs:comment "A scalar type representing textual values."@en ;
+                rdfs:label "String"@en .
+
+
+###  http://kastle-lab/mcp-blend#Text
+mcpblend:Text rdf:type owl:Class ;
+              rdfs:subClassOf mcpblend:Class ;
+              rdfs:comment "A resource class for plain text and string content."@en ;
+              rdfs:label "Text"@en .
+
+
+###  http://kastle-lab/mcp-blend#Tool
+mcpblend:Tool rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty mcpblend:hasToolDescription ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:string
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty mcpblend:hasToolName ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:string
+                              ] ;
+              rdfs:comment "An executable capability exposed through an API."@en ;
+              rdfs:label "Tool"@en .
+
+
+###  http://kastle-lab/mcp-blend#Type
+mcpblend:Type rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty mcpblend:hasValue ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange rdfs:Literal
+                              ] ;
+              rdfs:comment "An abstract value type used by parameters and example values."@en ;
+              rdfs:label "Type"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( mcpblend:API
+                mcpblend:Class
+                mcpblend:Format
+                mcpblend:Location
+                mcpblend:Metadata
+                mcpblend:Parameter
+                mcpblend:Resource
+                mcpblend:Tool
+                mcpblend:Type
+              )
+] .
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( mcpblend:Binary
+                mcpblend:Directory
+                mcpblend:File
+                mcpblend:Http
+                mcpblend:Text
+              )
+] .
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( mcpblend:Boolean
+                mcpblend:Float
+                mcpblend:Integer
+                mcpblend:String
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
