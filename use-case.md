@@ -16,6 +16,10 @@ When LLM models are paired with an MCP server, many issues can arise. For exampl
 
 Given the experimental conditions for using tool benchmarks to evaluate LLM capabilities, we want to engineer an ontology that enables LLMs, specifically low-parameter models, to reason more effectively about the MCP tools available to them without explicit instructions in the tools themselves. This would meet the need for flagship-model tooling capabilities, but on local models using consumer-grade hardware.
 
+## Research Questions
+
+**RQ1**: Does combining a KG with an MCP server yield higher efficiency by reducing the number of incorrect tool calls despite possibly taking more time due to a more complex workflow?
+
 ## Competency Questions
 
 **Tool Selection, Usage, and Chaining**: This set of CQs focuses on the identification of tools, and the various ways they might relate to eachother
