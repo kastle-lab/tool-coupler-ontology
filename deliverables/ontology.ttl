@@ -1,0 +1,268 @@
+@prefix : <http://www.semanticweb.org/mcpkg/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/mcpkg/> .
+
+<http://www.semanticweb.org/mcpkg> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/mcpkg#containsElement
+:containsElement rdf:type owl:ObjectProperty ;
+                 rdfs:range :Element .
+
+
+###  http://www.semanticweb.org/mcpkg#hasLocation
+:hasLocation rdf:type owl:ObjectProperty ;
+             rdfs:domain :Metadata ;
+             rdfs:range :Location .
+
+
+###  http://www.semanticweb.org/mcpkg#hasMetadata
+:hasMetadata rdf:type owl:ObjectProperty ;
+             rdfs:range :Metadata .
+
+
+###  http://www.semanticweb.org/mcpkg#hasMetadataFormat
+:hasMetadataFormat rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Metadata ;
+                   rdfs:range :MetadataFormat .
+
+
+###  http://www.semanticweb.org/mcpkg#hasParameter
+:hasParameter rdf:type owl:ObjectProperty ;
+              rdfs:domain :Tool ;
+              rdfs:range :Parameter .
+
+
+###  http://www.semanticweb.org/mcpkg#hasResource
+:hasResource rdf:type owl:ObjectProperty ;
+             rdfs:domain <http://www.semanticweb.org/mcpkg#MCP/API> ;
+             rdfs:range :Resource .
+
+
+###  http://www.semanticweb.org/mcpkg#hasTool
+:hasTool rdf:type owl:ObjectProperty ;
+         rdfs:domain <http://www.semanticweb.org/mcpkg#MCP/API> ;
+         rdfs:range :Tool .
+
+
+###  http://www.semanticweb.org/mcpkg#isOfDataType
+:isOfDataType rdf:type owl:ObjectProperty ;
+              rdfs:range :DataType .
+
+
+###  http://www.semanticweb.org/mcpkg#isOfResourceClass
+:isOfResourceClass rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Resource ;
+                   rdfs:range :ResourceClass .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/mcpkg#asString
+:asString rdf:type owl:DatatypeProperty ;
+          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/mcpkg#hasDescription
+:hasDescription rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/mcpkg#hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/mcpkg#hasTag
+:hasTag rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Metadata ;
+        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/mcpkg#isRequired
+:isRequired rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Parameter ;
+            rdfs:range xsd:boolean .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/mcpkg#DataType
+:DataType rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/mcpkg#Element
+:Element rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :containsElement ;
+                           owl:allValuesFrom :Element
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :isOfDataType ;
+                           owl:allValuesFrom :DataType
+                         ] .
+
+
+###  http://www.semanticweb.org/mcpkg#Inout
+:Inout rdf:type owl:Class ;
+       rdfs:subClassOf :Parameter .
+
+
+###  http://www.semanticweb.org/mcpkg#Input
+:Input rdf:type owl:Class ;
+       rdfs:subClassOf :Parameter .
+
+
+###  http://www.semanticweb.org/mcpkg#Location
+:Location rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :asString ;
+                            owl:allValuesFrom xsd:string
+                          ] .
+
+
+###  http://www.semanticweb.org/mcpkg#Metadata
+:Metadata rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasDescription ;
+                            owl:allValuesFrom xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasName ;
+                            owl:allValuesFrom xsd:string
+                          ] .
+
+
+###  http://www.semanticweb.org/mcpkg#MetadataFormat
+:MetadataFormat rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/mcpkg#Output
+:Output rdf:type owl:Class ;
+        rdfs:subClassOf :Parameter .
+
+
+###  http://www.semanticweb.org/mcpkg#Parameter
+:Parameter rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :containsElement ;
+                             owl:allValuesFrom :Element
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isOfDataType ;
+                             owl:allValuesFrom :DataType
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasDescription ;
+                             owl:allValuesFrom xsd:string
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasName ;
+                             owl:allValuesFrom xsd:string
+                           ] .
+
+
+###  http://www.semanticweb.org/mcpkg#Resource
+:Resource rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasMetadata ;
+                            owl:allValuesFrom :Metadata
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasDescription ;
+                            owl:allValuesFrom xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasName ;
+                            owl:allValuesFrom xsd:string
+                          ] .
+
+
+###  http://www.semanticweb.org/mcpkg#ResourceClass
+:ResourceClass rdf:type owl:Class ;
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty :asString ;
+                                 owl:allValuesFrom xsd:string
+                               ] .
+
+
+###  http://www.semanticweb.org/mcpkg#Tool
+:Tool rdf:type owl:Class ;
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasMetadata ;
+                        owl:allValuesFrom :Metadata
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasDescription ;
+                        owl:allValuesFrom xsd:string
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasName ;
+                        owl:allValuesFrom xsd:string
+                      ] .
+
+
+###  http://www.semanticweb.org/mcpkg#MCP/API
+<http://www.semanticweb.org/mcpkg#MCP/API> rdf:type owl:Class ;
+                                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasMetadata ;
+                                                             owl:allValuesFrom :Metadata
+                                                           ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/mcpkg#Array
+:Array rdf:type owl:NamedIndividual ,
+                :DataType .
+
+
+###  http://www.semanticweb.org/mcpkg#Boolean
+:Boolean rdf:type owl:NamedIndividual ,
+                  :DataType .
+
+
+###  http://www.semanticweb.org/mcpkg#Dictionary
+:Dictionary rdf:type owl:NamedIndividual ,
+                     :DataType .
+
+
+###  http://www.semanticweb.org/mcpkg#Float
+:Float rdf:type owl:NamedIndividual ,
+                :DataType .
+
+
+###  http://www.semanticweb.org/mcpkg#Integer
+:Integer rdf:type owl:NamedIndividual ,
+                  :DataType .
+
+
+###  http://www.semanticweb.org/mcpkg#Object
+:Object rdf:type owl:NamedIndividual ,
+                 :DataType .
+
+
+###  http://www.semanticweb.org/mcpkg#Set
+:Set rdf:type owl:NamedIndividual ,
+              :DataType .
+
+
+###  http://www.semanticweb.org/mcpkg#String
+:String rdf:type owl:NamedIndividual ,
+                 :DataType .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
