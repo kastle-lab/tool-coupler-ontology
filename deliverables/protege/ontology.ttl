@@ -1,63 +1,63 @@
-@prefix : <http://www.semanticweb.org/mcpkg/> .
+@prefix : <https://kastle-lab.github.io/tool-coupler/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/mcpkg/> .
+@base <https://kastle-lab.github.io/tool-coupler/> .
 
-<http://www.semanticweb.org/mcpkg> rdf:type owl:Ontology .
+<https://kastle-lab.github.io/tool-coupler> rdf:type owl:Ontology .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/mcpkg/containsElement
+###  https://kastle-lab.github.io/tool-coupler/containsElement
 :containsElement rdf:type owl:ObjectProperty ;
                  rdfs:range :Element .
 
 
-###  http://www.semanticweb.org/mcpkg/hasFormat
+###  https://kastle-lab.github.io/tool-coupler/hasFormat
 :hasFormat rdf:type owl:ObjectProperty ;
            rdfs:domain :Metadata ;
            rdfs:range :Format .
 
 
-###  http://www.semanticweb.org/mcpkg/hasLocation
+###  https://kastle-lab.github.io/tool-coupler/hasLocation
 :hasLocation rdf:type owl:ObjectProperty ;
              rdfs:domain :Metadata ;
              rdfs:range :Location .
 
 
-###  http://www.semanticweb.org/mcpkg/hasMetadata
+###  https://kastle-lab.github.io/tool-coupler/hasMetadata
 :hasMetadata rdf:type owl:ObjectProperty ;
              rdfs:range :Metadata .
 
 
-###  http://www.semanticweb.org/mcpkg/hasParameter
+###  https://kastle-lab.github.io/tool-coupler/hasParameter
 :hasParameter rdf:type owl:ObjectProperty ;
               rdfs:domain :Tool ;
               rdfs:range :Parameter .
 
 
-###  http://www.semanticweb.org/mcpkg/hasResource
+###  https://kastle-lab.github.io/tool-coupler/hasResource
 :hasResource rdf:type owl:ObjectProperty ;
              rdfs:domain :MCP ;
              rdfs:range :Resource .
 
 
-###  http://www.semanticweb.org/mcpkg/hasTool
+###  https://kastle-lab.github.io/tool-coupler/hasTool
 :hasTool rdf:type owl:ObjectProperty ;
          rdfs:domain :MCP ;
          rdfs:range :Tool .
 
 
-###  http://www.semanticweb.org/mcpkg/isOfDataType
+###  https://kastle-lab.github.io/tool-coupler/isOfDataType
 :isOfDataType rdf:type owl:ObjectProperty ;
               rdfs:range :DataType .
 
 
-###  http://www.semanticweb.org/mcpkg/isOfResourceClass
+###  https://kastle-lab.github.io/tool-coupler/isOfResourceClass
 :isOfResourceClass rdf:type owl:ObjectProperty ;
                    rdfs:domain :Resource ;
                    rdfs:range :ResourceClass .
@@ -67,28 +67,28 @@
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/mcpkg/asString
+###  https://kastle-lab.github.io/tool-coupler/asString
 :asString rdf:type owl:DatatypeProperty ;
           rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/mcpkg/hasDescription
+###  https://kastle-lab.github.io/tool-coupler/hasDescription
 :hasDescription rdf:type owl:DatatypeProperty ;
                 rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/mcpkg/hasName
+###  https://kastle-lab.github.io/tool-coupler/hasName
 :hasName rdf:type owl:DatatypeProperty ;
          rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/mcpkg/hasTag
+###  https://kastle-lab.github.io/tool-coupler/hasTag
 :hasTag rdf:type owl:DatatypeProperty ;
         rdfs:domain :Metadata ;
         rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/mcpkg/isRequired
+###  https://kastle-lab.github.io/tool-coupler/isRequired
 :isRequired rdf:type owl:DatatypeProperty ;
             rdfs:domain :Parameter ;
             rdfs:range xsd:boolean .
@@ -98,19 +98,11 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/mcpkg#MCP
-:MCP rdf:type owl:Class ;
-     rdfs:subClassOf [ rdf:type owl:Restriction ;
-                       owl:onProperty :hasMetadata ;
-                       owl:allValuesFrom :Metadata
-                     ] .
-
-
-###  http://www.semanticweb.org/mcpkg/DataType
+###  https://kastle-lab.github.io/tool-coupler/DataType
 :DataType rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/mcpkg/Element
+###  https://kastle-lab.github.io/tool-coupler/Element
 :Element rdf:type owl:Class ;
          rdfs:subClassOf [ rdf:type owl:Restriction ;
                            owl:onProperty :containsElement ;
@@ -122,21 +114,21 @@
                          ] .
 
 
-###  http://www.semanticweb.org/mcpkg/Format
+###  https://kastle-lab.github.io/tool-coupler/Format
 :Format rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/mcpkg/Inout
+###  https://kastle-lab.github.io/tool-coupler/Inout
 :Inout rdf:type owl:Class ;
        rdfs:subClassOf :Parameter .
 
 
-###  http://www.semanticweb.org/mcpkg/Input
+###  https://kastle-lab.github.io/tool-coupler/Input
 :Input rdf:type owl:Class ;
        rdfs:subClassOf :Parameter .
 
 
-###  http://www.semanticweb.org/mcpkg/Location
+###  https://kastle-lab.github.io/tool-coupler/Location
 :Location rdf:type owl:Class ;
           rdfs:subClassOf [ rdf:type owl:Restriction ;
                             owl:onProperty :asString ;
@@ -144,7 +136,15 @@
                           ] .
 
 
-###  http://www.semanticweb.org/mcpkg/Metadata
+###  https://kastle-lab.github.io/tool-coupler/MCP
+:MCP rdf:type owl:Class ;
+     rdfs:subClassOf [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasMetadata ;
+                       owl:allValuesFrom :Metadata
+                     ] .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Metadata
 :Metadata rdf:type owl:Class ;
           rdfs:subClassOf [ rdf:type owl:Restriction ;
                             owl:onProperty :hasDescription ;
@@ -156,12 +156,12 @@
                           ] .
 
 
-###  http://www.semanticweb.org/mcpkg/Output
+###  https://kastle-lab.github.io/tool-coupler/Output
 :Output rdf:type owl:Class ;
         rdfs:subClassOf :Parameter .
 
 
-###  http://www.semanticweb.org/mcpkg/Parameter
+###  https://kastle-lab.github.io/tool-coupler/Parameter
 :Parameter rdf:type owl:Class ;
            rdfs:subClassOf [ rdf:type owl:Restriction ;
                              owl:onProperty :containsElement ;
@@ -181,7 +181,7 @@
                            ] .
 
 
-###  http://www.semanticweb.org/mcpkg/Resource
+###  https://kastle-lab.github.io/tool-coupler/Resource
 :Resource rdf:type owl:Class ;
           rdfs:subClassOf [ rdf:type owl:Restriction ;
                             owl:onProperty :hasMetadata ;
@@ -197,7 +197,7 @@
                           ] .
 
 
-###  http://www.semanticweb.org/mcpkg/ResourceClass
+###  https://kastle-lab.github.io/tool-coupler/ResourceClass
 :ResourceClass rdf:type owl:Class ;
                rdfs:subClassOf [ rdf:type owl:Restriction ;
                                  owl:onProperty :asString ;
@@ -205,7 +205,7 @@
                                ] .
 
 
-###  http://www.semanticweb.org/mcpkg/Tool
+###  https://kastle-lab.github.io/tool-coupler/Tool
 :Tool rdf:type owl:Class ;
       rdfs:subClassOf [ rdf:type owl:Restriction ;
                         owl:onProperty :hasMetadata ;
@@ -225,89 +225,89 @@
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/mcpkg#Audio
-:Audio rdf:type owl:NamedIndividual ,
-                :Format .
-
-
-###  http://www.semanticweb.org/mcpkg#Binary
-:Binary rdf:type owl:NamedIndividual ,
-                 :ResourceClass .
-
-
-###  http://www.semanticweb.org/mcpkg#Directory
-:Directory rdf:type owl:NamedIndividual ,
-                    :ResourceClass .
-
-
-###  http://www.semanticweb.org/mcpkg#File
-:File rdf:type owl:NamedIndividual ,
-               :ResourceClass .
-
-
-###  http://www.semanticweb.org/mcpkg#Function
-:Function rdf:type owl:NamedIndividual ,
-                   :ResourceClass .
-
-
-###  http://www.semanticweb.org/mcpkg#HTTP
-:HTTP rdf:type owl:NamedIndividual ,
-               :ResourceClass .
-
-
-###  http://www.semanticweb.org/mcpkg#Image
-:Image rdf:type owl:NamedIndividual ,
-                :Format .
-
-
-###  http://www.semanticweb.org/mcpkg#Text
-:Text rdf:type owl:NamedIndividual ,
-               :ResourceClass .
-
-
-###  http://www.semanticweb.org/mcpkg#Video
-:Video rdf:type owl:NamedIndividual ,
-                :Format .
-
-
-###  http://www.semanticweb.org/mcpkg/Array
+###  https://kastle-lab.github.io/tool-coupler/Array
 :Array rdf:type owl:NamedIndividual ,
                 :DataType .
 
 
-###  http://www.semanticweb.org/mcpkg/Boolean
+###  https://kastle-lab.github.io/tool-coupler/Audio
+:Audio rdf:type owl:NamedIndividual ,
+                :Format .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Binary
+:Binary rdf:type owl:NamedIndividual ,
+                 :ResourceClass .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Boolean
 :Boolean rdf:type owl:NamedIndividual ,
                   :DataType .
 
 
-###  http://www.semanticweb.org/mcpkg/Dictionary
+###  https://kastle-lab.github.io/tool-coupler/Dictionary
 :Dictionary rdf:type owl:NamedIndividual ,
                      :DataType .
 
 
-###  http://www.semanticweb.org/mcpkg/Float
+###  https://kastle-lab.github.io/tool-coupler/Directory
+:Directory rdf:type owl:NamedIndividual ,
+                    :ResourceClass .
+
+
+###  https://kastle-lab.github.io/tool-coupler/File
+:File rdf:type owl:NamedIndividual ,
+               :ResourceClass .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Float
 :Float rdf:type owl:NamedIndividual ,
                 :DataType .
 
 
-###  http://www.semanticweb.org/mcpkg/Integer
+###  https://kastle-lab.github.io/tool-coupler/Function
+:Function rdf:type owl:NamedIndividual ,
+                   :ResourceClass .
+
+
+###  https://kastle-lab.github.io/tool-coupler/HTTP
+:HTTP rdf:type owl:NamedIndividual ,
+               :ResourceClass .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Image
+:Image rdf:type owl:NamedIndividual ,
+                :Format .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Integer
 :Integer rdf:type owl:NamedIndividual ,
                   :DataType .
 
 
-###  http://www.semanticweb.org/mcpkg/Object
+###  https://kastle-lab.github.io/tool-coupler/Object
 :Object rdf:type owl:NamedIndividual ,
                  :DataType .
 
 
-###  http://www.semanticweb.org/mcpkg/Set
+###  https://kastle-lab.github.io/tool-coupler/Set
 :Set rdf:type owl:NamedIndividual ,
               :DataType .
 
 
-###  http://www.semanticweb.org/mcpkg/String
+###  https://kastle-lab.github.io/tool-coupler/String
 :String rdf:type owl:NamedIndividual ,
                  :DataType .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Text
+:Text rdf:type owl:NamedIndividual ,
+               :ResourceClass .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Video
+:Video rdf:type owl:NamedIndividual ,
+                :Format .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
