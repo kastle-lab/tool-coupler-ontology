@@ -67,9 +67,28 @@
 #    Data properties
 #################################################################
 
+###  https://kastle-lab.github.io/tool-coupler#hasFilePath
+:hasFilePath rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Location ;
+             rdfs:range rdfs:Literal .
+
+
+###  https://kastle-lab.github.io/tool-coupler#hasIP
+:hasIP rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Location ;
+       rdfs:range rdfs:Literal .
+
+
+###  https://kastle-lab.github.io/tool-coupler#hasURI
+:hasURI rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Location ;
+        rdfs:range rdfs:Literal .
+
+
 ###  https://kastle-lab.github.io/tool-coupler/asString
 :asString rdf:type owl:DatatypeProperty ;
-          rdfs:range xsd:string .
+          rdfs:range rdfs:Literal ,
+                     xsd:string .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/hasDescription
@@ -132,7 +151,7 @@
 :Location rdf:type owl:Class ;
           rdfs:subClassOf [ rdf:type owl:Restriction ;
                             owl:onProperty :asString ;
-                            owl:allValuesFrom xsd:string
+                            owl:allValuesFrom rdfs:Literal
                           ] .
 
 
