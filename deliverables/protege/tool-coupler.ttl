@@ -168,16 +168,12 @@
                              owl:allValuesFrom :Element
                            ] ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasMetadata ;
+                             owl:allValuesFrom :Metadata
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :isOfDataType ;
                              owl:allValuesFrom :DataType
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasDescription ;
-                             owl:allValuesFrom xsd:string
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasName ;
-                             owl:allValuesFrom xsd:string
                            ] .
 
 
@@ -186,14 +182,6 @@
           rdfs:subClassOf [ rdf:type owl:Restriction ;
                             owl:onProperty :hasMetadata ;
                             owl:allValuesFrom :Metadata
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasDescription ;
-                            owl:allValuesFrom xsd:string
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasName ;
-                            owl:allValuesFrom xsd:string
                           ] .
 
 
@@ -210,14 +198,6 @@
       rdfs:subClassOf [ rdf:type owl:Restriction ;
                         owl:onProperty :hasMetadata ;
                         owl:allValuesFrom :Metadata
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasDescription ;
-                        owl:allValuesFrom xsd:string
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasName ;
-                        owl:allValuesFrom xsd:string
                       ] .
 
 
