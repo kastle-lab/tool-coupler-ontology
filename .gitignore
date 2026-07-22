@@ -198,3 +198,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# additional
+/scripts/data/list-tools.json
