@@ -2,17 +2,16 @@
 Merge MCP server, tool, and parameter CSV files.
 
 Input:
-    server.csv
+    servers.csv
     tools.csv
-    parameter.csv
+    parameters.csv
 
 Output:
-    merged.csv
+    merged-final.csv
 """
 
 from pathlib import Path
 import pandas as pd
-from pathlib import Path
 
 # ------------------------------------------------------------
 # Configuration
@@ -21,12 +20,12 @@ from pathlib import Path
 # Directory where this Python script is located
 SCRIPT_DIR = Path(__file__).resolve().parent.parent
 
-# If your CSVs are in the same folder as this script
+# Updated paths matching the new decoupled files
 SERVER_CSV = SCRIPT_DIR / "data/servers.csv"
 TOOLS_CSV = SCRIPT_DIR / "data/tools.csv"
 PARAMETERS_CSV = SCRIPT_DIR / "data/parameters.csv"
 
-OUTPUT_CSV = SCRIPT_DIR / "data/merged-final.csv"
+OUTPUT_CSV = SCRIPT_DIR / "data/server-tools-merged.csv"
 
 print(f"Script directory: {SCRIPT_DIR}")
 
@@ -97,7 +96,7 @@ merged = merged.merge(
 sort_columns = [
     "server_name",
     "tool_name",
-    "param_name",
+    "parameter_name",
 ]
 
 merged = merged.sort_values(sort_columns)
