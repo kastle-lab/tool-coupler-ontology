@@ -51,6 +51,7 @@ params.columns = params.columns.str.strip()
 
 for df in (servers, tools, params):
     df["tool_name"] = df["tool_name"].astype(str).str.strip()
+    df["server_name"] = df["server_name"].astype(str).str.strip()
 
 
 # ------------------------------------------------------------
@@ -73,18 +74,20 @@ if missing_parameters:
 
 print("\nMerging server + tools...")
 
+# Merge on both server_name and tool_name to prevent duplicate columns
 merged = servers.merge(
     tools,
-    on="tool_name",
+    on=["server_name", "tool_name"],
     how="left",
     validate="many_to_one",
 )
 
 print("Adding parameters...")
 
+# Merge on both server_name and tool_name
 merged = merged.merge(
     params,
-    on="tool_name",
+    on=["server_name", "tool_name"],
     how="left",
     validate="one_to_many",
 )
