@@ -203,3 +203,4 @@ Temporary Items
 /scripts/data/list-tools.json
 /scripts/data-copy
 /scripts/materialization/old-files
+/scripts/materialization/validate-yamls.py
