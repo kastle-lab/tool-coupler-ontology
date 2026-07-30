@@ -55,7 +55,6 @@ root:
         varids: ["server_name"]
         connections: 
           - p: "tool-coupler-ont:hasName"
-            inv: "tool-coupler-ont:nameOf"
             o:
               datatype: "xsd:string"
               val_source: "server_name"
@@ -75,12 +74,10 @@ root:
               varids: ["server_name", "tool_name"]
               connections: 
                 - p: "tool-coupler-ont:hasName"
-                  inv: "tool-coupler-ont:nameOf"
                   o:
                     datatype: "xsd:string"
                     val_source: "tool_name"
                 - p: "tool-coupler-ont:hasDescription"
-                  inv: "tool-coupler-ont:descriptionOf"
                   o:
                     datatype: "xsd:string"
                     val_source: "tool_description"

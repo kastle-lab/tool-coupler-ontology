@@ -1,0 +1,42 @@
+# use with elements-hierarchy.csv
+metadata:
+  name: "Input Element Hierarchy Mapping"
+  source_ext: "csv"
+
+root:
+  type: ["tool-coupler-ont:Element"]
+  uri: "tool-coupler-r:element"
+  varids: ["server_name", "tool_name", "parameter_name", "input_schema","parent_element_name"]
+  connections:
+    - p: "tool-coupler-ont:containsElement"
+      inv: "tool-coupler-ont:elementOf"
+      o:
+        type: ["tool-coupler-ont:Element"]
+        uri: "tool-coupler-r:element"
+        varids: ["server_name", "tool_name", "parameter_name", "input_schema","child_element_name"]
+        connections:
+          # Datatypes
+          - p: "tool-coupler-ont:isOfDataType"
+            inv: "tool-coupler-ont:dataTypeOf"
+            o:
+              type: ["tool-coupler-ont:DataType"]
+              uri: "tool-coupler-r:boolean"
+              varids: ["String", "Array", "Number", "Object"]
+          # Metadata
+          - p: "tool-coupler-ont:hasMetadata"
+            inv: "tool-coupler-ont:metadataOf"
+            o:
+              type: ["tool-coupler-ont:Metadata"]
+              uri: "tool-coupler-r:metadata"
+              varids: ["server_name", "tool_name", "parameter_name", "input_schema","child_element_name"]
+              connections: 
+                # Description
+                - p: "tool-coupler-ont:hasDescription"
+                  o:
+                    datatype: "xsd:string"
+                    val_source: "element_element_description"
+                 # Name
+                - p: "tool-coupler-ont:hasName"
+                  o:
+                    datatype: "xsd:string"
+                    val_source: "child_element_name"

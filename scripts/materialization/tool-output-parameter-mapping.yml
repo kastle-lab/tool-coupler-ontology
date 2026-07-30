@@ -14,22 +14,20 @@ root:
       o:
         type: ["tool-coupler-ont:Parameter", "tool-coupler-ont:Output"]
         uri: "tool-coupler-r:output"
-        varids: ["server_name", tool_name", "parameter_name", "output_schema"] 
+        varids: ["server_name", "tool_name", "parameter_name", "output_schema"] 
         connections:
           - p: "tool-coupler-ont:hasMetadata"
             inv: "tool-coupler-ont:metadataOf"
             o:
               type: ["tool-coupler-ont:Metadata"]
               uri: "tool-coupler-r:metadata"
-              varids: ["server_name", tool_name", "parameter_name", "output_schema"]
+              varids: ["server_name", "tool_name", "parameter_name", "output_schema"]
               connections: 
                 - p: "tool-coupler-ont:hasName"
-                  inv: "tool-coupler-ont:nameOf"
                   o:
                     datatype: "xsd:string"
                     val_source: "parameter_name"
                 - p: "tool-coupler-ont:hasDescription"
-                  inv: "tool-coupler-ont:descriptionOf"
                   o:
                     datatype: "xsd:string"
                     val_source: "parameter_description"
