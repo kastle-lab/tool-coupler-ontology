@@ -2,7 +2,7 @@ import json
 import csv
 import os
 
-def extract_hierarchy_pairs(prop_dict, parent_name, server_name, tool_name, parameter_name, in_schema_val, out_schema_val, element_data_types, hierarchy_data_types):
+def extract_hierarchy_pairs(prop_dict, parent_name, server_name, tool_name, parameter_name, element_data_types, hierarchy_data_types):
     """
     Recursively extract parent-child element pairs and parameter-to-element linkages.
     """
@@ -23,8 +23,6 @@ def extract_hierarchy_pairs(prop_dict, parent_name, server_name, tool_name, para
                 'server_name': server_name,
                 'tool_name': tool_name,
                 'parameter_name': parameter_name,
-                'input_schema': in_schema_val,
-                'output_schema': out_schema_val,
                 'element_name': prop_name,
                 data_type: data_type,
                 'element_description': description
@@ -36,8 +34,6 @@ def extract_hierarchy_pairs(prop_dict, parent_name, server_name, tool_name, para
                 'server_name': server_name,
                 'tool_name': tool_name,
                 'parameter_name': parameter_name,
-                'input_schema': in_schema_val,
-                'output_schema': out_schema_val,
                 'parent_element_name': parent_name,
                 'child_element_name': prop_name,
                 data_type: data_type,
@@ -58,8 +54,6 @@ def extract_hierarchy_pairs(prop_dict, parent_name, server_name, tool_name, para
                 server_name=server_name,
                 tool_name=tool_name,
                 parameter_name=parameter_name,
-                in_schema_val=in_schema_val,
-                out_schema_val=out_schema_val,
                 element_data_types=element_data_types,
                 hierarchy_data_types=hierarchy_data_types
             )
@@ -193,8 +187,6 @@ def flatten_data():
                     server_name=server_name,
                     tool_name=tool_name,
                     parameter_name=p_name,
-                    in_schema_val=in_schema_val,
-                    out_schema_val=out_schema_val,
                     element_data_types=element_data_types,
                     hierarchy_data_types=hierarchy_data_types
                 )
@@ -220,13 +212,13 @@ def flatten_data():
         writer.writerows(param_rows)
         
     with open(out_params_elements_path, 'w', newline='', encoding='utf-8') as f:
-        fieldnames = ['server_name', 'tool_name', 'parameter_name', 'input_schema', 'output_schema', 'element_name'] + sorted(list(element_data_types)) + ['element_description']
+        fieldnames = ['server_name', 'tool_name', 'parameter_name', 'element_name'] + sorted(list(element_data_types)) + ['element_description']
         writer = csv.DictWriter(f, fieldnames=fieldnames, restval='')
         writer.writeheader()
         writer.writerows(all_param_elements)
         
     with open(out_hierarchy_path, 'w', newline='', encoding='utf-8') as f:
-        fieldnames = ['server_name', 'tool_name', 'parameter_name', 'input_schema', 'output_schema', 'parent_element_name', 'child_element_name'] + sorted(list(hierarchy_data_types)) + ['element_element_description']
+        fieldnames = ['server_name', 'tool_name', 'parameter_name', 'parent_element_name', 'child_element_name'] + sorted(list(hierarchy_data_types)) + ['element_element_description']
         writer = csv.DictWriter(f, fieldnames=fieldnames, restval='')
         writer.writeheader()
         writer.writerows(all_hierarchy)
