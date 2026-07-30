@@ -1,0 +1,86 @@
+# Use w/ server-tools-merged.csv
+metadata:
+  name: "Server Tools Mapping"
+  source_ext: "csv"
+
+# Controlled Vocabularies
+cvs: 
+  - type: "tool-coupler-ont:DataType"
+    uri: "tool-coupler-r:dataType"
+    instances:
+      [
+        "Boolean", 
+        "String", 
+        "Integer",
+        "Float", 
+        "Object", 
+        "Array", 
+        "Set", 
+        "Dictionary"
+      ]
+  
+  - type: "tool-coupler-ont:Format"
+    uri: "tool-coupler-r:format"
+    instances:
+      [
+        "Audio",
+        "Image",
+        "Video"
+      ]
+  
+  - type: "tool-coupler-ont:ResourceClass"
+    uri: "tool-coupler-r:resourceClass"
+    instances:
+      [
+        "Binary",
+        "Directory",
+        "File",
+        "Function",
+        "HTTP",
+        "Text"
+      ]
+  
+  # For each row, create a Server, Metadata, and Tool connection
+root:
+  type: ["tool-coupler-ont:Server"]
+  uri: "tool-coupler-r:server"
+  varids: ["server_name"]
+  connections:
+  # Server metadata
+    - p: "tool-coupler-ont:hasMetadata"
+      inv: "tool-coupler-ont:metadataOf"
+      o:
+        type: ["tool-coupler-ont:Metadata"]
+        uri: "tool-coupler-r:metadata"
+        varids: ["server_name"]
+        connections: 
+          - p: "tool-coupler-ont:hasName"
+            inv: "tool-coupler-ont:nameOf"
+            o:
+              datatype: "xsd:string"
+              val_source: "server_name"
+  # Tools
+    - p: "tool-coupler-ont:hasTool"
+      inv: "tool-coupler-ont:toolOf"
+      o:
+        type: ["tool-coupler-ont:Tool"]
+        uri: "tool-coupler-r:tool"
+        varids: ["server_name", "tool_name"]
+        connections:
+          - p: "tool-coupler-ont:hasMetadata"
+            inv: "tool-coupler-ont:metadataOf"
+            o:
+              type: ["tool-coupler-ont:Metadata"]
+              uri: "tool-coupler-r:metadata"
+              varids: ["server_name", "tool_name"]
+              connections: 
+                - p: "tool-coupler-ont:hasName"
+                  inv: "tool-coupler-ont:nameOf"
+                  o:
+                    datatype: "xsd:string"
+                    val_source: "tool_name"
+                - p: "tool-coupler-ont:hasDescription"
+                  inv: "tool-coupler-ont:descriptionOf"
+                  o:
+                    datatype: "xsd:string"
+                    val_source: "tool_description"

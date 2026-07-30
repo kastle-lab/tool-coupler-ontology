@@ -1,0 +1,47 @@
+# Use w/ server-tools-merged.csv
+metadata:
+  name: "Input Parameter Mapping"
+  source_ext: "csv"
+
+# For each row, create a Tool, Input Parameter and Metadata connection
+root:
+  type: ["tool-coupler-ont:Tool"]
+  uri: "tool-coupler-r:tool"
+  varids: ["server_name", "tool_name"]
+  connections:
+    - p: "tool-coupler-ont:hasParameter"
+      inv: "tool-coupler-ont:parameterOf"
+      o:
+        type: ["tool-coupler-ont:Parameter", "tool-coupler-ont:Input"]
+        uri: "tool-coupler-r:input"
+        varids: ["server_name", tool_name", "parameter_name", "input_schema"] 
+        connections:
+          - p: "tool-coupler-ont:hasMetadata"
+            inv: "tool-coupler-ont:metadataOf"
+            o:
+              type: ["tool-coupler-ont:Metadata"]
+              uri: "tool-coupler-r:metadata"
+              varids: ["server_name", tool_name", "parameter_name", "input_schema"]
+              connections: 
+                - p: "tool-coupler-ont:hasName"
+                  inv: "tool-coupler-ont:nameOf"
+                  o:
+                    datatype: "xsd:string"
+                    val_source: "parameter_name"
+                - p: "tool-coupler-ont:hasDescription"
+                  inv: "tool-coupler-ont:descriptionOf"
+                  o:
+                    datatype: "xsd:string"
+                    val_source: "parameter_description"
+          - p: "tool-coupler-ont:isRequired"
+            o:
+              datatype: "xsd:boolean"
+              val_source: "is_required"
+              
+        # Datatypes
+          - p: "tool-coupler-ont:isOfDataType"
+            inv: "tool-coupler-ont:dataTypeOf"
+            o:
+              type: ["tool-coupler-ont:DataType"]
+              uri: "tool-coupler-r:boolean"
+              varids: ["Boolean", "String", "Array", "Integer", "Number", "Object"]
