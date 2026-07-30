@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.airtable a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "airtable"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.airtable .
+
+tool-coupler-r:metadata.airtable.airtable_search_records a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Search for records in a table"^^xsd:string ;
+    tool-coupler-ont:hasName "airtable_search_records"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.airtable.airtable_search_records .
+
+tool-coupler-r:server.airtable a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.airtable ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.airtable.airtable_search_records .
+
+tool-coupler-r:tool.airtable.airtable_search_records a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.airtable.airtable_search_records ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.airtable .
+

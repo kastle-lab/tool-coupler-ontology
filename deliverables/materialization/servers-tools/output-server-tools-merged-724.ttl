@@ -1,0 +1,26 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.oxylabs a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "oxylabs"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.oxylabs .
+
+tool-coupler-r:metadata.oxylabs.oxylabs_amazon_product_scraper a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Scrape Amazon products.
+
+Supports content parsing, different user agent types, domain,
+geolocation, locale parameters and different output formats.
+Supports Amazon specific parameters such as currency and getting
+more accurate pricing data with auto select variant."""^^xsd:string ;
+    tool-coupler-ont:hasName "oxylabs_amazon_product_scraper"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.oxylabs.oxylabs_amazon_product_scraper .
+
+tool-coupler-r:server.oxylabs a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.oxylabs ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.oxylabs.oxylabs_amazon_product_scraper .
+
+tool-coupler-r:tool.oxylabs.oxylabs_amazon_product_scraper a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.oxylabs.oxylabs_amazon_product_scraper ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.oxylabs .
+

@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.slack a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "slack"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.slack .
+
+tool-coupler-r:metadata.slack.slack_conversations_replies a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Get a thread of messages posted to a conversation by channelID and thread_ts, the last row/column in the response is used as 'cursor' parameter for pagination if not empty"^^xsd:string ;
+    tool-coupler-ont:hasName "slack_conversations_replies"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.slack.slack_conversations_replies .
+
+tool-coupler-r:server.slack a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.slack ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.slack.slack_conversations_replies .
+
+tool-coupler-r:tool.slack.slack_conversations_replies a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.slack.slack_conversations_replies ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.slack .
+

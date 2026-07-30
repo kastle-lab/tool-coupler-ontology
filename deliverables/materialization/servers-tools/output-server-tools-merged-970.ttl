@@ -1,0 +1,25 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.weather-data a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "weather-data"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.weather-data .
+
+tool-coupler-r:metadata.weather-data.weather-data_weather_airquality a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Get air quality for a location.
+Args:
+    q (str): Location query.
+Returns:
+    dict: WeatherAPI air quality JSON."""^^xsd:string ;
+    tool-coupler-ont:hasName "weather-data_weather_airquality"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.weather-data.weather-data_weather_airquality .
+
+tool-coupler-r:server.weather-data a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.weather-data ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.weather-data.weather-data_weather_airquality .
+
+tool-coupler-r:tool.weather-data.weather-data_weather_airquality a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.weather-data.weather-data_weather_airquality ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.weather-data .
+

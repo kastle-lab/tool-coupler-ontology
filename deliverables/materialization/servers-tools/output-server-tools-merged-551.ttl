@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.mongodb a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "mongodb"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.mongodb .
+
+tool-coupler-r:metadata.mongodb.mongodb_list-collections a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "List all collections for a given database"^^xsd:string ;
+    tool-coupler-ont:hasName "mongodb_list-collections"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.mongodb.mongodb_list-collections .
+
+tool-coupler-r:server.mongodb a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.mongodb ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.mongodb.mongodb_list-collections .
+
+tool-coupler-r:tool.mongodb.mongodb_list-collections a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.mongodb.mongodb_list-collections ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.mongodb .
+

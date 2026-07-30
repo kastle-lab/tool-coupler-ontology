@@ -1,0 +1,20 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:boolean.....Object a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:element.notion.notion_API-update-a-database.title.Input.text .
+
+tool-coupler-r:input.notion.notion_API-update-a-database.title.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:containsElement tool-coupler-r:element.notion.notion_API-update-a-database.title.Input.text .
+
+tool-coupler-r:metadata.notion.notion_API-update-a-database.title.Input.text a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "text"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:element.notion.notion_API-update-a-database.title.Input.text .
+
+tool-coupler-r:element.notion.notion_API-update-a-database.title.Input.text a tool-coupler-ont:Element ;
+    tool-coupler-ont:elementOf tool-coupler-r:input.notion.notion_API-update-a-database.title.Input ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.notion.notion_API-update-a-database.title.Input.text ;
+    tool-coupler-ont:isOfDataType tool-coupler-r:boolean.....Object .
+

@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.google-workspace a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "google-workspace"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.google-workspace .
+
+tool-coupler-r:metadata.google-workspace.google-workspace_modify_email a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Modify email labels (archive, trash, mark read/unread)"^^xsd:string ;
+    tool-coupler-ont:hasName "google-workspace_modify_email"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.google-workspace.google-workspace_modify_email .
+
+tool-coupler-r:server.google-workspace a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.google-workspace ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.google-workspace.google-workspace_modify_email .
+
+tool-coupler-r:tool.google-workspace.google-workspace_modify_email a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.google-workspace.google-workspace_modify_email ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.google-workspace .
+

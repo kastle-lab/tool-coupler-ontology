@@ -1,0 +1,26 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.cli-mcp-server a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "cli-mcp-server"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.cli-mcp-server .
+
+tool-coupler-r:metadata.cli-mcp-server.cli-mcp-server_run_command a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Allows command (CLI) execution in the directory: /data
+
+Available commands: ls, cat, find
+Available flags: 
+
+Shell operators (&&, ||, |, >, >>, <, <<, ;) are not supported. Set ALLOW_SHELL_OPERATORS=true to enable."""^^xsd:string ;
+    tool-coupler-ont:hasName "cli-mcp-server_run_command"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.cli-mcp-server.cli-mcp-server_run_command .
+
+tool-coupler-r:server.cli-mcp-server a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.cli-mcp-server ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.cli-mcp-server.cli-mcp-server_run_command .
+
+tool-coupler-r:tool.cli-mcp-server.cli-mcp-server_run_command a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.cli-mcp-server.cli-mcp-server_run_command ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.cli-mcp-server .
+

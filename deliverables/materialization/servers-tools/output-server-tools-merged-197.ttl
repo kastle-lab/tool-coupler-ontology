@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.filesystem a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "filesystem"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.filesystem .
+
+tool-coupler-r:metadata.filesystem.filesystem_search_files a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Recursively search for files and directories matching a pattern. The patterns should be glob-style patterns that match paths relative to the working directory. Use pattern like '*.ext' to match files in current directory, and '**/*.ext' to match files in all subdirectories. Returns full paths to all matching items. Great for finding files when you don't know their exact location. Only searches within allowed directories."^^xsd:string ;
+    tool-coupler-ont:hasName "filesystem_search_files"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.filesystem.filesystem_search_files .
+
+tool-coupler-r:server.filesystem a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.filesystem ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.filesystem.filesystem_search_files .
+
+tool-coupler-r:tool.filesystem.filesystem_search_files a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.filesystem.filesystem_search_files ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.filesystem .
+

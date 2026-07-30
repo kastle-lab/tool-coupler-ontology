@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.github a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "github"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.github .
+
+tool-coupler-r:metadata.github.github_get_pull_request_files a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Get the files changed in a specific pull request."^^xsd:string ;
+    tool-coupler-ont:hasName "github_get_pull_request_files"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.github.github_get_pull_request_files .
+
+tool-coupler-r:server.github a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.github ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.github.github_get_pull_request_files .
+
+tool-coupler-r:tool.github.github_get_pull_request_files a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.github.github_get_pull_request_files ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.github .
+

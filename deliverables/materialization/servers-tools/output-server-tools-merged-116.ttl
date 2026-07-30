@@ -1,0 +1,23 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.desktop-commander a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "desktop-commander"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.desktop-commander .
+
+tool-coupler-r:metadata.desktop-commander.desktop-commander_force_terminate a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Force terminate a running terminal session.
+                        
+                        This command can be referenced as "DC: ..." or "use Desktop Commander to ..." in your instructions."""^^xsd:string ;
+    tool-coupler-ont:hasName "desktop-commander_force_terminate"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.desktop-commander.desktop-commander_force_terminate .
+
+tool-coupler-r:server.desktop-commander a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.desktop-commander ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.desktop-commander.desktop-commander_force_terminate .
+
+tool-coupler-r:tool.desktop-commander.desktop-commander_force_terminate a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.desktop-commander.desktop-commander_force_terminate ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.desktop-commander .
+

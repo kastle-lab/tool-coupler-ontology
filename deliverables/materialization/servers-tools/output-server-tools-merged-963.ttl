@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.weather a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "weather"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.weather .
+
+tool-coupler-r:metadata.weather.weather_get_hourly_forecast a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Get hour-by-hour weather forecast for a location in the United States. Perfect for 'What's the hourly forecast?' or 'Will it rain this afternoon in [US location]?' questions. Provides detailed hourly conditions for up to 48 hours."^^xsd:string ;
+    tool-coupler-ont:hasName "weather_get_hourly_forecast"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.weather.weather_get_hourly_forecast .
+
+tool-coupler-r:server.weather a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.weather ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.weather.weather_get_hourly_forecast .
+
+tool-coupler-r:tool.weather.weather_get_hourly_forecast a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.weather.weather_get_hourly_forecast ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.weather .
+

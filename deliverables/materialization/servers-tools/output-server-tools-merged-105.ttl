@@ -1,0 +1,39 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.context7 a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "context7"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.context7 .
+
+tool-coupler-r:metadata.context7.context7_resolve-library-id a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Resolves a package/product name to a Context7-compatible library ID and returns a list of matching libraries.
+
+You MUST call this function before 'get-library-docs' to obtain a valid Context7-compatible library ID UNLESS the user explicitly provides a library ID in the format '/org/project' or '/org/project/version' in their query.
+
+Selection Process:
+1. Analyze the query to understand what library/package the user is looking for
+2. Return the most relevant match based on:
+- Name similarity to the query (exact matches prioritized)
+- Description relevance to the query's intent
+- Documentation coverage (prioritize libraries with higher Code Snippet counts)
+- Trust score (consider libraries with scores of 7-10 more authoritative)
+
+Response Format:
+- Return the selected library ID in a clearly marked section
+- Provide a brief explanation for why this library was chosen
+- If multiple good matches exist, acknowledge this but proceed with the most relevant one
+- If no good matches exist, clearly state this and suggest query refinements
+
+For ambiguous queries, request clarification before proceeding with a best-guess match."""^^xsd:string ;
+    tool-coupler-ont:hasName "context7_resolve-library-id"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.context7.context7_resolve-library-id .
+
+tool-coupler-r:server.context7 a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.context7 ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.context7.context7_resolve-library-id .
+
+tool-coupler-r:tool.context7.context7_resolve-library-id a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.context7.context7_resolve-library-id ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.context7 .
+

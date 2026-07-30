@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.github a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "github"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.github .
+
+tool-coupler-r:metadata.github.github_merge_pull_request a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Merge a pull request in a GitHub repository."^^xsd:string ;
+    tool-coupler-ont:hasName "github_merge_pull_request"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.github.github_merge_pull_request .
+
+tool-coupler-r:server.github a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.github ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.github.github_merge_pull_request .
+
+tool-coupler-r:tool.github.github_merge_pull_request a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.github.github_merge_pull_request ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.github .
+

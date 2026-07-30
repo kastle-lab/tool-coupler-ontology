@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.filesystem a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "filesystem"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.filesystem .
+
+tool-coupler-r:metadata.filesystem.filesystem_get_file_info a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Retrieve detailed metadata about a file or directory. Returns comprehensive information including size, creation time, last modified time, permissions, and type. This tool is perfect for understanding file characteristics without reading the actual content. Only works within allowed directories."^^xsd:string ;
+    tool-coupler-ont:hasName "filesystem_get_file_info"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.filesystem.filesystem_get_file_info .
+
+tool-coupler-r:server.filesystem a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.filesystem ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.filesystem.filesystem_get_file_info .
+
+tool-coupler-r:tool.filesystem.filesystem_get_file_info a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.filesystem.filesystem_get_file_info ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.filesystem .
+

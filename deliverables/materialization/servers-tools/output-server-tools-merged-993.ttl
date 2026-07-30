@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.wikipedia a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "wikipedia"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.wikipedia .
+
+tool-coupler-r:metadata.wikipedia.wikipedia_get_links a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Get the links contained within a Wikipedia article."^^xsd:string ;
+    tool-coupler-ont:hasName "wikipedia_get_links"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.wikipedia.wikipedia_get_links .
+
+tool-coupler-r:server.wikipedia a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.wikipedia ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.wikipedia.wikipedia_get_links .
+
+tool-coupler-r:tool.wikipedia.wikipedia_get_links a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.wikipedia.wikipedia_get_links ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.wikipedia .
+

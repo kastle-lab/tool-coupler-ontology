@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/boolean...Array..> a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:element.clinicaltrialsgov-mcp-server.clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends.filter..ids .
+
+tool-coupler-r:metadata.clinicaltrialsgov-mcp-server.clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends.filter..ids a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Return only studies with the specified NCT IDs."^^xsd:string ;
+    tool-coupler-ont:hasName "ids"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:element.clinicaltrialsgov-mcp-server.clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends.filter..ids .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/output.clinicaltrialsgov-mcp-server.clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends.filter.> a tool-coupler-ont:Output,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:containsElement tool-coupler-r:element.clinicaltrialsgov-mcp-server.clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends.filter..ids .
+
+tool-coupler-r:element.clinicaltrialsgov-mcp-server.clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends.filter..ids a tool-coupler-ont:Element ;
+    tool-coupler-ont:elementOf <https://kastle-lab.github.io/tool-couplerlod/resource/output.clinicaltrialsgov-mcp-server.clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends.filter.> ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.clinicaltrialsgov-mcp-server.clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends.filter..ids ;
+    tool-coupler-ont:isOfDataType <https://kastle-lab.github.io/tool-couplerlod/resource/boolean...Array..> .
+

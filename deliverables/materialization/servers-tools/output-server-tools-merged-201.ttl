@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.filesystem a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "filesystem"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.filesystem .
+
+tool-coupler-r:metadata.filesystem.filesystem_write_file a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Create a new file or completely overwrite an existing file with new content. Use with caution as it will overwrite existing files without warning. Handles text content with proper encoding. Only works within allowed directories."^^xsd:string ;
+    tool-coupler-ont:hasName "filesystem_write_file"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.filesystem.filesystem_write_file .
+
+tool-coupler-r:server.filesystem a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.filesystem ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.filesystem.filesystem_write_file .
+
+tool-coupler-r:tool.filesystem.filesystem_write_file a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.filesystem.filesystem_write_file ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.filesystem .
+

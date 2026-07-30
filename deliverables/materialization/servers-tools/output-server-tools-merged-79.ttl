@@ -1,0 +1,25 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.brave-search a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "brave-search"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.brave-search .
+
+tool-coupler-r:metadata.brave-search.brave-search_brave_local_search a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Searches for local businesses and places using Brave's Local Search API. Best for queries related to physical locations, businesses, restaurants, services, etc. Returns detailed information including:
+- Business names and addresses
+- Ratings and review counts
+- Phone numbers and opening hours
+Use this when the query implies 'near me' or mentions specific locations. Automatically falls back to web search if no local results are found."""^^xsd:string ;
+    tool-coupler-ont:hasName "brave-search_brave_local_search"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.brave-search.brave-search_brave_local_search .
+
+tool-coupler-r:server.brave-search a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.brave-search ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.brave-search.brave-search_brave_local_search .
+
+tool-coupler-r:tool.brave-search.brave-search_brave_local_search a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.brave-search.brave-search_brave_local_search ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.brave-search .
+

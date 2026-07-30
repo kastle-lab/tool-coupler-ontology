@@ -1,0 +1,23 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.notion a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "notion"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.notion .
+
+tool-coupler-r:metadata.notion.notion_API-get-user a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Retrieve a user
+Error Responses:
+400: 400"""^^xsd:string ;
+    tool-coupler-ont:hasName "notion_API-get-user"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.notion.notion_API-get-user .
+
+tool-coupler-r:server.notion a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.notion ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.notion.notion_API-get-user .
+
+tool-coupler-r:tool.notion.notion_API-get-user a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.notion.notion_API-get-user ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.notion .
+

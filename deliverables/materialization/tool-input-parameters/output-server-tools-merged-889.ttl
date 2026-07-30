@@ -1,0 +1,22 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/boolean..String....> a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf <https://kastle-lab.github.io/tool-couplerlod/resource/input.twelvedata.twelvedata_GetQuote.extended_change.> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/metadata.twelvedata.twelvedata_GetQuote.extended_change.> a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Diff between the regular close price and the latest extended price"^^xsd:string ;
+    tool-coupler-ont:hasName "extended_change"^^xsd:string ;
+    tool-coupler-ont:metadataOf <https://kastle-lab.github.io/tool-couplerlod/resource/input.twelvedata.twelvedata_GetQuote.extended_change.> .
+
+tool-coupler-r:tool.twelvedata.twelvedata_GetQuote a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter <https://kastle-lab.github.io/tool-couplerlod/resource/input.twelvedata.twelvedata_GetQuote.extended_change.> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/input.twelvedata.twelvedata_GetQuote.extended_change.> a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata <https://kastle-lab.github.io/tool-couplerlod/resource/metadata.twelvedata.twelvedata_GetQuote.extended_change.> ;
+    tool-coupler-ont:isOfDataType <https://kastle-lab.github.io/tool-couplerlod/resource/boolean..String....> ;
+    tool-coupler-ont:isRequired false ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.twelvedata.twelvedata_GetQuote .
+

@@ -1,0 +1,22 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/boolean..String....> a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:output.twelvedata.twelvedata_GetQuote.last_quote_at.Output .
+
+tool-coupler-r:metadata.twelvedata.twelvedata_GetQuote.last_quote_at.Output a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Unix timestamp of last minute candle"^^xsd:string ;
+    tool-coupler-ont:hasName "last_quote_at"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:output.twelvedata.twelvedata_GetQuote.last_quote_at.Output .
+
+tool-coupler-r:tool.twelvedata.twelvedata_GetQuote a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter tool-coupler-r:output.twelvedata.twelvedata_GetQuote.last_quote_at.Output .
+
+tool-coupler-r:output.twelvedata.twelvedata_GetQuote.last_quote_at.Output a tool-coupler-ont:Output,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.twelvedata.twelvedata_GetQuote.last_quote_at.Output ;
+    tool-coupler-ont:isOfDataType <https://kastle-lab.github.io/tool-couplerlod/resource/boolean..String....> ;
+    tool-coupler-ont:isRequired false ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.twelvedata.twelvedata_GetQuote .
+

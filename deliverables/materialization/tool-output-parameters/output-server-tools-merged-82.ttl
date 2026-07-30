@@ -1,0 +1,22 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/boolean.....Number.> a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf <https://kastle-lab.github.io/tool-couplerlod/resource/output.brave-search.brave-search_brave_web_search.offset.> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/metadata.brave-search.brave-search_brave_web_search.offset.> a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Pagination offset (max 9, default 0)"^^xsd:string ;
+    tool-coupler-ont:hasName "offset"^^xsd:string ;
+    tool-coupler-ont:metadataOf <https://kastle-lab.github.io/tool-couplerlod/resource/output.brave-search.brave-search_brave_web_search.offset.> .
+
+tool-coupler-r:tool.brave-search.brave-search_brave_web_search a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter <https://kastle-lab.github.io/tool-couplerlod/resource/output.brave-search.brave-search_brave_web_search.offset.> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/output.brave-search.brave-search_brave_web_search.offset.> a tool-coupler-ont:Output,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata <https://kastle-lab.github.io/tool-couplerlod/resource/metadata.brave-search.brave-search_brave_web_search.offset.> ;
+    tool-coupler-ont:isOfDataType <https://kastle-lab.github.io/tool-couplerlod/resource/boolean.....Number.> ;
+    tool-coupler-ont:isRequired false ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.brave-search.brave-search_brave_web_search .
+

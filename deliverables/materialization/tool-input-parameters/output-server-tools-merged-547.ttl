@@ -1,0 +1,22 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:boolean......Object a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:input.mongodb.mongodb_find.sort.Input .
+
+tool-coupler-r:metadata.mongodb.mongodb_find.sort.Input a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "A document, describing the sort order, matching the syntax of the sort argument of cursor.sort(). The keys of the object are the fields to sort on, while the values are the sort directions (1 for ascending, -1 for descending)."^^xsd:string ;
+    tool-coupler-ont:hasName "sort"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:input.mongodb.mongodb_find.sort.Input .
+
+tool-coupler-r:tool.mongodb.mongodb_find a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter tool-coupler-r:input.mongodb.mongodb_find.sort.Input .
+
+tool-coupler-r:input.mongodb.mongodb_find.sort.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.mongodb.mongodb_find.sort.Input ;
+    tool-coupler-ont:isOfDataType tool-coupler-r:boolean......Object ;
+    tool-coupler-ont:isRequired false ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.mongodb.mongodb_find .
+

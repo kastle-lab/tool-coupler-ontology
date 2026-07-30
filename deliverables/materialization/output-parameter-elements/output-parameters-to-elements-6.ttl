@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/boolean..String...> a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:element.airtable.airtable_create_field.field..description .
+
+tool-coupler-r:metadata.airtable.airtable_create_field.field..description a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Description of the field"^^xsd:string ;
+    tool-coupler-ont:hasName "description"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:element.airtable.airtable_create_field.field..description .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/output.airtable.airtable_create_field.field.> a tool-coupler-ont:Output,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:containsElement tool-coupler-r:element.airtable.airtable_create_field.field..description .
+
+tool-coupler-r:element.airtable.airtable_create_field.field..description a tool-coupler-ont:Element ;
+    tool-coupler-ont:elementOf <https://kastle-lab.github.io/tool-couplerlod/resource/output.airtable.airtable_create_field.field.> ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.airtable.airtable_create_field.field..description ;
+    tool-coupler-ont:isOfDataType <https://kastle-lab.github.io/tool-couplerlod/resource/boolean..String...> .
+

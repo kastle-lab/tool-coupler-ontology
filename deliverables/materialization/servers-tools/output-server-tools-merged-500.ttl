@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.memory a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "memory"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.memory .
+
+tool-coupler-r:metadata.memory.memory_create_relations a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Create multiple new relations between entities in the knowledge graph. Relations should be in active voice"^^xsd:string ;
+    tool-coupler-ont:hasName "memory_create_relations"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.memory.memory_create_relations .
+
+tool-coupler-r:server.memory a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.memory ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.memory.memory_create_relations .
+
+tool-coupler-r:tool.memory.memory_create_relations a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.memory.memory_create_relations ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.memory .
+

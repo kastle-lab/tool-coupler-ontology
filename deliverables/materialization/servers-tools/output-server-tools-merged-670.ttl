@@ -1,0 +1,38 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.osm-mcp-server a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "osm-mcp-server"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.osm-mcp-server .
+
+tool-coupler-r:metadata.osm-mcp-server.osm-mcp-server_explore_area a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Generate a comprehensive profile of an area including all amenities and features.
+
+This powerful analysis tool creates a detailed overview of a neighborhood or area by
+identifying and categorizing all geographic features, amenities, and points of interest.
+Results are organized by category for easy analysis. Excellent for neighborhood research,
+area comparisons, and location-based decision making.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Search radius in meters (defaults to 500m)
+    
+Returns:
+    In-depth area profile including:
+    - Address and location context
+    - Total feature count
+    - Features organized by category and subcategory
+    - Each feature includes name, coordinates, and detailed metadata"""^^xsd:string ;
+    tool-coupler-ont:hasName "osm-mcp-server_explore_area"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_explore_area .
+
+tool-coupler-r:server.osm-mcp-server a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.osm-mcp-server ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_explore_area .
+
+tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_explore_area a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.osm-mcp-server.osm-mcp-server_explore_area ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.osm-mcp-server .
+

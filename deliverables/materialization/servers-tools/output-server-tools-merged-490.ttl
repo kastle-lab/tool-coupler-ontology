@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.mcp-code-executor a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "mcp-code-executor"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.mcp-code-executor .
+
+tool-coupler-r:metadata.mcp-code-executor.mcp-code-executor_execute_code_file a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Execute an existing Python file. Use this as the final step after building up code with initialize_code_file and append_to_code_file."^^xsd:string ;
+    tool-coupler-ont:hasName "mcp-code-executor_execute_code_file"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.mcp-code-executor.mcp-code-executor_execute_code_file .
+
+tool-coupler-r:server.mcp-code-executor a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.mcp-code-executor ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.mcp-code-executor.mcp-code-executor_execute_code_file .
+
+tool-coupler-r:tool.mcp-code-executor.mcp-code-executor_execute_code_file a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.mcp-code-executor.mcp-code-executor_execute_code_file ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.mcp-code-executor .
+

@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.filesystem a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "filesystem"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.filesystem .
+
+tool-coupler-r:metadata.filesystem.filesystem_read_text_file a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Read the complete contents of a file from the file system as text. Handles various text encodings and provides detailed error messages if the file cannot be read. Use this tool when you need to examine the contents of a single file. Use the 'head' parameter to read only the first N lines of a file, or the 'tail' parameter to read only the last N lines of a file. Operates on the file as text regardless of extension. Only works within allowed directories."^^xsd:string ;
+    tool-coupler-ont:hasName "filesystem_read_text_file"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.filesystem.filesystem_read_text_file .
+
+tool-coupler-r:server.filesystem a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.filesystem ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.filesystem.filesystem_read_text_file .
+
+tool-coupler-r:tool.filesystem.filesystem_read_text_file a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.filesystem.filesystem_read_text_file ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.filesystem .
+

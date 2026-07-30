@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.context7 a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "context7"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.context7 .
+
+tool-coupler-r:metadata.context7.context7_get-library-docs a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Fetches up-to-date documentation for a library. You must call 'resolve-library-id' first to obtain the exact Context7-compatible library ID required to use this tool, UNLESS the user explicitly provides a library ID in the format '/org/project' or '/org/project/version' in their query."^^xsd:string ;
+    tool-coupler-ont:hasName "context7_get-library-docs"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.context7.context7_get-library-docs .
+
+tool-coupler-r:server.context7 a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.context7 ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.context7.context7_get-library-docs .
+
+tool-coupler-r:tool.context7.context7_get-library-docs a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.context7.context7_get-library-docs ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.context7 .
+

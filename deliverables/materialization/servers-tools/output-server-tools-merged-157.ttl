@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.e2b-server a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "e2b-server"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.e2b-server .
+
+tool-coupler-r:metadata.e2b-server.e2b-server_run_code a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Run python code in a secure sandbox by E2B. Using the Jupyter Notebook syntax."^^xsd:string ;
+    tool-coupler-ont:hasName "e2b-server_run_code"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.e2b-server.e2b-server_run_code .
+
+tool-coupler-r:server.e2b-server a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.e2b-server ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.e2b-server.e2b-server_run_code .
+
+tool-coupler-r:tool.e2b-server.e2b-server_run_code a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.e2b-server.e2b-server_run_code ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.e2b-server .
+

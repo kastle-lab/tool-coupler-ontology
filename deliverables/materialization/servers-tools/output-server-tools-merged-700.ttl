@@ -1,0 +1,43 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.osm-mcp-server a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "osm-mcp-server"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.osm-mcp-server .
+
+tool-coupler-r:metadata.osm-mcp-server.osm-mcp-server_get_route_directions a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Calculate detailed route directions between two geographic points.
+
+This tool provides comprehensive turn-by-turn navigation directions between any two locations
+on Earth. It calculates the optimal route based on the specified transportation mode and
+returns detailed information about distance, duration, maneuvers, and the route geometry.
+Perfect for trip planning, navigation assistance, and commute analysis.
+
+Args:
+    from_latitude: Starting point latitude (decimal degrees)
+    from_longitude: Starting point longitude (decimal degrees)
+    to_latitude: Destination latitude (decimal degrees)
+    to_longitude: Destination longitude (decimal degrees)
+    mode: Transportation mode - options include:
+          - "car" (default): Standard automobile routing
+          - "bike": Bicycle-friendly routes
+          - "foot": Pedestrian walking paths
+    
+Returns:
+    Comprehensive routing information including:
+    - Summary with total distance (meters) and duration (seconds)
+    - Turn-by-turn directions with individual segments
+    - Route geometry for mapping visualization
+    - Waypoint information"""^^xsd:string ;
+    tool-coupler-ont:hasName "osm-mcp-server_get_route_directions"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_get_route_directions .
+
+tool-coupler-r:server.osm-mcp-server a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.osm-mcp-server ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_get_route_directions .
+
+tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_get_route_directions a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.osm-mcp-server.osm-mcp-server_get_route_directions ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.osm-mcp-server .
+

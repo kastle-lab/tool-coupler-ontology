@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/boolean..String...> a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:element.memory.memory_create_entities.entities..name .
+
+tool-coupler-r:metadata.memory.memory_create_entities.entities..name a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "The name of the entity"^^xsd:string ;
+    tool-coupler-ont:hasName "name"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:element.memory.memory_create_entities.entities..name .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/output.memory.memory_create_entities.entities.> a tool-coupler-ont:Output,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:containsElement tool-coupler-r:element.memory.memory_create_entities.entities..name .
+
+tool-coupler-r:element.memory.memory_create_entities.entities..name a tool-coupler-ont:Element ;
+    tool-coupler-ont:elementOf <https://kastle-lab.github.io/tool-couplerlod/resource/output.memory.memory_create_entities.entities.> ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.memory.memory_create_entities.entities..name ;
+    tool-coupler-ont:isOfDataType <https://kastle-lab.github.io/tool-couplerlod/resource/boolean..String...> .
+

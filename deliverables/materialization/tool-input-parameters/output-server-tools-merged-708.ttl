@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/boolean.....Number.> a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:input.osm-mcp-server.osm-mcp-server_search_category.min_longitude.Input .
+
+tool-coupler-r:metadata.osm-mcp-server.osm-mcp-server_search_category.min_longitude.Input a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "min_longitude"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:input.osm-mcp-server.osm-mcp-server_search_category.min_longitude.Input .
+
+tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_search_category a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter tool-coupler-r:input.osm-mcp-server.osm-mcp-server_search_category.min_longitude.Input .
+
+tool-coupler-r:input.osm-mcp-server.osm-mcp-server_search_category.min_longitude.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.osm-mcp-server.osm-mcp-server_search_category.min_longitude.Input ;
+    tool-coupler-ont:isOfDataType <https://kastle-lab.github.io/tool-couplerlod/resource/boolean.....Number.> ;
+    tool-coupler-ont:isRequired true ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_search_category .
+

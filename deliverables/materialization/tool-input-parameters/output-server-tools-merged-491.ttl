@@ -1,0 +1,18 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/boolean......> a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf <https://kastle-lab.github.io/tool-couplerlod/resource/input.mcp-code-executor.mcp-code-executor_get_environment_config..> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/metadata.mcp-code-executor.mcp-code-executor_get_environment_config..> a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:metadataOf <https://kastle-lab.github.io/tool-couplerlod/resource/input.mcp-code-executor.mcp-code-executor_get_environment_config..> .
+
+tool-coupler-r:tool.mcp-code-executor.mcp-code-executor_get_environment_config a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter <https://kastle-lab.github.io/tool-couplerlod/resource/input.mcp-code-executor.mcp-code-executor_get_environment_config..> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/input.mcp-code-executor.mcp-code-executor_get_environment_config..> a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata <https://kastle-lab.github.io/tool-couplerlod/resource/metadata.mcp-code-executor.mcp-code-executor_get_environment_config..> ;
+    tool-coupler-ont:isOfDataType <https://kastle-lab.github.io/tool-couplerlod/resource/boolean......> ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.mcp-code-executor.mcp-code-executor_get_environment_config .
+

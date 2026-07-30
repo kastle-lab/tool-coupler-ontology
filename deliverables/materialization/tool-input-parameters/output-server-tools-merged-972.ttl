@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/boolean..String....> a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:input.weather-data.weather-data_weather_astronomy.dt.Input .
+
+tool-coupler-r:metadata.weather-data.weather-data_weather_astronomy.dt.Input a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "dt"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:input.weather-data.weather-data_weather_astronomy.dt.Input .
+
+tool-coupler-r:tool.weather-data.weather-data_weather_astronomy a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter tool-coupler-r:input.weather-data.weather-data_weather_astronomy.dt.Input .
+
+tool-coupler-r:input.weather-data.weather-data_weather_astronomy.dt.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.weather-data.weather-data_weather_astronomy.dt.Input ;
+    tool-coupler-ont:isOfDataType <https://kastle-lab.github.io/tool-couplerlod/resource/boolean..String....> ;
+    tool-coupler-ont:isRequired true ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.weather-data.weather-data_weather_astronomy .
+

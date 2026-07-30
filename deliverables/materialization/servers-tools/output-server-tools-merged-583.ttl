@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.national-parks a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "national-parks"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.national-parks .
+
+tool-coupler-r:metadata.national-parks.national-parks_getEvents a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Find upcoming events at parks"^^xsd:string ;
+    tool-coupler-ont:hasName "national-parks_getEvents"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.national-parks.national-parks_getEvents .
+
+tool-coupler-r:server.national-parks a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.national-parks ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.national-parks.national-parks_getEvents .
+
+tool-coupler-r:tool.national-parks.national-parks_getEvents a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.national-parks.national-parks_getEvents ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.national-parks .
+

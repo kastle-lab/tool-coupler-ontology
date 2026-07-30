@@ -1,0 +1,22 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/boolean...Array...> a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf <https://kastle-lab.github.io/tool-couplerlod/resource/output.lara-translate.lara-translate_translate.text.> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/metadata.lara-translate.lara-translate_translate.text.> a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "An array of text blocks to translate. Each block contains a text string and a boolean indicating whether it should be translated. This allows for selective translation where some text blocks can be preserved in their original form while others are translated."^^xsd:string ;
+    tool-coupler-ont:hasName "text"^^xsd:string ;
+    tool-coupler-ont:metadataOf <https://kastle-lab.github.io/tool-couplerlod/resource/output.lara-translate.lara-translate_translate.text.> .
+
+tool-coupler-r:tool.lara-translate.lara-translate_translate a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter <https://kastle-lab.github.io/tool-couplerlod/resource/output.lara-translate.lara-translate_translate.text.> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/output.lara-translate.lara-translate_translate.text.> a tool-coupler-ont:Output,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata <https://kastle-lab.github.io/tool-couplerlod/resource/metadata.lara-translate.lara-translate_translate.text.> ;
+    tool-coupler-ont:isOfDataType <https://kastle-lab.github.io/tool-couplerlod/resource/boolean...Array...> ;
+    tool-coupler-ont:isRequired true ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.lara-translate.lara-translate_translate .
+

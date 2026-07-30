@@ -1,0 +1,22 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/boolean..String....> a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:input.github.github_merge_pull_request.commit_title.Input .
+
+tool-coupler-r:metadata.github.github_merge_pull_request.commit_title.Input a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Title for merge commit"^^xsd:string ;
+    tool-coupler-ont:hasName "commit_title"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:input.github.github_merge_pull_request.commit_title.Input .
+
+tool-coupler-r:tool.github.github_merge_pull_request a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter tool-coupler-r:input.github.github_merge_pull_request.commit_title.Input .
+
+tool-coupler-r:input.github.github_merge_pull_request.commit_title.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.github.github_merge_pull_request.commit_title.Input ;
+    tool-coupler-ont:isOfDataType <https://kastle-lab.github.io/tool-couplerlod/resource/boolean..String....> ;
+    tool-coupler-ont:isRequired false ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.github.github_merge_pull_request .
+

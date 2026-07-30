@@ -1,0 +1,52 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.desktop-commander a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "desktop-commander"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.desktop-commander .
+
+tool-coupler-r:metadata.desktop-commander.desktop-commander_give_feedback_to_desktop_commander a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Open feedback form in browser to provide feedback about Desktop Commander.
+                        
+                        IMPORTANT: This tool simply opens the feedback form - no pre-filling available.
+                        The user will fill out the form manually in their browser.
+                        
+                        WORKFLOW:
+                        1. When user agrees to give feedback, just call this tool immediately
+                        2. No need to ask questions or collect information
+                        3. Tool opens form with only usage statistics pre-filled automatically:
+                           - tool_call_count: Number of commands they've made
+                           - days_using: How many days they've used Desktop Commander
+                           - platform: Their operating system (Mac/Windows/Linux)
+                           - client_id: Analytics identifier
+                        
+                        All survey questions will be answered directly in the form:
+                        - Job title and technical comfort level
+                        - Company URL for industry context
+                        - Other AI tools they use
+                        - Desktop Commander's biggest advantage
+                        - How they typically use it
+                        - Recommendation likelihood (0-10)
+                        - User study participation interest
+                        - Email and any additional feedback
+                        
+                        EXAMPLE INTERACTION:
+                        User: "sure, I'll give feedback"
+                        Claude: "Perfect! Let me open the feedback form for you."
+                        [calls tool immediately]
+                        
+                        No parameters are needed - just call the tool to open the form.
+                        
+                        This command can be referenced as "DC: ..." or "use Desktop Commander to ..." in your instructions."""^^xsd:string ;
+    tool-coupler-ont:hasName "desktop-commander_give_feedback_to_desktop_commander"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.desktop-commander.desktop-commander_give_feedback_to_desktop_commander .
+
+tool-coupler-r:server.desktop-commander a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.desktop-commander ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.desktop-commander.desktop-commander_give_feedback_to_desktop_commander .
+
+tool-coupler-r:tool.desktop-commander.desktop-commander_give_feedback_to_desktop_commander a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.desktop-commander.desktop-commander_give_feedback_to_desktop_commander ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.desktop-commander .
+

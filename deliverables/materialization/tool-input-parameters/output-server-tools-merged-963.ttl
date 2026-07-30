@@ -1,0 +1,22 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://kastle-lab.github.io/tool-couplerlod/resource/boolean.....Number.> a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:input.weather.weather_get_hourly_forecast.hours.Input .
+
+tool-coupler-r:metadata.weather.weather_get_hourly_forecast.hours.Input a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Number of hours to forecast (1-48, default 24). Provides temperature, conditions, and precipitation probability for each hour."^^xsd:string ;
+    tool-coupler-ont:hasName "hours"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:input.weather.weather_get_hourly_forecast.hours.Input .
+
+tool-coupler-r:tool.weather.weather_get_hourly_forecast a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter tool-coupler-r:input.weather.weather_get_hourly_forecast.hours.Input .
+
+tool-coupler-r:input.weather.weather_get_hourly_forecast.hours.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.weather.weather_get_hourly_forecast.hours.Input ;
+    tool-coupler-ont:isOfDataType <https://kastle-lab.github.io/tool-couplerlod/resource/boolean.....Number.> ;
+    tool-coupler-ont:isRequired false ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.weather.weather_get_hourly_forecast .
+

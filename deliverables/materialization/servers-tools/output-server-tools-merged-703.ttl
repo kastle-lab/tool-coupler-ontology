@@ -1,0 +1,38 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.osm-mcp-server a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "osm-mcp-server"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.osm-mcp-server .
+
+tool-coupler-r:metadata.osm-mcp-server.osm-mcp-server_reverse_geocode a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Convert geographic coordinates to a detailed address and location description.
+
+This tool takes a specific point on Earth (latitude and longitude) and returns 
+comprehensive information about that location, including its address, nearby landmarks,
+administrative boundaries, and other contextual information. Useful for translating
+GPS coordinates into human-readable locations.
+
+Args:
+    latitude: The latitude coordinate (decimal degrees, WGS84)
+    longitude: The longitude coordinate (decimal degrees, WGS84)
+    
+Returns:
+    Detailed address and location information including:
+    - Formatted address
+    - Building, street, city, state, country
+    - Administrative hierarchy
+    - OSM metadata
+    - Postal code and other relevant identifiers"""^^xsd:string ;
+    tool-coupler-ont:hasName "osm-mcp-server_reverse_geocode"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_reverse_geocode .
+
+tool-coupler-r:server.osm-mcp-server a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.osm-mcp-server ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_reverse_geocode .
+
+tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_reverse_geocode a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.osm-mcp-server.osm-mcp-server_reverse_geocode ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.osm-mcp-server .
+

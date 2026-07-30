@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.mcp-code-executor a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "mcp-code-executor"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.mcp-code-executor .
+
+tool-coupler-r:metadata.mcp-code-executor.mcp-code-executor_get_environment_config a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Get the current environment configuration"^^xsd:string ;
+    tool-coupler-ont:hasName "mcp-code-executor_get_environment_config"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.mcp-code-executor.mcp-code-executor_get_environment_config .
+
+tool-coupler-r:server.mcp-code-executor a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.mcp-code-executor ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.mcp-code-executor.mcp-code-executor_get_environment_config .
+
+tool-coupler-r:tool.mcp-code-executor.mcp-code-executor_get_environment_config a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.mcp-code-executor.mcp-code-executor_get_environment_config ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.mcp-code-executor .
+
