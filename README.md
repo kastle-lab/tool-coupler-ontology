@@ -19,13 +19,14 @@ The deliverables are structured as follows.
    This directory includes the schema diagrams for each constructed pattern along with the final schema.
 4. **Ontology** \
    Contains OWL file with the axioms applied using the Protege software.
-5. **Knowledge Graph** \
-   The instance level data materialized by [Morph-kgc](https://github.com/morph-kgc/morph-kgc/) resides here.
+5. **Materialization** \
+   The instance level data materialized by [Kastle-Foundry](https://github.com/kastle-lab/foundry) resides here.
 
 ## Scripts
 
 1. **Data** \
    The data used for materialzing the knowlege graph resides here. Some of the files are too large, but are hosted in other locations: 
-   - mcp-atlas: [list-tools.json](https://gist.github.com/geobio/e1c08cc4d74d96223cb8cf0919a72c3e)
+   - mcp-atlas: [list-tools.json](https://gist.github.com/geobio/e1c08cc4d74d96223cb8cf0919a72c3e) \
+   _Note_: If seeking to replicate materialization the `list-tools.json` from `MCP-Atlas` will need to be downloaded from the link above.
 2. **Materialization** \
-   The configuration file and other scripts used for materialization are located in this directory.
+   The YAML files and other scripts used for data prep and materialization are located in this directory.
