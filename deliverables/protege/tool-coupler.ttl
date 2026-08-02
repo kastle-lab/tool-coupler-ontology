@@ -127,15 +127,7 @@
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Element
-:Element rdf:type owl:Class ;
-         rdfs:subClassOf [ rdf:type owl:Restriction ;
-                           owl:onProperty :containsElement ;
-                           owl:allValuesFrom :Element
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :isOfDataType ;
-                           owl:allValuesFrom :DataType
-                         ] .
+:Element rdf:type owl:Class .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Format
@@ -153,23 +145,11 @@
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Location
-:Location rdf:type owl:Class ;
-          rdfs:subClassOf [ rdf:type owl:Restriction ;
-                            owl:onProperty :asString ;
-                            owl:allValuesFrom rdfs:Literal
-                          ] .
+:Location rdf:type owl:Class .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Metadata
-:Metadata rdf:type owl:Class ;
-          rdfs:subClassOf [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasDescription ;
-                            owl:allValuesFrom xsd:string
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasName ;
-                            owl:allValuesFrom xsd:string
-                          ] .
+:Metadata rdf:type owl:Class .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Output
@@ -178,51 +158,23 @@
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Parameter
-:Parameter rdf:type owl:Class ;
-           rdfs:subClassOf [ rdf:type owl:Restriction ;
-                             owl:onProperty :containsElement ;
-                             owl:allValuesFrom :Element
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasMetadata ;
-                             owl:allValuesFrom :Metadata
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :isOfDataType ;
-                             owl:allValuesFrom :DataType
-                           ] .
+:Parameter rdf:type owl:Class .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Resource
-:Resource rdf:type owl:Class ;
-          rdfs:subClassOf [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasMetadata ;
-                            owl:allValuesFrom :Metadata
-                          ] .
+:Resource rdf:type owl:Class .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/ResourceClass
-:ResourceClass rdf:type owl:Class ;
-               rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                 owl:onProperty :asString ;
-                                 owl:allValuesFrom xsd:string
-                               ] .
+:ResourceClass rdf:type owl:Class .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Server
-:Server rdf:type owl:Class ;
-        rdfs:subClassOf [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasMetadata ;
-                          owl:allValuesFrom :Metadata
-                        ] .
+:Server rdf:type owl:Class .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Tool
-:Tool rdf:type owl:Class ;
-      rdfs:subClassOf [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasMetadata ;
-                        owl:allValuesFrom :Metadata
-                      ] .
+:Tool rdf:type owl:Class .
 
 
 #################################################################
