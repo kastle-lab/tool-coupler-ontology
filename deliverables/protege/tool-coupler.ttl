@@ -117,21 +117,89 @@
 #    Classes
 #################################################################
 
+###  http://www.w3.org/2002/07/owl#Thing
+owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :containsElement ;
+                            owl:allValuesFrom :Element
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasFormat ;
+                            owl:allValuesFrom :Format
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasLocation ;
+                            owl:allValuesFrom :Location
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasMetadata ;
+                            owl:allValuesFrom :Metadata
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasParameter ;
+                            owl:allValuesFrom :Parameter
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTool ;
+                            owl:allValuesFrom :Tool
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :isOfDataType ;
+                            owl:allValuesFrom :DataType
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :asString ;
+                            owl:allValuesFrom xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasDescription ;
+                            owl:allValuesFrom xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasFilePath ;
+                            owl:allValuesFrom xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasIP ;
+                            owl:allValuesFrom xsd:anyURI
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasName ;
+                            owl:allValuesFrom xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasURI ;
+                            owl:allValuesFrom xsd:anyURI
+                          ] .
+
+
 ###  https://kastle-lab.github.io/tool-coupler#Required
 :Required rdf:type owl:Class ;
           rdfs:subClassOf :Parameter .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/DataType
-:DataType rdf:type owl:Class .
+:DataType rdf:type owl:Class ;
+          owl:disjointWith :Element ,
+                           :Parameter .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Element
-:Element rdf:type owl:Class .
+:Element rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :isOfDataType ;
+                           owl:someValuesFrom :DataType
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :isOfDataType ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :DataType
+                         ] ;
+         owl:disjointWith :Parameter .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Format
-:Format rdf:type owl:Class .
+:Format rdf:type owl:Class ;
+        owl:disjointWith :Metadata .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Inout
@@ -145,11 +213,73 @@
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Location
-:Location rdf:type owl:Class .
+:Location rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty [ owl:inverseOf :hasLocation
+                                           ] ;
+                            owl:someValuesFrom :Metadata
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :asString ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasFilePath ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasIP ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:anyURI
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasURI ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:anyURI
+                          ] ;
+          owl:disjointWith :Metadata .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Metadata
-:Metadata rdf:type owl:Class .
+:Metadata rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasFormat ;
+                            owl:someValuesFrom :Format
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasFormat ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Format
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasLocation ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Location
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty [ owl:inverseOf :hasMetadata
+                                           ] ;
+                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasName ;
+                            owl:someValuesFrom xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasDescription ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasName ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:string
+                          ] ;
+          owl:disjointWith :Parameter ,
+                           :Server ,
+                           :Tool .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Output
@@ -158,7 +288,37 @@
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Parameter
-:Parameter rdf:type owl:Class .
+:Parameter rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasMetadata ;
+                             owl:someValuesFrom :Metadata
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isOfDataType ;
+                             owl:someValuesFrom :DataType
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty [ owl:inverseOf :hasParameter
+                                            ] ;
+                             owl:someValuesFrom :Tool
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasMetadata ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Metadata
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isOfDataType ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :DataType
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty [ owl:inverseOf :hasParameter
+                                            ] ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Tool
+                           ] ;
+           owl:disjointWith :Tool .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Resource
@@ -170,11 +330,45 @@
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Server
-:Server rdf:type owl:Class .
+:Server rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasMetadata ;
+                          owl:someValuesFrom :Metadata
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTool ;
+                          owl:someValuesFrom :Tool
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasMetadata ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Metadata
+                        ] ;
+        owl:disjointWith :Tool .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Tool
-:Tool rdf:type owl:Class .
+:Tool rdf:type owl:Class ;
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasMetadata ;
+                        owl:someValuesFrom :Metadata
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty [ owl:inverseOf :hasTool
+                                       ] ;
+                        owl:someValuesFrom :Server
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasMetadata ;
+                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Metadata
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty [ owl:inverseOf :hasTool
+                                       ] ;
+                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Server
+                      ] .
 
 
 #################################################################
@@ -264,6 +458,38 @@
 ###  https://kastle-lab.github.io/tool-coupler/Video
 :Video rdf:type owl:NamedIndividual ,
                 :Format .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasFormat ;
+  owl:someValuesFrom owl:Thing ;
+  rdfs:subClassOf :Metadata
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasLocation ;
+  owl:someValuesFrom owl:Thing ;
+  rdfs:subClassOf :Metadata
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasParameter ;
+  owl:someValuesFrom owl:Thing ;
+  rdfs:subClassOf :Tool
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasTool ;
+  owl:someValuesFrom owl:Thing ;
+  rdfs:subClassOf :Server
+] .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
