@@ -12,6 +12,12 @@
 #    Object Properties
 #################################################################
 
+###  https://kastle-lab.github.io/tool-coupler#hasRequirementStatus
+:hasRequirementStatus rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Parameter ;
+                      rdfs:range :RequirementStatus .
+
+
 ###  https://kastle-lab.github.io/tool-coupler/containsElement
 :containsElement rdf:type owl:ObjectProperty ;
                  rdfs:range :Element .
@@ -119,6 +125,10 @@
 
 ###  http://www.w3.org/2002/07/owl#Thing
 owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasRequirementStatus ;
+                            owl:allValuesFrom :RequirementStatus
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :containsElement ;
                             owl:allValuesFrom :Element
                           ] ,
@@ -172,6 +182,26 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                           ] .
 
 
+###  https://kastle-lab.github.io/tool-coupler#Optional
+:Optional rdf:type owl:Class ;
+          rdfs:subClassOf :RequirementStatus .
+
+
+###  https://kastle-lab.github.io/tool-coupler#Required
+:Required rdf:type owl:Class ;
+          rdfs:subClassOf :RequirementStatus .
+
+
+###  https://kastle-lab.github.io/tool-coupler#RequirementStatus
+:RequirementStatus rdf:type owl:Class ;
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty [ owl:inverseOf :hasRequirementStatus
+                                                    ] ;
+                                     owl:someValuesFrom :Parameter
+                                   ] ;
+                   owl:disjointWith :Parameter .
+
+
 ###  https://kastle-lab.github.io/tool-coupler/DataType
 :DataType rdf:type owl:Class ;
           owl:disjointWith :Element ,
@@ -181,15 +211,25 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
 ###  https://kastle-lab.github.io/tool-coupler/Element
 :Element rdf:type owl:Class ;
          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasMetadata ;
+                           owl:someValuesFrom :Metadata
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :isOfDataType ;
                            owl:someValuesFrom :DataType
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasMetadata ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Metadata
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :isOfDataType ;
                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :DataType
                          ] ;
-         owl:disjointWith :Parameter .
+         owl:disjointWith :Metadata ,
+                          :Parameter .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Format
@@ -285,6 +325,10 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
 ###  https://kastle-lab.github.io/tool-coupler/Parameter
 :Parameter rdf:type owl:Class ;
            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasRequirementStatus ;
+                             owl:someValuesFrom :RequirementStatus
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :hasMetadata ;
                              owl:someValuesFrom :Metadata
                            ] ,
@@ -296,6 +340,11 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                              owl:onProperty [ owl:inverseOf :hasParameter
                                             ] ;
                              owl:someValuesFrom :Tool
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasRequirementStatus ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :RequirementStatus
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :hasMetadata ;
@@ -458,6 +507,13 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
 #################################################################
 #    General axioms
 #################################################################
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasRequirementStatus ;
+  owl:someValuesFrom owl:Thing ;
+  rdfs:subClassOf :Parameter
+] .
+
 
 [ rdf:type owl:Restriction ;
   owl:onProperty :hasFormat ;
