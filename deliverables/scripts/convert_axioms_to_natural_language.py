@@ -455,7 +455,8 @@ if __name__ == "__main__":
             "Input SubClassOf Parameter",
             "Output SubClassOf Parameter",
             "Inout SubClassOf Parameter",
-            "Required SubClassOf Parameter"
+            "Required SubClassOf RequirementStatus",
+            "Optional SubClassOf RequirementStatus"
         ]
 
         dis = [
@@ -468,7 +469,9 @@ if __name__ == "__main__":
             "Parameter containsElement Element",
             "Element isOfDataType DataType",
             "Parameter hasMetadata Metadata",
-            "Tool hasMetadata Metadata"
+            "Tool hasMetadata Metadata",
+            "Parameter hasRequirementStatus RequirementStatus",
+            "Element hasMetadata Metadata"
         ]
 
         gd = [
@@ -478,7 +481,8 @@ if __name__ == "__main__":
             "Metadata hasTag xsd:string",
             "Metadata hasName xsd:string",
             "Server hasTool Tool",
-            "Tool hasParameter Parameter"
+            "Tool hasParameter Parameter",
+            "Parameter hasRequirementStatus RequirementStatus"
         ]
 
         sd = [
@@ -503,7 +507,9 @@ if __name__ == "__main__":
             "Element isOfDataType DataType",
             "Element containsElement Element",
             "Parameter hasMetadata Metadata",
-            "Tool hasMetadata Metadata"
+            "Tool hasMetadata Metadata",
+            "Parameter hasRequirementStatus RequirementStatus",
+            "Element hasMetadata Metadata"
         ]
 
         sr = [
@@ -518,13 +524,16 @@ if __name__ == "__main__":
             "Parameter isOfDataType DataType",
             "Element isOfDataType DataType",
             "Parameter hasMetadata Metadata",
-            "Tool hasMetadata Metadata"
+            "Tool hasMetadata Metadata",
+            "Parameter hasRequirementStatus RequirementStatus",
+            "Element hasMetadata Metadata"
         ]
 
         iex = [
             "Metadata hasLocation Location",
             "Server hasTool Tool",
-            "Tool hasParameter Parameter"
+            "Tool hasParameter Parameter",
+            "Parameter hasRequirementStatus RequirementStatus"
         ]
 
         fun = [
@@ -552,7 +561,9 @@ if __name__ == "__main__":
             "Parameter isOfDataType DataType",
             "Element isOfDataType DataType",
             "Parameter hasMetadata Metadata",
-            "Tool hasMetadata Metadata"
+            "Tool hasMetadata Metadata",
+            "Parameter hasRequirementStatus RequirementStatus",
+            "Element hasMetadata Metadata"
         ]
 
         ifun = [
@@ -566,7 +577,8 @@ if __name__ == "__main__":
         isf = [
             "Server hasMetadata Metadata",
             "Parameter hasMetadata Metadata",
-            "Tool hasMetadata Metadata"
+            "Tool hasMetadata Metadata",
+            "Element hasMetadata Metadata"
         ]
 
         iqsf = [

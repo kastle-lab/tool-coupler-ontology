@@ -100,6 +100,30 @@ inverse scoped functionality: `Metadata SubClassOf inverse hasMetadata max 1 owl
 
 qualified scoped functionality: `Tool SubClassOf hasMetadata max 1 Metadata`
 
+# Parameter hasRequirementStatus RequirementStatus
+disjoint: `Parameter DisjointWith RequirementStatus`
+
+existential: `Parameter SubClassOf hasRequirementStatus some RequirementStatus`
+
+global domain: `hasRequirementStatus some owl:Thing SubClassOf Parameter`
+
+global range: `owl:Thing SubClassOf hasRequirementStatus only RequirementStatus`
+
+inverse existential: `RequirementStatus SubClassOf inverse hasRequirementStatus some Parameter`
+
+qualified scoped functionality: `Parameter SubClassOf hasRequirementStatus max 1 RequirementStatus`
+
+# Element hasMetadata Metadata
+disjoint: `Element DisjointWith Metadata`
+
+existential: `Element SubClassOf hasMetadata some Metadata`
+
+global range: `owl:Thing SubClassOf hasMetadata only Metadata`
+
+inverse scoped functionality: `Metadata SubClassOf inverse hasMetadata max 1 owl:Thing`
+
+qualified scoped functionality: `Element SubClassOf hasMetadata max 1 Metadata`
+
 # Metadata hasName xsd:string
 existential: `Metadata SubClassOf hasName some xsd:string`
 
@@ -153,6 +177,9 @@ subclass: `Output SubClassOf Parameter`
 # Inout SubClassOf Parameter
 subclass: `Inout SubClassOf Parameter`
 
-# Required SubClassOf Parameter
-subclass: `Required SubClassOf Parameter`
+# Required SubClassOf RequirementStatus
+subclass: `Required SubClassOf RequirementStatus`
+
+# Optional SubClassOf RequirementStatus
+subclass: `Optional SubClassOf RequirementStatus`
 
