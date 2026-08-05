@@ -1,103 +1,103 @@
-server_name,tool_name,parameter_name,input_schema,output_schema,element_name,Array,Boolean,Number,Object,String,element_description
-airtable,airtable_create_table,fields,Input,,name,,,,,String,Name of the field
-airtable,airtable_create_table,fields,Input,,type,,,,,String,"Type of the field (e.g., singleLineText, multilineText, number, etc.)"
-airtable,airtable_create_table,fields,Input,,description,,,,,String,Description of the field
-airtable,airtable_create_table,fields,Input,,options,,,,Object,,Field-specific options
-airtable,airtable_create_field,field,Input,,name,,,,,String,Name of the field
-airtable,airtable_create_field,field,Input,,type,,,,,String,Type of the field
-airtable,airtable_create_field,field,Input,,description,,,,,String,Description of the field
-airtable,airtable_create_field,field,Input,,options,,,,Object,,Field-specific options
-airtable,airtable_update_field,updates,Input,,name,,,,,String,New name for the field
-airtable,airtable_update_field,updates,Input,,description,,,,,String,New description for the field
-airtable,airtable_update_field,updates,Input,,options,,,,Object,,New field-specific options
-alchemy,alchemy_fetchTokenPriceByAddress,addresses,Input,,address,,,,,String,"The token contract address to query. e.g. ""0x1234567890123456789012345678901234567890"""
-alchemy,alchemy_fetchTokenPriceByAddress,addresses,Input,,network,,,,,String,"The blockchain network to query. e.g. ""eth-mainnet"" or ""base-mainnet"""
-alchemy,alchemy_fetchTokensOwnedByMultichainAddresses,addresses,Input,,address,,,,,String,"The wallet address to query. e.g. ""0x1234567890123456789012345678901234567890"""
-alchemy,alchemy_fetchTokensOwnedByMultichainAddresses,addresses,Input,,networks,Array,,,,,"The blockchain networks to query. e.g. [""eth-mainnet"", ""base-mainnet""]"
-alchemy,alchemy_fetchAddressTransactionHistory,addresses,Input,,address,,,,,String,"The wallet address to query. e.g. ""0x1234567890123456789012345678901234567890"""
-alchemy,alchemy_fetchAddressTransactionHistory,addresses,Input,,networks,Array,,,,,"The blockchain networks to query. e.g. [""eth-mainnet"", ""base-mainnet""]"
-alchemy,alchemy_fetchNftsOwnedByMultichainAddresses,addresses,Input,,address,,,,,String,"The wallet address to query. e.g. ""0x1234567890123456789012345678901234567890"""
-alchemy,alchemy_fetchNftsOwnedByMultichainAddresses,addresses,Input,,networks,Array,,,,,"The blockchain networks to query. e.g. [""eth-mainnet"", ""base-mainnet""]"
-alchemy,alchemy_fetchNftsOwnedByMultichainAddresses,addresses,Input,,excludeFilters,Array,,,,,"The filters to exclude from the results. e.g. [""SPAM"", ""AIRDROPS""]"
-alchemy,alchemy_fetchNftsOwnedByMultichainAddresses,addresses,Input,,includeFilters,Array,,,,,"The filters to include in the results. e.g. [""SPAM"", ""AIRDROPS""]"
-alchemy,alchemy_fetchNftsOwnedByMultichainAddresses,addresses,Input,,spamConfidenceLevel,,,,,String,"The spam confidence level to query. e.g. ""LOW"" or ""HIGH"""
-alchemy,alchemy_fetchNftContractDataByMultichainAddress,addresses,Input,,address,,,,,String,"The wallet address to query. e.g. ""0x1234567890123456789012345678901234567890"""
-alchemy,alchemy_fetchNftContractDataByMultichainAddress,addresses,Input,,networks,Array,,,,,"The blockchain networks to query. e.g. [""eth-mainnet"", ""base-mainnet""]"
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,,cond,,,,,String,Search for conditions or diseases.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,,term,,,,,String,"Search for other terms like interventions, outcomes, or sponsors."
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,,locn,,,,,String,Search for study locations.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,,titles,,,,,String,Search within study titles or acronyms.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,,intr,,,,,String,Search for specific interventions or treatments.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,,outc,,,,,String,Search for specific outcome measures.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,,spons,,,,,String,Search for sponsors or collaborators.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,,id,,,,,String,"Search for study identifiers (e.g., NCT ID)."
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,filter,Input,,ids,Array,,,,,Return only studies with the specified NCT IDs.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,filter,Input,,overallStatus,Array,,,,,Filter results by one or more study statuses.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,filter,Input,,geo,,,,Object,,Filter results to a geographic area by providing a point and radius.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,filter,Input,,advanced,,,,,String,Apply an advanced filter using Essie expression syntax.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,,cond,,,,,String,Search for conditions or diseases.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,,term,,,,,String,"Search for other terms like interventions, outcomes, or sponsors."
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,,locn,,,,,String,Search for study locations.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,,titles,,,,,String,Search within study titles or acronyms.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,,intr,,,,,String,Search for specific interventions or treatments.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,,outc,,,,,String,Search for specific outcome measures.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,,spons,,,,,String,Search for sponsors or collaborators.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,,id,,,,,String,"Search for study identifiers (e.g., NCT ID)."
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,filter,Input,,ids,Array,,,,,Return only studies with the specified NCT IDs.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,filter,Input,,overallStatus,Array,,,,,Filter results by one or more study statuses.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,filter,Input,,geo,,,,Object,,Filter results to a geographic area by providing a point and radius.
-clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,filter,Input,,advanced,,,,,String,Apply an advanced filter using Essie expression syntax.
-filesystem,filesystem_read_media_file,content,,Output,type,,,,,String,
-filesystem,filesystem_read_media_file,content,,Output,data,,,,,String,
-filesystem,filesystem_read_media_file,content,,Output,mimeType,,,,,String,
-filesystem,filesystem_edit_file,edits,Input,,oldText,,,,,String,Text to search for - must match exactly
-filesystem,filesystem_edit_file,edits,Input,,newText,,,,,String,Text to replace with
-github,github_push_files,files,Input,,path,,,,,String,
-github,github_push_files,files,Input,,content,,,,,String,
-google-maps,google-maps_maps_search_places,location,Input,,latitude,,,Number,,,
-google-maps,google-maps_maps_search_places,location,Input,,longitude,,,Number,,,
-google-maps,google-maps_maps_elevation,locations,Input,,latitude,,,Number,,,
-google-maps,google-maps_maps_elevation,locations,Input,,longitude,,,Number,,,
-lara-translate,lara-translate_translate,text,Input,,text,,,,,String,
-lara-translate,lara-translate_translate,text,Input,,translatable,,Boolean,,,,
-memory,memory_create_entities,entities,Input,,name,,,,,String,The name of the entity
-memory,memory_create_entities,entities,Input,,entityType,,,,,String,The type of the entity
-memory,memory_create_entities,entities,Input,,observations,Array,,,,,An array of observation contents associated with the entity
-memory,memory_create_relations,relations,Input,,from,,,,,String,The name of the entity where the relation starts
-memory,memory_create_relations,relations,Input,,to,,,,,String,The name of the entity where the relation ends
-memory,memory_create_relations,relations,Input,,relationType,,,,,String,The type of the relation
-memory,memory_add_observations,observations,Input,,entityName,,,,,String,The name of the entity to add the observations to
-memory,memory_add_observations,observations,Input,,contents,Array,,,,,An array of observation contents to add
-memory,memory_delete_observations,deletions,Input,,entityName,,,,,String,The name of the entity containing the observations
-memory,memory_delete_observations,deletions,Input,,observations,Array,,,,,An array of observations to delete
-memory,memory_delete_relations,relations,Input,,from,,,,,String,The name of the entity where the relation starts
-memory,memory_delete_relations,relations,Input,,to,,,,,String,The name of the entity where the relation ends
-memory,memory_delete_relations,relations,Input,,relationType,,,,,String,The type of the relation
-notion,notion_API-post-database-query,sorts,Input,,property,,,,,String,
-notion,notion_API-post-database-query,sorts,Input,,direction,,,,,String,
-notion,notion_API-post-search,sort,Input,,direction,,,,,String,The direction to sort. Possible values include `ascending` and `descending`.
-notion,notion_API-post-search,sort,Input,,timestamp,,,,,String,The name of the timestamp to sort against. Possible values include `last_edited_time`.
-notion,notion_API-post-search,filter,Input,,value,,,,,String,The value of the property to filter the results by.  Possible values for object type include `page` or `database`.  **Limitation**: Currently the only filter allowed is `object` which will filter by type of object (either `page` or `database`)
-notion,notion_API-post-search,filter,Input,,property,,,,,String,The name of the property to filter by. Currently the only property you can filter by is the object type.  Possible values include `object`.   Limitation: Currently the only filter allowed is `object` which will filter by type of object (either `page` or `database`)
-notion,notion_API-patch-block-children,children,Input,,paragraph,,,,Object,,
-notion,notion_API-patch-block-children,children,Input,,bulleted_list_item,,,,Object,,
-notion,notion_API-patch-block-children,children,Input,,type,,,,,String,
-notion,notion_API-patch-page,properties,Input,,title,Array,,,,,
-notion,notion_API-patch-page,properties,Input,,type,,,,,String,
-notion,notion_API-patch-page,icon,Input,,emoji,,,,,String,
-notion,notion_API-patch-page,cover,Input,,external,,,,Object,,
-notion,notion_API-patch-page,cover,Input,,type,,,,,String,
-notion,notion_API-post-page,properties,Input,,title,Array,,,,,
-notion,notion_API-post-page,properties,Input,,type,,,,,String,
-notion,notion_API-post-page,parent,Input,,page_id,,,,,String,
-notion,notion_API-create-a-database,parent,Input,,type,,,,,String,
-notion,notion_API-create-a-database,parent,Input,,page_id,,,,,String,
-notion,notion_API-create-a-database,title,Input,,text,,,,Object,,
-notion,notion_API-create-a-database,title,Input,,type,,,,,String,
-notion,notion_API-update-a-database,properties,Input,,name,,,,,String,
-notion,notion_API-update-a-database,title,Input,,text,,,,Object,,
-notion,notion_API-update-a-database,title,Input,,type,,,,,String,
-notion,notion_API-update-a-database,description,Input,,text,,,,Object,,
-notion,notion_API-update-a-database,description,Input,,type,,,,,String,
-notion,notion_API-create-a-comment,parent,Input,,page_id,,,,,String,the page ID
-notion,notion_API-create-a-comment,rich_text,Input,,text,,,,Object,,
+server_name,tool_name,parameter_name,schema_type,element_name,element_path,datatype,element_description
+airtable,airtable_create_table,fields,Input,name,fields.name,String,Name of the field
+airtable,airtable_create_table,fields,Input,type,fields.type,String,"Type of the field (e.g., singleLineText, multilineText, number, etc.)"
+airtable,airtable_create_table,fields,Input,description,fields.description,String,Description of the field
+airtable,airtable_create_table,fields,Input,options,fields.options,Object,Field-specific options
+airtable,airtable_create_field,field,Input,name,field.name,String,Name of the field
+airtable,airtable_create_field,field,Input,type,field.type,String,Type of the field
+airtable,airtable_create_field,field,Input,description,field.description,String,Description of the field
+airtable,airtable_create_field,field,Input,options,field.options,Object,Field-specific options
+airtable,airtable_update_field,updates,Input,name,updates.name,String,New name for the field
+airtable,airtable_update_field,updates,Input,description,updates.description,String,New description for the field
+airtable,airtable_update_field,updates,Input,options,updates.options,Object,New field-specific options
+alchemy,alchemy_fetchTokenPriceByAddress,addresses,Input,address,addresses.address,String,"The token contract address to query. e.g. ""0x1234567890123456789012345678901234567890"""
+alchemy,alchemy_fetchTokenPriceByAddress,addresses,Input,network,addresses.network,String,"The blockchain network to query. e.g. ""eth-mainnet"" or ""base-mainnet"""
+alchemy,alchemy_fetchTokensOwnedByMultichainAddresses,addresses,Input,address,addresses.address,String,"The wallet address to query. e.g. ""0x1234567890123456789012345678901234567890"""
+alchemy,alchemy_fetchTokensOwnedByMultichainAddresses,addresses,Input,networks,addresses.networks,Array,"The blockchain networks to query. e.g. [""eth-mainnet"", ""base-mainnet""]"
+alchemy,alchemy_fetchAddressTransactionHistory,addresses,Input,address,addresses.address,String,"The wallet address to query. e.g. ""0x1234567890123456789012345678901234567890"""
+alchemy,alchemy_fetchAddressTransactionHistory,addresses,Input,networks,addresses.networks,Array,"The blockchain networks to query. e.g. [""eth-mainnet"", ""base-mainnet""]"
+alchemy,alchemy_fetchNftsOwnedByMultichainAddresses,addresses,Input,address,addresses.address,String,"The wallet address to query. e.g. ""0x1234567890123456789012345678901234567890"""
+alchemy,alchemy_fetchNftsOwnedByMultichainAddresses,addresses,Input,networks,addresses.networks,Array,"The blockchain networks to query. e.g. [""eth-mainnet"", ""base-mainnet""]"
+alchemy,alchemy_fetchNftsOwnedByMultichainAddresses,addresses,Input,excludeFilters,addresses.excludeFilters,Array,"The filters to exclude from the results. e.g. [""SPAM"", ""AIRDROPS""]"
+alchemy,alchemy_fetchNftsOwnedByMultichainAddresses,addresses,Input,includeFilters,addresses.includeFilters,Array,"The filters to include in the results. e.g. [""SPAM"", ""AIRDROPS""]"
+alchemy,alchemy_fetchNftsOwnedByMultichainAddresses,addresses,Input,spamConfidenceLevel,addresses.spamConfidenceLevel,String,"The spam confidence level to query. e.g. ""LOW"" or ""HIGH"""
+alchemy,alchemy_fetchNftContractDataByMultichainAddress,addresses,Input,address,addresses.address,String,"The wallet address to query. e.g. ""0x1234567890123456789012345678901234567890"""
+alchemy,alchemy_fetchNftContractDataByMultichainAddress,addresses,Input,networks,addresses.networks,Array,"The blockchain networks to query. e.g. [""eth-mainnet"", ""base-mainnet""]"
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,cond,query.cond,String,Search for conditions or diseases.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,term,query.term,String,"Search for other terms like interventions, outcomes, or sponsors."
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,locn,query.locn,String,Search for study locations.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,titles,query.titles,String,Search within study titles or acronyms.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,intr,query.intr,String,Search for specific interventions or treatments.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,outc,query.outc,String,Search for specific outcome measures.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,spons,query.spons,String,Search for sponsors or collaborators.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,query,Input,id,query.id,String,"Search for study identifiers (e.g., NCT ID)."
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,filter,Input,ids,filter.ids,Array,Return only studies with the specified NCT IDs.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,filter,Input,overallStatus,filter.overallStatus,Array,Filter results by one or more study statuses.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,filter,Input,geo,filter.geo,Object,Filter results to a geographic area by providing a point and radius.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,filter,Input,advanced,filter.advanced,String,Apply an advanced filter using Essie expression syntax.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,cond,query.cond,String,Search for conditions or diseases.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,term,query.term,String,"Search for other terms like interventions, outcomes, or sponsors."
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,locn,query.locn,String,Search for study locations.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,titles,query.titles,String,Search within study titles or acronyms.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,intr,query.intr,String,Search for specific interventions or treatments.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,outc,query.outc,String,Search for specific outcome measures.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,spons,query.spons,String,Search for sponsors or collaborators.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,query,Input,id,query.id,String,"Search for study identifiers (e.g., NCT ID)."
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,filter,Input,ids,filter.ids,Array,Return only studies with the specified NCT IDs.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,filter,Input,overallStatus,filter.overallStatus,Array,Filter results by one or more study statuses.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,filter,Input,geo,filter.geo,Object,Filter results to a geographic area by providing a point and radius.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,filter,Input,advanced,filter.advanced,String,Apply an advanced filter using Essie expression syntax.
+filesystem,filesystem_read_media_file,content,Output,type,content.type,String,
+filesystem,filesystem_read_media_file,content,Output,data,content.data,String,
+filesystem,filesystem_read_media_file,content,Output,mimeType,content.mimeType,String,
+filesystem,filesystem_edit_file,edits,Input,oldText,edits.oldText,String,Text to search for - must match exactly
+filesystem,filesystem_edit_file,edits,Input,newText,edits.newText,String,Text to replace with
+github,github_push_files,files,Input,path,files.path,String,
+github,github_push_files,files,Input,content,files.content,String,
+google-maps,google-maps_maps_search_places,location,Input,latitude,location.latitude,Number,
+google-maps,google-maps_maps_search_places,location,Input,longitude,location.longitude,Number,
+google-maps,google-maps_maps_elevation,locations,Input,latitude,locations.latitude,Number,
+google-maps,google-maps_maps_elevation,locations,Input,longitude,locations.longitude,Number,
+lara-translate,lara-translate_translate,text,Input,text,text.text,String,
+lara-translate,lara-translate_translate,text,Input,translatable,text.translatable,Boolean,
+memory,memory_create_entities,entities,Input,name,entities.name,String,The name of the entity
+memory,memory_create_entities,entities,Input,entityType,entities.entityType,String,The type of the entity
+memory,memory_create_entities,entities,Input,observations,entities.observations,Array,An array of observation contents associated with the entity
+memory,memory_create_relations,relations,Input,from,relations.from,String,The name of the entity where the relation starts
+memory,memory_create_relations,relations,Input,to,relations.to,String,The name of the entity where the relation ends
+memory,memory_create_relations,relations,Input,relationType,relations.relationType,String,The type of the relation
+memory,memory_add_observations,observations,Input,entityName,observations.entityName,String,The name of the entity to add the observations to
+memory,memory_add_observations,observations,Input,contents,observations.contents,Array,An array of observation contents to add
+memory,memory_delete_observations,deletions,Input,entityName,deletions.entityName,String,The name of the entity containing the observations
+memory,memory_delete_observations,deletions,Input,observations,deletions.observations,Array,An array of observations to delete
+memory,memory_delete_relations,relations,Input,from,relations.from,String,The name of the entity where the relation starts
+memory,memory_delete_relations,relations,Input,to,relations.to,String,The name of the entity where the relation ends
+memory,memory_delete_relations,relations,Input,relationType,relations.relationType,String,The type of the relation
+notion,notion_API-post-database-query,sorts,Input,property,sorts.property,String,
+notion,notion_API-post-database-query,sorts,Input,direction,sorts.direction,String,
+notion,notion_API-post-search,sort,Input,direction,sort.direction,String,The direction to sort. Possible values include `ascending` and `descending`.
+notion,notion_API-post-search,sort,Input,timestamp,sort.timestamp,String,The name of the timestamp to sort against. Possible values include `last_edited_time`.
+notion,notion_API-post-search,filter,Input,value,filter.value,String,The value of the property to filter the results by.  Possible values for object type include `page` or `database`.  **Limitation**: Currently the only filter allowed is `object` which will filter by type of object (either `page` or `database`)
+notion,notion_API-post-search,filter,Input,property,filter.property,String,The name of the property to filter by. Currently the only property you can filter by is the object type.  Possible values include `object`.   Limitation: Currently the only filter allowed is `object` which will filter by type of object (either `page` or `database`)
+notion,notion_API-patch-block-children,children,Input,paragraph,children.paragraph,Object,
+notion,notion_API-patch-block-children,children,Input,bulleted_list_item,children.bulleted_list_item,Object,
+notion,notion_API-patch-block-children,children,Input,type,children.type,String,
+notion,notion_API-patch-page,properties,Input,title,properties.title,Array,
+notion,notion_API-patch-page,properties,Input,type,properties.type,String,
+notion,notion_API-patch-page,cover,Input,external,cover.external,Object,
+notion,notion_API-patch-page,cover,Input,type,cover.type,String,
+notion,notion_API-patch-page,icon,Input,emoji,icon.emoji,String,
+notion,notion_API-post-page,properties,Input,title,properties.title,Array,
+notion,notion_API-post-page,properties,Input,type,properties.type,String,
+notion,notion_API-post-page,parent,Input,page_id,parent.page_id,String,
+notion,notion_API-create-a-database,parent,Input,type,parent.type,String,
+notion,notion_API-create-a-database,parent,Input,page_id,parent.page_id,String,
+notion,notion_API-create-a-database,title,Input,text,title.text,Object,
+notion,notion_API-create-a-database,title,Input,type,title.type,String,
+notion,notion_API-update-a-database,properties,Input,name,properties.name,String,
+notion,notion_API-update-a-database,description,Input,text,description.text,Object,
+notion,notion_API-update-a-database,description,Input,type,description.type,String,
+notion,notion_API-update-a-database,title,Input,text,title.text,Object,
+notion,notion_API-update-a-database,title,Input,type,title.type,String,
+notion,notion_API-create-a-comment,parent,Input,page_id,parent.page_id,String,the page ID
+notion,notion_API-create-a-comment,rich_text,Input,text,rich_text.text,Object,

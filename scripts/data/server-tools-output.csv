@@ -1,0 +1,448 @@
+server_name,tool_name,tool_description,parameter_name,schema_type,datatype,parameter_description,is_required
+calculator,calculator_calculate,Calculates/evaluates the given expression.,result,Output,String,,Required
+ddg-search,ddg-search_fetch_content,"
+Fetch and parse content from a webpage URL.
+
+Args:
+    url: The webpage URL to fetch content from
+    ctx: MCP context for logging
+",result,Output,String,,Required
+ddg-search,ddg-search_search,"
+Search DuckDuckGo and return formatted results.
+
+Args:
+    query: The search query string
+    max_results: Maximum number of results to return (default: 10)
+    ctx: MCP context for logging
+",result,Output,String,,Required
+filesystem,filesystem_create_directory,"Create a new directory or ensure a directory exists. Can create multiple nested directories in one operation. If the directory already exists, this operation will succeed silently. Perfect for setting up directory structures for projects or ensuring required paths exist. Only works within allowed directories.",content,Output,String,,Required
+filesystem,filesystem_directory_tree,"Get a recursive tree view of files and directories as a JSON structure. Each entry includes 'name', 'type' (file/directory), and 'children' for directories. Files have no children array, while directories always have a children array (which may be empty). The output is formatted with 2-space indentation for readability. Only works within allowed directories.",content,Output,String,,Required
+filesystem,filesystem_edit_file,Make line-based edits to a text file. Each edit replaces exact line sequences with new content. Returns a git-style diff showing the changes made. Only works within allowed directories.,content,Output,String,,Required
+filesystem,filesystem_get_file_info,"Retrieve detailed metadata about a file or directory. Returns comprehensive information including size, creation time, last modified time, permissions, and type. This tool is perfect for understanding file characteristics without reading the actual content. Only works within allowed directories.",content,Output,String,,Required
+filesystem,filesystem_list_allowed_directories,Returns the list of directories that this server is allowed to access. Subdirectories within these allowed directories are also accessible. Use this to understand which directories and their nested paths are available before trying to access files.,content,Output,String,,Required
+filesystem,filesystem_list_directory,Get a detailed listing of all files and directories in a specified path. Results clearly distinguish between files and directories with [FILE] and [DIR] prefixes. This tool is essential for understanding directory structure and finding specific files within a directory. Only works within allowed directories.,content,Output,String,,Required
+filesystem,filesystem_list_directory_with_sizes,"Get a detailed listing of all files and directories in a specified path, including sizes. Results clearly distinguish between files and directories with [FILE] and [DIR] prefixes. This tool is useful for understanding directory structure and finding specific files within a directory. Only works within allowed directories.",content,Output,String,,Required
+filesystem,filesystem_move_file,"Move or rename files and directories. Can move files between directories and rename them in a single operation. If the destination exists, the operation will fail. Works across different directories and can be used for simple renaming within the same directory. Both source and destination must be within allowed directories.",content,Output,String,,Required
+filesystem,filesystem_read_file,Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead.,content,Output,String,,Required
+filesystem,filesystem_read_media_file,Read an image or audio file. Returns the base64 encoded data and MIME type. Only works within allowed directories.,content,Output,Array,,Required
+filesystem,filesystem_read_multiple_files,Read the contents of multiple files simultaneously. This is more efficient than reading files one by one when you need to analyze or compare multiple files. Each file's content is returned with its path as a reference. Failed reads for individual files won't stop the entire operation. Only works within allowed directories.,content,Output,String,,Required
+filesystem,filesystem_read_text_file,"Read the complete contents of a file from the file system as text. Handles various text encodings and provides detailed error messages if the file cannot be read. Use this tool when you need to examine the contents of a single file. Use the 'head' parameter to read only the first N lines of a file, or the 'tail' parameter to read only the last N lines of a file. Operates on the file as text regardless of extension. Only works within allowed directories.",content,Output,String,,Required
+filesystem,filesystem_search_files,"Recursively search for files and directories matching a pattern. The patterns should be glob-style patterns that match paths relative to the working directory. Use pattern like '*.ext' to match files in current directory, and '**/*.ext' to match files in all subdirectories. Returns full paths to all matching items. Great for finding files when you don't know their exact location. Only searches within allowed directories.",content,Output,String,,Required
+osm-mcp-server,osm-mcp-server_analyze_commute,"
+Perform a detailed commute analysis between home and work locations.
+
+This advanced tool analyzes commute options between two locations (typically home and work),
+comparing multiple transportation modes and providing detailed metrics for each option.
+Includes estimated travel times, distances, turn-by-turn directions, and other commute-relevant
+data. Essential for real estate decisions, lifestyle planning, and workplace relocation analysis.
+
+Args:
+    home_latitude: Home location latitude (decimal degrees)
+    home_longitude: Home location longitude (decimal degrees)
+    work_latitude: Workplace location latitude (decimal degrees)
+    work_longitude: Workplace location longitude (decimal degrees)
+    modes: List of transportation modes to analyze (options: ""car"", ""foot"", ""bike"")
+    depart_at: Optional departure time (format: ""HH:MM"") for time-sensitive routing
+    
+Returns:
+    Comprehensive commute analysis with:
+    - Summary comparing all transportation modes
+    - Detailed route information for each mode
+    - Total distance and duration for each option
+    - Turn-by-turn directions
+",result,Output,Object,,Required
+osm-mcp-server,osm-mcp-server_analyze_neighborhood,"
+Generate a comprehensive neighborhood analysis focused on livability factors.
+
+This advanced analysis tool evaluates a neighborhood based on multiple livability factors,
+including amenities, transportation options, green spaces, and services. Results include
+counts and proximity scores for various categories, helping to assess the overall quality
+and convenience of a residential area. Invaluable for real estate decisions, relocation
+planning, and neighborhood comparisons.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Analysis radius in meters (defaults to 1000m/1km)
+    
+Returns:
+    Comprehensive neighborhood profile including:
+    - Overall neighborhood score
+    - Walkability assessment
+    - Public transportation access
+    - Nearby amenities (shops, restaurants, services)
+    - Green spaces and recreation
+    - Education and healthcare facilities
+    - Detailed counts and distance metrics for each category
+",result,Output,Object,,Required
+osm-mcp-server,osm-mcp-server_explore_area,"
+Generate a comprehensive profile of an area including all amenities and features.
+
+This powerful analysis tool creates a detailed overview of a neighborhood or area by
+identifying and categorizing all geographic features, amenities, and points of interest.
+Results are organized by category for easy analysis. Excellent for neighborhood research,
+area comparisons, and location-based decision making.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Search radius in meters (defaults to 500m)
+    
+Returns:
+    In-depth area profile including:
+    - Address and location context
+    - Total feature count
+    - Features organized by category and subcategory
+    - Each feature includes name, coordinates, and detailed metadata
+",result,Output,Object,,Required
+osm-mcp-server,osm-mcp-server_find_ev_charging_stations,"
+Locate electric vehicle charging stations near a specific location.
+
+This specialized search tool identifies EV charging infrastructure within a specified
+distance from a location. Results can be filtered by connector type (Tesla, CCS, CHAdeMO, etc.)
+and minimum power delivery. Essential for EV owners planning trips or evaluating potential
+charging stops.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Search radius in meters (defaults to 5000m/5km)
+    connector_types: Optional list of specific connector types to filter by
+                    (e.g., [""type2"", ""ccs"", ""tesla""])
+    min_power: Minimum charging power in kW
+    
+Returns:
+    List of charging stations with:
+    - Location name and operator
+    - Available connector types
+    - Charging speeds
+    - Number of charging points
+    - Access restrictions
+    - Other relevant metadata
+",result,Output,Object,,Required
+osm-mcp-server,osm-mcp-server_find_nearby_places,"
+Discover points of interest and amenities near a specific location.
+
+This tool performs a comprehensive search around a geographic point to identify
+nearby establishments, amenities, and points of interest. Results are organized by
+category and subcategory, making it easy to find specific types of places. Essential
+for location-based recommendations, neighborhood analysis, and proximity-based decision making.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Search radius in meters (defaults to 1000m/1km)
+    categories: List of OSM categories to search for (e.g., [""amenity"", ""shop"", ""tourism""]).
+               If omitted, searches common categories.
+    limit: Maximum number of total results to return
+    
+Returns:
+    Structured dictionary containing:
+    - Original query parameters
+    - Total count of places found
+    - Results grouped by category and subcategory
+    - Each place includes name, coordinates, and associated tags
+",result,Output,Object,,Required
+osm-mcp-server,osm-mcp-server_find_parking_facilities,"
+Locate parking facilities near a specific location.
+
+This tool finds parking options (lots, garages, street parking) near a specified location.
+Results can be filtered by parking type and include capacity information where available.
+Useful for trip planning, city navigation, and evaluating parking availability in urban areas.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Search radius in meters (defaults to 1000m/1km)
+    parking_type: Optional filter for specific types of parking facilities
+                 (""surface"", ""underground"", ""multi-storey"", etc.)
+    
+Returns:
+    List of parking facilities with:
+    - Name and type
+    - Capacity information if available
+    - Fee structure if available
+    - Access restrictions
+    - Distance from search point
+",result,Output,Object,,Required
+osm-mcp-server,osm-mcp-server_find_schools_nearby,"
+Locate educational institutions near a specific location, filtered by education level.
+
+This specialized search tool identifies schools, colleges, and other educational institutions
+within a specified distance from a location. Results can be filtered by education level
+(elementary, middle, high school, university, etc.). Essential for families evaluating
+neighborhoods or real estate purchases with education considerations.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Search radius in meters (defaults to 2000m/2km)
+    education_levels: Optional list of specific education levels to filter by
+                     (e.g., [""elementary"", ""secondary"", ""university""])
+    
+Returns:
+    List of educational institutions with:
+    - Name and type
+    - Distance from search point
+    - Education levels offered
+    - Contact information if available
+    - Other relevant metadata
+",result,Output,Object,,Required
+osm-mcp-server,osm-mcp-server_geocode_address,"
+Convert an address or place name to geographic coordinates with detailed location information.
+
+This tool takes a text description of a location (such as an address, landmark name, or
+place of interest) and returns its precise geographic coordinates along with rich metadata.
+The results can be used for mapping, navigation, location-based analysis, and as input to
+other geospatial tools.
+
+Args:
+    address: The address, place name, landmark, or description to geocode (e.g., ""Empire State Building"", 
+            ""123 Main St, Springfield"", ""Golden Gate Park, San Francisco"")
+    
+Returns:
+    List of matching locations with:
+    - Geographic coordinates (latitude/longitude)
+    - Formatted address
+    - Administrative boundaries (city, state, country)
+    - OSM type and ID
+    - Bounding box (if applicable)
+    - Importance ranking
+",result,Output,Array,,Required
+osm-mcp-server,osm-mcp-server_get_route_directions,"
+Calculate detailed route directions between two geographic points.
+
+This tool provides comprehensive turn-by-turn navigation directions between any two locations
+on Earth. It calculates the optimal route based on the specified transportation mode and
+returns detailed information about distance, duration, maneuvers, and the route geometry.
+Perfect for trip planning, navigation assistance, and commute analysis.
+
+Args:
+    from_latitude: Starting point latitude (decimal degrees)
+    from_longitude: Starting point longitude (decimal degrees)
+    to_latitude: Destination latitude (decimal degrees)
+    to_longitude: Destination longitude (decimal degrees)
+    mode: Transportation mode - options include:
+          - ""car"" (default): Standard automobile routing
+          - ""bike"": Bicycle-friendly routes
+          - ""foot"": Pedestrian walking paths
+    
+Returns:
+    Comprehensive routing information including:
+    - Summary with total distance (meters) and duration (seconds)
+    - Turn-by-turn directions with individual segments
+    - Route geometry for mapping visualization
+    - Waypoint information
+",result,Output,Object,,Required
+osm-mcp-server,osm-mcp-server_reverse_geocode,"
+Convert geographic coordinates to a detailed address and location description.
+
+This tool takes a specific point on Earth (latitude and longitude) and returns 
+comprehensive information about that location, including its address, nearby landmarks,
+administrative boundaries, and other contextual information. Useful for translating
+GPS coordinates into human-readable locations.
+
+Args:
+    latitude: The latitude coordinate (decimal degrees, WGS84)
+    longitude: The longitude coordinate (decimal degrees, WGS84)
+    
+Returns:
+    Detailed address and location information including:
+    - Formatted address
+    - Building, street, city, state, country
+    - Administrative hierarchy
+    - OSM metadata
+    - Postal code and other relevant identifiers
+",result,Output,Object,,Required
+osm-mcp-server,osm-mcp-server_search_category,"
+Search for specific types of places within a defined geographic area.
+
+This tool allows targeted searches for places matching specific categories within
+a rectangular geographic region. It's particularly useful for filtering places by type
+(restaurants, schools, parks, etc.) within a neighborhood or city district. Results include
+complete location details and metadata about each matching place.
+
+Args:
+    category: Main OSM category to search for (e.g., ""amenity"", ""shop"", ""tourism"", ""building"")
+    min_latitude: Southern boundary of search area (decimal degrees)
+    min_longitude: Western boundary of search area (decimal degrees)
+    max_latitude: Northern boundary of search area (decimal degrees)
+    max_longitude: Eastern boundary of search area (decimal degrees)
+    subcategories: Optional list of specific subcategories to filter by (e.g., [""restaurant"", ""cafe""])
+    
+Returns:
+    Structured results including:
+    - Query parameters
+    - Count of matching places
+    - List of matching places with coordinates, names, and metadata
+",result,Output,Object,,Required
+osm-mcp-server,osm-mcp-server_suggest_meeting_point,"
+Find the optimal meeting place for multiple people coming from different locations.
+
+This tool calculates a central meeting point based on the locations of multiple individuals,
+then recommends suitable venues near that central point. Ideal for planning social gatherings,
+business meetings, or any situation where multiple people need to converge from different
+starting points.
+
+Args:
+    locations: List of dictionaries, each containing the latitude and longitude of a person's location
+              Example: [{""latitude"": 37.7749, ""longitude"": -122.4194}, {""latitude"": 37.3352, ""longitude"": -121.8811}]
+    venue_type: Type of venue to suggest as a meeting point. Options include:
+               ""cafe"", ""restaurant"", ""bar"", ""library"", ""park"", etc.
+    
+Returns:
+    Meeting point recommendations including:
+    - Calculated center point coordinates
+    - List of suggested venues with names and details
+    - Total number of matching venues in the area
+",result,Output,Object,,Required
+oxylabs,oxylabs_amazon_product_scraper,"Scrape Amazon products.
+
+Supports content parsing, different user agent types, domain,
+geolocation, locale parameters and different output formats.
+Supports Amazon specific parameters such as currency and getting
+more accurate pricing data with auto select variant.
+",result,Output,String,,Required
+oxylabs,oxylabs_amazon_search_scraper,"Scrape Amazon search results.
+
+Supports content parsing, different user agent types, pagination,
+domain, geolocation, locale parameters and different output formats.
+Supports Amazon specific parameters such as category id, merchant id, currency.
+",result,Output,String,,Required
+oxylabs,oxylabs_google_search_scraper,"Scrape Google Search results.
+
+Supports content parsing, different user agent types, pagination,
+domain, geolocation, locale parameters and different output formats.
+",result,Output,String,,Required
+oxylabs,oxylabs_universal_scraper,"Get a content of any webpage.
+
+Supports browser rendering, parsing of certain webpages
+and different output formats.
+",result,Output,String,,Required
+pubmed,pubmed_download_pubmed_pdf,,result,Output,String,,Required
+pubmed,pubmed_get_pubmed_article_metadata,,result,Output,Object,,Required
+pubmed,pubmed_search_pubmed_advanced,,result,Output,Array,,Required
+pubmed,pubmed_search_pubmed_key_words,,result,Output,Array,,Required
+twelvedata,twelvedata_GetApiUsage,This endpoint will provide information on the current usage of Twelve Data API.,current_usage,Output,String,Number of requests made in last minute,Optional
+twelvedata,twelvedata_GetApiUsage,This endpoint will provide information on the current usage of Twelve Data API.,plan_limit,Output,String,Your personal API limit (requests/minute) depending on the plan,Optional
+twelvedata,twelvedata_GetApiUsage,This endpoint will provide information on the current usage of Twelve Data API.,timestamp,Output,String,Current timestamp in UTC timezone,Optional
+twelvedata,twelvedata_GetCommodities,This API call returns an array of commodity pairs available at Twelve Data API. This list is updated daily.,data,Output,String,List of commodities,Optional
+twelvedata,twelvedata_GetCommodities,This API call returns an array of commodity pairs available at Twelve Data API. This list is updated daily.,status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetCrossListings,This API call returns an array of cross listed symbols for a specified instrument. Cross listings are the same securities listed on different exchanges. This list is updated daily.,result,Output,String,,Optional
+twelvedata,twelvedata_GetCryptocurrencies,This API call returns an array of cryptocurrencies available at Twelve Data API. This list is updated daily.,data,Output,String,List of cryptocurrencies,Optional
+twelvedata,twelvedata_GetCryptocurrencies,This API call returns an array of cryptocurrencies available at Twelve Data API. This list is updated daily.,status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetCryptocurrencyExchanges,This API call returns an array of cryptocurrency exchanges available at Twelve Data API. This list is updated daily.,data,Output,String,List of cryptocurrency exchanges,Optional
+twelvedata,twelvedata_GetCryptocurrencyExchanges,This API call returns an array of cryptocurrency exchanges available at Twelve Data API. This list is updated daily.,status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetCurrencyConversion,This API call returns real-time exchange rate and converted amount for currency pair. Works with forex and cryptocurrency.,amount,Output,String,Amount of converted currency,Optional
+twelvedata,twelvedata_GetCurrencyConversion,This API call returns real-time exchange rate and converted amount for currency pair. Works with forex and cryptocurrency.,rate,Output,String,Real-time exchange rate for the corresponding symbol,Optional
+twelvedata,twelvedata_GetCurrencyConversion,This API call returns real-time exchange rate and converted amount for currency pair. Works with forex and cryptocurrency.,symbol,Output,String,Requested currency symbol,Optional
+twelvedata,twelvedata_GetCurrencyConversion,This API call returns real-time exchange rate and converted amount for currency pair. Works with forex and cryptocurrency.,timestamp,Output,String,Unix timestamp of the rate,Optional
+twelvedata,twelvedata_GetDividends,Returns the amount of dividends paid out for the last 10+ years.,dividends,Output,String,List of dividends,Optional
+twelvedata,twelvedata_GetDividends,Returns the amount of dividends paid out for the last 10+ years.,meta,Output,String,,Optional
+twelvedata,twelvedata_GetEarliestTimestamp,This method returns the first available DateTime for a given instrument at the specific interval.,datetime,Output,String,"Earliest datetime, the format depends on interval",Optional
+twelvedata,twelvedata_GetEarliestTimestamp,This method returns the first available DateTime for a given instrument at the specific interval.,unix_time,Output,String,Datetime converted to UNIX timestamp,Optional
+twelvedata,twelvedata_GetEarnings,"This API call returns earnings data for a given company, including EPS estimate and EPS actual. Earnings are available for complete company history.",earnings,Output,String,List of earnings data,Optional
+twelvedata,twelvedata_GetEarnings,"This API call returns earnings data for a given company, including EPS estimate and EPS actual. Earnings are available for complete company history.",meta,Output,String,,Optional
+twelvedata,twelvedata_GetEarnings,"This API call returns earnings data for a given company, including EPS estimate and EPS actual. Earnings are available for complete company history.",status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetEod,This endpoint returns the latest End of Day (EOD) price of an instrument.,close,Output,String,The most recent end of day close price,Optional
+twelvedata,twelvedata_GetEod,This endpoint returns the latest End of Day (EOD) price of an instrument.,currency,Output,String,Currency in which instrument is denominated,Optional
+twelvedata,twelvedata_GetEod,This endpoint returns the latest End of Day (EOD) price of an instrument.,datetime,Output,String,Datetime in defined timezone referring to when the bar with specified interval was opened,Optional
+twelvedata,twelvedata_GetEod,This endpoint returns the latest End of Day (EOD) price of an instrument.,exchange,Output,String,Exchange where instrument is traded,Optional
+twelvedata,twelvedata_GetEod,This endpoint returns the latest End of Day (EOD) price of an instrument.,mic_code,Output,String,Market identifier code (MIC) under ISO 10383 standard,Optional
+twelvedata,twelvedata_GetEod,This endpoint returns the latest End of Day (EOD) price of an instrument.,symbol,Output,String,Symbol passed,Optional
+twelvedata,twelvedata_GetEtf,This API call returns an array of ETFs available at Twelve Data API. This list is updated daily.,data,Output,String,List of ETFs,Optional
+twelvedata,twelvedata_GetEtf,This API call returns an array of ETFs available at Twelve Data API. This list is updated daily.,status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetExchangeRate,This API call returns real-time exchange rate for currency pair. Works with forex and cryptocurrency.,rate,Output,String,Real-time exchange rate for the corresponding symbol,Optional
+twelvedata,twelvedata_GetExchangeRate,This API call returns real-time exchange rate for currency pair. Works with forex and cryptocurrency.,symbol,Output,String,Requested currency symbol,Optional
+twelvedata,twelvedata_GetExchangeRate,This API call returns real-time exchange rate for currency pair. Works with forex and cryptocurrency.,timestamp,Output,String,Unix timestamp of the rate,Optional
+twelvedata,twelvedata_GetExchanges,This API call returns an array of stock or ETF exchanges available at Twelve Data API. This list is updated daily.,data,Output,String,List of exchanges,Optional
+twelvedata,twelvedata_GetExchanges,This API call returns an array of stock or ETF exchanges available at Twelve Data API. This list is updated daily.,status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetForexPairs,This API call returns an array of forex pairs available at Twelve Data API. This list is updated daily.,data,Output,String,List of forex pairs,Optional
+twelvedata,twelvedata_GetForexPairs,This API call returns an array of forex pairs available at Twelve Data API. This list is updated daily.,status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetFunds,This API call returns an array of funds available at Twelve Data API. This list is updated daily.,result,Output,String,,Optional
+twelvedata,twelvedata_GetFunds,This API call returns an array of funds available at Twelve Data API. This list is updated daily.,status,Output,String,Status of the response,Optional
+twelvedata,twelvedata_GetLogo,"Returns a logo of company, cryptocurrency, or forex pair.",logo_base,Output,String,Link to download the base currency logo (for `forex` and `crypto` only),Optional
+twelvedata,twelvedata_GetLogo,"Returns a logo of company, cryptocurrency, or forex pair.",logo_quote,Output,String,Link to download the quote currency logo (for `forex` and `crypto` only),Optional
+twelvedata,twelvedata_GetLogo,"Returns a logo of company, cryptocurrency, or forex pair.",meta,Output,String,,Optional
+twelvedata,twelvedata_GetLogo,"Returns a logo of company, cryptocurrency, or forex pair.",url,Output,String,Link to download the logo (for stocks only),Optional
+twelvedata,twelvedata_GetPrice,This endpoint is a lightweight method that allows retrieving only the real-time price of the selected instrument.,price,Output,String,Real-time or the latest available price,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,CEO,Output,String,Name of the CEO of the company,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,address,Output,String,Street address of the company if presented,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,address2,Output,String,Secondary address of the company if presented,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,city,Output,String,City of the company if presented,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,country,Output,String,Country of the company if presented,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,description,Output,String,Description of the company activities,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,employees,Output,String,Number of employees in the company,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,exchange,Output,String,Exchange name where the company is listed,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,industry,Output,String,Industry at which company operates,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,mic_code,Output,String,Market Identifier Code (MIC) under ISO 10383 standard,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,name,Output,String,Name of the company,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,phone,Output,String,Phone number of the company if presented,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,sector,Output,String,Sector at which the company operates,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,state,Output,String,State of the company if presented,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,symbol,Output,String,Ticker of the company,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,type,Output,String,Issue type of the stock,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,website,Output,String,Website of the company,Optional
+twelvedata,twelvedata_GetProfile,Returns general information about the company.,zip,Output,String,ZIP code of the company if presented,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,average_volume,Output,String,Average volume of the specified period,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,change,Output,String,Close - previous_close,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,close,Output,String,Close price at the end of the bar,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,currency,Output,String,Currency in which the equity is denominated,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,datetime,Output,String,Datetime in defined timezone referring to when the bar with specified interval was opened,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,exchange,Output,String,Exchange where instrument is traded,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,extended_change,Output,String,Diff between the regular close price and the latest extended price,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,extended_percent_change,Output,String,Percent change in price between the regular close price and the latest extended price,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,extended_price,Output,String,Latest extended price,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,extended_timestamp,Output,String,Unix timestamp of the last extended price,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,fifty_two_week,Output,String,,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,high,Output,String,Highest price which occurred during the current bar,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,is_market_open,Output,String,True if market is open; false if closed,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,last_quote_at,Output,String,Unix timestamp of last minute candle,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,low,Output,String,Lowest price which occurred during the current bar,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,mic_code,Output,String,Market identifier code (MIC) under ISO 10383 standard,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,name,Output,String,Name of the instrument,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,open,Output,String,Price at the opening of current bar,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,percent_change,Output,String,(Close - previous_close) / previous_close * 100,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,previous_close,Output,String,Close price at the end of the previous bar,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,rolling_1day_change,Output,String,"Percent change in price between the current and the backward one, where period is 1 day, available for crypto",Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,rolling_7day_change,Output,String,"Percent change in price between the current and the backward one, where period is 7 days, available for crypto",Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,rolling_period_change,Output,String,"Percent change in price between the current and the backward one, where period specified in request param rolling_period, available for crypto",Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,symbol,Output,String,Symbol passed,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,timestamp,Output,String,Unix timestamp representing the opening candle of the specified interval,Optional
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.,volume,Output,String,Trading volume during the bar,Optional
+twelvedata,twelvedata_GetSplits,Returns the date and the split factor of shares of the company for the last 10+ years.,meta,Output,String,,Optional
+twelvedata,twelvedata_GetSplits,Returns the date and the split factor of shares of the company for the last 10+ years.,splits,Output,String,List of stock splits,Optional
+twelvedata,twelvedata_GetStatistics,Returns current overview of company’s main statistics including valuation metrics and financials.,meta,Output,String,,Optional
+twelvedata,twelvedata_GetStatistics,Returns current overview of company’s main statistics including valuation metrics and financials.,statistics,Output,String,,Optional
+twelvedata,twelvedata_GetStocks,This API call returns an array of symbols available at Twelve Data API. This list is updated daily.,data,Output,String,List of stock instruments,Optional
+twelvedata,twelvedata_GetStocks,This API call returns an array of symbols available at Twelve Data API. This list is updated daily.,status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetSymbolSearch,"This method helps to find the best matching symbol. It can be used as the base for custom lookups. The response is returned in descending order, with the most relevant instrument at the beginning.",data,Output,String,List of symbols matching the search criteria,Optional
+twelvedata,twelvedata_GetSymbolSearch,"This method helps to find the best matching symbol. It can be used as the base for custom lookups. The response is returned in descending order, with the most relevant instrument at the beginning.",status,Output,String,Status of the response,Optional
+twelvedata,twelvedata_GetTechnicalIndicators,This API call returns an array of objects with available technical indicators. This endpoint might be used to build an abstract interface to make more convenient API calls from the application.,data,Output,String,Map of technical indicators available at Twelve Data API,Optional
+twelvedata,twelvedata_GetTechnicalIndicators,This API call returns an array of objects with available technical indicators. This endpoint might be used to build an abstract interface to make more convenient API calls from the application.,status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetTimeSeries,"This API call returns meta and time series for the requested instrument. Metaobject consists of general information about the requested symbol. Time series is the array of objects ordered by time descending with Open, High, Low, Close prices. Non-currency instruments also include volume information.",meta,Output,String,,Optional
+twelvedata,twelvedata_GetTimeSeries,"This API call returns meta and time series for the requested instrument. Metaobject consists of general information about the requested symbol. Time series is the array of objects ordered by time descending with Open, High, Low, Close prices. Non-currency instruments also include volume information.",status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetTimeSeries,"This API call returns meta and time series for the requested instrument. Metaobject consists of general information about the requested symbol. Time series is the array of objects ordered by time descending with Open, High, Low, Close prices. Non-currency instruments also include volume information.",values,Output,String,List of time series data points,Optional
+twelvedata,twelvedata_GetTimeSeriesAdx,"The Average Directional Index (ADX) measures the strength of a trend, regardless of direction, helping traders determine if a market is trending or ranging.",meta,Output,String,,Optional
+twelvedata,twelvedata_GetTimeSeriesAdx,"The Average Directional Index (ADX) measures the strength of a trend, regardless of direction, helping traders determine if a market is trending or ranging.",status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetTimeSeriesAdx,"The Average Directional Index (ADX) measures the strength of a trend, regardless of direction, helping traders determine if a market is trending or ranging.",values,Output,String,Array of time series data points,Optional
+twelvedata,twelvedata_GetTimeSeriesAtr,"The Average True Range (ATR) is a volatility indicator that measures the average range of price movement over a specified period, helping traders assess market volatility.",meta,Output,String,,Optional
+twelvedata,twelvedata_GetTimeSeriesAtr,"The Average True Range (ATR) is a volatility indicator that measures the average range of price movement over a specified period, helping traders assess market volatility.",status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetTimeSeriesAtr,"The Average True Range (ATR) is a volatility indicator that measures the average range of price movement over a specified period, helping traders assess market volatility.",values,Output,String,Array of time series data points,Optional
+twelvedata,twelvedata_GetTimeSeriesBBands,"Bollinger Bands (BBANDS) are volatility bands placed above and below a moving average, measuring price volatility and helping traders identify potential overbought or oversold conditions.",meta,Output,String,,Optional
+twelvedata,twelvedata_GetTimeSeriesBBands,"Bollinger Bands (BBANDS) are volatility bands placed above and below a moving average, measuring price volatility and helping traders identify potential overbought or oversold conditions.",status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetTimeSeriesBBands,"Bollinger Bands (BBANDS) are volatility bands placed above and below a moving average, measuring price volatility and helping traders identify potential overbought or oversold conditions.",values,Output,String,Array of time series data points,Optional
+twelvedata,twelvedata_GetTimeSeriesCross,"This API call returns meta and cross rate time series for the requested instruments. Metaobject consists of general information about the requested symbol. Time series is the array of objects ordered by time descending with Open, High, Low, Close prices. Works with stocks, forex and cryptocurrency.",meta,Output,String,,Optional
+twelvedata,twelvedata_GetTimeSeriesCross,"This API call returns meta and cross rate time series for the requested instruments. Metaobject consists of general information about the requested symbol. Time series is the array of objects ordered by time descending with Open, High, Low, Close prices. Works with stocks, forex and cryptocurrency.",values,Output,String,Array of time series data points,Optional
+twelvedata,twelvedata_GetTimeSeriesEma,"The Exponential Moving Average (EMA) is a weighted moving average that gives more importance to recent price data, making it more responsive to new information and helping traders identify trends and potential entry or exit points.",meta,Output,String,,Optional
+twelvedata,twelvedata_GetTimeSeriesEma,"The Exponential Moving Average (EMA) is a weighted moving average that gives more importance to recent price data, making it more responsive to new information and helping traders identify trends and potential entry or exit points.",status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetTimeSeriesEma,"The Exponential Moving Average (EMA) is a weighted moving average that gives more importance to recent price data, making it more responsive to new information and helping traders identify trends and potential entry or exit points.",values,Output,String,Array of time series data points,Optional
+twelvedata,twelvedata_GetTimeSeriesMacd,"The Moving Average Convergence Divergence (MACD) is a momentum indicator that measures the difference between two moving averages, with a signal line used to identify potential trend reversals and trading opportunities.",meta,Output,String,,Optional
+twelvedata,twelvedata_GetTimeSeriesMacd,"The Moving Average Convergence Divergence (MACD) is a momentum indicator that measures the difference between two moving averages, with a signal line used to identify potential trend reversals and trading opportunities.",status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetTimeSeriesMacd,"The Moving Average Convergence Divergence (MACD) is a momentum indicator that measures the difference between two moving averages, with a signal line used to identify potential trend reversals and trading opportunities.",values,Output,String,Array of time series data points,Optional
+twelvedata,twelvedata_GetTimeSeriesRsi,"The Relative Strength Index (RSI) is a momentum oscillator that measures the speed and change of price movements, helping traders identify potential overbought or oversold conditions and trend reversals.",meta,Output,String,,Optional
+twelvedata,twelvedata_GetTimeSeriesRsi,"The Relative Strength Index (RSI) is a momentum oscillator that measures the speed and change of price movements, helping traders identify potential overbought or oversold conditions and trend reversals.",status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetTimeSeriesRsi,"The Relative Strength Index (RSI) is a momentum oscillator that measures the speed and change of price movements, helping traders identify potential overbought or oversold conditions and trend reversals.",values,Output,String,Array of time series data points,Optional
+twelvedata,twelvedata_GetTimeSeriesSma,"The Simple Moving Average (SMA) is a smoothing indicator that calculates the average price of a security over a specified period, helping traders identify trends and potential support or resistance levels.",meta,Output,String,,Optional
+twelvedata,twelvedata_GetTimeSeriesSma,"The Simple Moving Average (SMA) is a smoothing indicator that calculates the average price of a security over a specified period, helping traders identify trends and potential support or resistance levels.",status,Output,String,Response status,Optional
+twelvedata,twelvedata_GetTimeSeriesSma,"The Simple Moving Average (SMA) is a smoothing indicator that calculates the average price of a security over a specified period, helping traders identify trends and potential support or resistance levels.",values,Output,String,Array of time series data points,Optional
