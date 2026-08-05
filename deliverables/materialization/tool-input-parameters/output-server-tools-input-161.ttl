@@ -1,0 +1,24 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:dataType.String a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:input.filesystem.filesystem_list_directory_with_sizes.path.Input .
+
+tool-coupler-r:metadata.filesystem.filesystem_list_directory_with_sizes.path.Input a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "path"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:input.filesystem.filesystem_list_directory_with_sizes.path.Input .
+
+tool-coupler-r:requirementStatus.Required a tool-coupler-ont:RequirementStatus ;
+    tool-coupler-ont:requirementStatusOf tool-coupler-r:input.filesystem.filesystem_list_directory_with_sizes.path.Input .
+
+tool-coupler-r:tool.filesystem.filesystem_list_directory_with_sizes a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter tool-coupler-r:input.filesystem.filesystem_list_directory_with_sizes.path.Input .
+
+tool-coupler-r:input.filesystem.filesystem_list_directory_with_sizes.path.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.filesystem.filesystem_list_directory_with_sizes.path.Input ;
+    tool-coupler-ont:hasRequirementStatus tool-coupler-r:requirementStatus.Required ;
+    tool-coupler-ont:isOfDataType tool-coupler-r:dataType.String ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.filesystem.filesystem_list_directory_with_sizes .
+

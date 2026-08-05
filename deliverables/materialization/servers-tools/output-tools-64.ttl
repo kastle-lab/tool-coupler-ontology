@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.filesystem a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "filesystem"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.filesystem .
+
+tool-coupler-r:metadata.filesystem.filesystem_read_multiple_files a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Read the contents of multiple files simultaneously. This is more efficient than reading files one by one when you need to analyze or compare multiple files. Each file's content is returned with its path as a reference. Failed reads for individual files won't stop the entire operation. Only works within allowed directories."^^xsd:string ;
+    tool-coupler-ont:hasName "filesystem_read_multiple_files"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.filesystem.filesystem_read_multiple_files .
+
+tool-coupler-r:server.filesystem a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.filesystem ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.filesystem.filesystem_read_multiple_files .
+
+tool-coupler-r:tool.filesystem.filesystem_read_multiple_files a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.filesystem.filesystem_read_multiple_files ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.filesystem .
+

@@ -1,0 +1,1068 @@
+server_name,tool_name,tool_description
+airtable,airtable_list_bases,List all accessible Airtable bases
+airtable,airtable_list_tables,List all tables in a base
+airtable,airtable_create_table,Create a new table in a base
+airtable,airtable_update_table,Update a table's schema
+airtable,airtable_create_field,Create a new field in a table
+airtable,airtable_update_field,Update a field in a table
+airtable,airtable_list_records,List records in a table
+airtable,airtable_create_record,Create a new record in a table
+airtable,airtable_update_record,Update an existing record in a table
+airtable,airtable_delete_record,Delete a record from a table
+airtable,airtable_search_records,Search for records in a table
+airtable,airtable_get_record,Get a single record by its ID
+alchemy,alchemy_fetchTokenPriceBySymbol,
+alchemy,alchemy_fetchTokenPriceByAddress,
+alchemy,alchemy_fetchTokenPriceHistoryBySymbol,
+alchemy,alchemy_fetchTokenPriceHistoryByTimeFrame,
+alchemy,alchemy_fetchTokensOwnedByMultichainAddresses,
+alchemy,alchemy_fetchAddressTransactionHistory,
+alchemy,alchemy_fetchTransfers,
+alchemy,alchemy_fetchNftsOwnedByMultichainAddresses,
+alchemy,alchemy_fetchNftContractDataByMultichainAddress,
+arxiv,arxiv_search_papers,Search for papers on arXiv with advanced filtering
+arxiv,arxiv_download_paper,Download a paper and create a resource for it
+arxiv,arxiv_list_papers,List all existing papers available as resources
+arxiv,arxiv_read_paper,Read the full content of a stored paper in markdown format
+brave-search,brave-search_brave_web_search,"Performs a web search using the Brave Search API, ideal for general queries, news, articles, and online content. Use this for broad information gathering, recent events, or when you need diverse web sources. Supports pagination, content filtering, and freshness controls. Maximum 20 results per request, with offset for pagination. "
+brave-search,brave-search_brave_local_search,"Searches for local businesses and places using Brave's Local Search API. Best for queries related to physical locations, businesses, restaurants, services, etc. Returns detailed information including:
+- Business names and addresses
+- Ratings and review counts
+- Phone numbers and opening hours
+Use this when the query implies 'near me' or mentions specific locations. Automatically falls back to web search if no local results are found."
+calculator,calculator_calculate,Calculates/evaluates the given expression.
+cli-mcp-server,cli-mcp-server_run_command,"Allows command (CLI) execution in the directory: /data
+
+Available commands: ls, cat, find
+Available flags: 
+
+Shell operators (&&, ||, |, >, >>, <, <<, ;) are not supported. Set ALLOW_SHELL_OPERATORS=true to enable."
+cli-mcp-server,cli-mcp-server_show_security_rules,"Show what commands and operations are allowed in this environment.
+"
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_get_study,Fetches one or more clinical studies from ClinicalTrials.gov by their NCT IDs. Returns either complete study data or concise summaries for each.
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_list_studies,"Searches for clinical studies using a combination of query terms and filters. Supports pagination, sorting, and geographic filtering."
+clinicaltrialsgov-mcp-server,clinicaltrialsgov-mcp-server_clinicaltrials_analyze_trends,"Performs a statistical analysis on a set of clinical trials, aggregating data by status, country, sponsor, or phase. Use specific query parameters to refine the analysis and filter the studies included in the analysis. The tool can handle up to 5000 studies per analysis."
+context7,context7_resolve-library-id,"Resolves a package/product name to a Context7-compatible library ID and returns a list of matching libraries.
+
+You MUST call this function before 'get-library-docs' to obtain a valid Context7-compatible library ID UNLESS the user explicitly provides a library ID in the format '/org/project' or '/org/project/version' in their query.
+
+Selection Process:
+1. Analyze the query to understand what library/package the user is looking for
+2. Return the most relevant match based on:
+- Name similarity to the query (exact matches prioritized)
+- Description relevance to the query's intent
+- Documentation coverage (prioritize libraries with higher Code Snippet counts)
+- Trust score (consider libraries with scores of 7-10 more authoritative)
+
+Response Format:
+- Return the selected library ID in a clearly marked section
+- Provide a brief explanation for why this library was chosen
+- If multiple good matches exist, acknowledge this but proceed with the most relevant one
+- If no good matches exist, clearly state this and suggest query refinements
+
+For ambiguous queries, request clarification before proceeding with a best-guess match."
+context7,context7_get-library-docs,"Fetches up-to-date documentation for a library. You must call 'resolve-library-id' first to obtain the exact Context7-compatible library ID required to use this tool, UNLESS the user explicitly provides a library ID in the format '/org/project' or '/org/project/version' in their query."
+ddg-search,ddg-search_search,"
+Search DuckDuckGo and return formatted results.
+
+Args:
+    query: The search query string
+    max_results: Maximum number of results to return (default: 10)
+    ctx: MCP context for logging
+"
+ddg-search,ddg-search_fetch_content,"
+Fetch and parse content from a webpage URL.
+
+Args:
+    url: The webpage URL to fetch content from
+    ctx: MCP context for logging
+"
+desktop-commander,desktop-commander_get_config,"
+                        Get the complete server configuration as JSON. Config includes fields for:
+                        - blockedCommands (array of blocked shell commands)
+                        - defaultShell (shell to use for commands)
+                        - allowedDirectories (paths the server can access)
+                        - fileReadLineLimit (max lines for read_file, default 1000)
+                        - fileWriteLineLimit (max lines per write_file call, default 50)
+                        - telemetryEnabled (boolean for telemetry opt-in/out)
+                        - currentClient (information about the currently connected MCP client)
+                        - clientHistory (history of all clients that have connected)
+                        - version (version of the DesktopCommander)
+                        - systemInfo (operating system and environment details)
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_set_config_value,"
+                        Set a specific configuration value by key.
+                        
+                        WARNING: Should be used in a separate chat from file operations and 
+                        command execution to prevent security issues.
+                        
+                        Config keys include:
+                        - blockedCommands (array)
+                        - defaultShell (string)
+                        - allowedDirectories (array of paths)
+                        - fileReadLineLimit (number, max lines for read_file)
+                        - fileWriteLineLimit (number, max lines per write_file call)
+                        - telemetryEnabled (boolean)
+                        
+                        IMPORTANT: Setting allowedDirectories to an empty array ([]) allows full access 
+                        to the entire file system, regardless of the operating system.
+                        
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_read_file,"
+                        Read the contents of a file from the file system or a URL with optional offset and length parameters.
+                        
+                        Prefer this over 'execute_command' with cat/type for viewing files.
+                        
+                        Supports partial file reading with:
+                        - 'offset' (start line, default: 0)
+                          * Positive: Start from line N (0-based indexing)
+                          * Negative: Read last N lines from end (tail behavior)
+                        - 'length' (max lines to read, default: configurable via 'fileReadLineLimit' setting, initially 1000)
+                          * Used with positive offsets for range reading
+                          * Ignored when offset is negative (reads all requested tail lines)
+                        
+                        Examples:
+                        - offset: 0, length: 10     → First 10 lines
+                        - offset: 100, length: 5    → Lines 100-104
+                        - offset: -20               → Last 20 lines  
+                        - offset: -5, length: 10    → Last 5 lines (length ignored)
+                        
+                        Performance optimizations:
+                        - Large files with negative offsets use reverse reading for efficiency
+                        - Large files with deep positive offsets use byte estimation
+                        - Small files use fast readline streaming
+                        
+                        When reading from the file system, only works within allowed directories.
+                        Can fetch content from URLs when isUrl parameter is set to true
+                        (URLs are always read in full regardless of offset/length).
+                        
+                        Handles text files normally and image files are returned as viewable images.
+                        Recognized image types: PNG, JPEG, GIF, WebP.
+                        
+                        IMPORTANT: Always use absolute paths for reliability. Paths are automatically normalized regardless of slash direction. Relative paths may fail as they depend on the current working directory. Tilde paths (~/...) might not work in all contexts. Unless the user explicitly asks for relative paths, use absolute paths.
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_read_multiple_files,"
+                        Read the contents of multiple files simultaneously.
+                        
+                        Each file's content is returned with its path as a reference.
+                        Handles text files normally and renders images as viewable content.
+                        Recognized image types: PNG, JPEG, GIF, WebP.
+                        
+                        Failed reads for individual files won't stop the entire operation.
+                        Only works within allowed directories.
+                        
+                        IMPORTANT: Always use absolute paths for reliability. Paths are automatically normalized regardless of slash direction. Relative paths may fail as they depend on the current working directory. Tilde paths (~/...) might not work in all contexts. Unless the user explicitly asks for relative paths, use absolute paths.
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_write_file,"
+                        Write or append to file contents. 
+
+                        CHUNKING IS STANDARD PRACTICE: Always write files in chunks of 25-30 lines maximum.
+                        This is the normal, recommended way to write files - not an emergency measure.
+
+                        STANDARD PROCESS FOR ANY FILE:
+                        1. FIRST → write_file(filePath, firstChunk, {mode: 'rewrite'})  [≤30 lines]
+                        2. THEN → write_file(filePath, secondChunk, {mode: 'append'})   [≤30 lines]
+                        3. CONTINUE → write_file(filePath, nextChunk, {mode: 'append'}) [≤30 lines]
+
+                        ALWAYS CHUNK PROACTIVELY - don't wait for performance warnings!
+
+                        WHEN TO CHUNK (always be proactive):
+                        1. Any file expected to be longer than 25-30 lines
+                        2. When writing multiple files in sequence
+                        3. When creating documentation, code files, or configuration files
+                        
+                        HANDLING CONTINUATION (""Continue"" prompts):
+                        If user asks to ""Continue"" after an incomplete operation:
+                        1. Read the file to see what was successfully written
+                        2. Continue writing ONLY the remaining content using {mode: 'append'}
+                        3. Keep chunks to 25-30 lines each
+                        
+                        Files over 50 lines will generate performance notes but are still written successfully.
+                        Only works within allowed directories.
+                        
+                        IMPORTANT: Always use absolute paths for reliability. Paths are automatically normalized regardless of slash direction. Relative paths may fail as they depend on the current working directory. Tilde paths (~/...) might not work in all contexts. Unless the user explicitly asks for relative paths, use absolute paths.
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_create_directory,"
+                        Create a new directory or ensure a directory exists.
+                        
+                        Can create multiple nested directories in one operation.
+                        Only works within allowed directories.
+                        
+                        IMPORTANT: Always use absolute paths for reliability. Paths are automatically normalized regardless of slash direction. Relative paths may fail as they depend on the current working directory. Tilde paths (~/...) might not work in all contexts. Unless the user explicitly asks for relative paths, use absolute paths.
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_list_directory,"
+                        Get a detailed listing of all files and directories in a specified path.
+                        
+                        Use this instead of 'execute_command' with ls/dir commands.
+                        Results distinguish between files and directories with [FILE] and [DIR] prefixes.
+                        Only works within allowed directories.
+                        
+                        IMPORTANT: Always use absolute paths for reliability. Paths are automatically normalized regardless of slash direction. Relative paths may fail as they depend on the current working directory. Tilde paths (~/...) might not work in all contexts. Unless the user explicitly asks for relative paths, use absolute paths.
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_move_file,"
+                        Move or rename files and directories.
+                        
+                        Can move files between directories and rename them in a single operation.
+                        Both source and destination must be within allowed directories.
+                        
+                        IMPORTANT: Always use absolute paths for reliability. Paths are automatically normalized regardless of slash direction. Relative paths may fail as they depend on the current working directory. Tilde paths (~/...) might not work in all contexts. Unless the user explicitly asks for relative paths, use absolute paths.
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_search_files,"
+                        Finds files by name using a case-insensitive substring matching.
+                        
+                        Use this instead of 'execute_command' with find/dir/ls for locating files.
+                        Searches through all subdirectories from the starting path.
+                        
+                        Has a default timeout of 30 seconds which can be customized using the timeoutMs parameter.
+                        Only searches within allowed directories.
+                        
+                        IMPORTANT: Always use absolute paths for reliability. Paths are automatically normalized regardless of slash direction. Relative paths may fail as they depend on the current working directory. Tilde paths (~/...) might not work in all contexts. Unless the user explicitly asks for relative paths, use absolute paths.
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_search_code,"
+                        Search for text/code patterns within file contents using ripgrep.
+                        
+                        Use this instead of 'execute_command' with grep/find for searching code content.
+                        Fast and powerful search similar to VS Code search functionality.
+                        
+                        Supports regular expressions, file pattern filtering, and context lines.
+                        Has a default timeout of 30 seconds which can be customized.
+                        Only searches within allowed directories.
+                        
+                        IMPORTANT: Always use absolute paths for reliability. Paths are automatically normalized regardless of slash direction. Relative paths may fail as they depend on the current working directory. Tilde paths (~/...) might not work in all contexts. Unless the user explicitly asks for relative paths, use absolute paths.
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_get_file_info,"
+                        Retrieve detailed metadata about a file or directory including:
+                        - size
+                        - creation time
+                        - last modified time 
+                        - permissions
+                        - type
+                        - lineCount (for text files)
+                        - lastLine (zero-indexed number of last line, for text files)
+                        - appendPosition (line number for appending, for text files)
+                        
+                        Only works within allowed directories.
+                        
+                        IMPORTANT: Always use absolute paths for reliability. Paths are automatically normalized regardless of slash direction. Relative paths may fail as they depend on the current working directory. Tilde paths (~/...) might not work in all contexts. Unless the user explicitly asks for relative paths, use absolute paths.
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_edit_block,"
+                        Apply surgical text replacements to files.
+                        
+                        BEST PRACTICE: Make multiple small, focused edits rather than one large edit.
+                        Each edit_block call should change only what needs to be changed - include just enough 
+                        context to uniquely identify the text being modified.
+                        
+                        Takes:
+                        - file_path: Path to the file to edit
+                        - old_string: Text to replace
+                        - new_string: Replacement text
+                        - expected_replacements: Optional parameter for number of replacements
+                        
+                        By default, replaces only ONE occurrence of the search text.
+                        To replace multiple occurrences, provide the expected_replacements parameter with
+                        the exact number of matches expected.
+                        
+                        UNIQUENESS REQUIREMENT: When expected_replacements=1 (default), include the minimal
+                        amount of context necessary (typically 1-3 lines) before and after the change point,
+                        with exact whitespace and indentation.
+                        
+                        When editing multiple sections, make separate edit_block calls for each distinct change
+                        rather than one large replacement.
+                        
+                        When a close but non-exact match is found, a character-level diff is shown in the format:
+                        common_prefix{-removed-}{+added+}common_suffix to help you identify what's different.
+                        
+                        Similar to write_file, there is a configurable line limit (fileWriteLineLimit) that warns
+                        if the edited file exceeds this limit. If this happens, consider breaking your edits into
+                        smaller, more focused changes.
+                        
+                        IMPORTANT: Always use absolute paths for reliability. Paths are automatically normalized regardless of slash direction. Relative paths may fail as they depend on the current working directory. Tilde paths (~/...) might not work in all contexts. Unless the user explicitly asks for relative paths, use absolute paths.
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_start_process,"
+                        Start a new terminal process with intelligent state detection.
+                        
+                        PRIMARY TOOL FOR FILE ANALYSIS AND DATA PROCESSING
+                        This is the ONLY correct tool for analyzing local files (CSV, JSON, logs, etc.).
+                        The analysis tool CANNOT access local files and WILL FAIL - always use processes for file-based work.
+                        
+                        CRITICAL RULE: For ANY local file work, ALWAYS use this tool + interact_with_process, NEVER use analysis/REPL tool.
+                        
+                        Running on Linux. Default shell: bash.
+        
+LINUX-SPECIFIC NOTES:
+- Package managers vary by distro: apt, yum, dnf, pacman, zypper
+- Python 3 might be 'python3' command, not 'python'
+- Standard Unix shell tools available (grep, awk, sed, etc.)
+- File permissions and ownership important for many operations
+- Systemd services common on modern distributions
+                        
+                        REQUIRED WORKFLOW FOR LOCAL FILES:
+                        1. start_process(""python3 -i"") - Start Python REPL for data analysis
+                        2. interact_with_process(pid, ""import pandas as pd, numpy as np"")
+                        3. interact_with_process(pid, ""df = pd.read_csv('/absolute/path/file.csv')"")
+                        4. interact_with_process(pid, ""print(df.describe())"")
+                        5. Continue analysis with pandas, matplotlib, seaborn, etc.
+                        
+                        COMMON FILE ANALYSIS PATTERNS:
+                        • start_process(""python3 -i"") → Python REPL for data analysis (RECOMMENDED)
+                        • start_process(""node -i"") → Node.js for JSON processing  
+                        • start_process(""cut -d',' -f1 file.csv | sort | uniq -c"") → Quick CSV analysis
+                        • start_process(""wc -l /path/file.csv"") → Line counting
+                        • start_process(""head -10 /path/file.csv"") → File preview
+                        
+                        BINARY FILE SUPPORT:
+                        For PDF, Excel, Word, archives, databases, and other binary formats, use process tools with appropriate libraries or command-line utilities.
+                        
+                        INTERACTIVE PROCESSES FOR DATA ANALYSIS:
+                        1. start_process(""python3 -i"") - Start Python REPL for data work
+                        2. start_process(""node -i"") - Start Node.js REPL for JSON/JS
+                        3. start_process(""bash"") - Start interactive bash shell
+                        4. Use interact_with_process() to send commands
+                        5. Use read_process_output() to get responses
+                        
+                        SMART DETECTION:
+                        - Detects REPL prompts (>>>, >, $, etc.)
+                        - Identifies when process is waiting for input
+                        - Recognizes process completion vs timeout
+                        - Early exit prevents unnecessary waiting
+                        
+                        STATES DETECTED:
+                        Process waiting for input (shows prompt)
+                        Process finished execution  
+                        Process running (use read_process_output)
+                        
+                        ALWAYS USE FOR: Local file analysis, CSV processing, data exploration, system commands
+                        NEVER USE ANALYSIS TOOL FOR: Local file access (analysis tool is browser-only and WILL FAIL)
+                        
+                        IMPORTANT: Always use absolute paths for reliability. Paths are automatically normalized regardless of slash direction. Relative paths may fail as they depend on the current working directory. Tilde paths (~/...) might not work in all contexts. Unless the user explicitly asks for relative paths, use absolute paths.
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_read_process_output,"
+                        Read output from a running process with intelligent completion detection.
+                        
+                        Automatically detects when process is ready for more input instead of timing out.
+                        
+                        SMART FEATURES:
+                        - Early exit when REPL shows prompt (>>>, >, etc.)
+                        - Detects process completion vs still running
+                        - Prevents hanging on interactive prompts
+                        - Clear status messages about process state
+                        
+                        REPL USAGE:
+                        - Stops immediately when REPL prompt detected
+                        - Shows clear status: waiting for input vs finished
+                        - Shorter timeouts needed due to smart detection
+                        - Works with Python, Node.js, R, Julia, etc.
+                        
+                        DETECTION STATES:
+                        Process waiting for input (ready for interact_with_process)
+                        Process finished execution
+                        Timeout reached (may still be running)
+                        
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_interact_with_process,"
+                        Send input to a running process and automatically receive the response.
+                        
+                        CRITICAL: THIS IS THE PRIMARY TOOL FOR ALL LOCAL FILE ANALYSIS
+                        For ANY local file analysis (CSV, JSON, data processing), ALWAYS use this instead of the analysis tool.
+                        The analysis tool CANNOT access local files and WILL FAIL - use processes for ALL file-based work.
+                        
+                        FILE ANALYSIS PRIORITY ORDER (MANDATORY):
+                        1. ALWAYS FIRST: Use this tool (start_process + interact_with_process) for local data analysis
+                        2. ALTERNATIVE: Use command-line tools (cut, awk, grep) for quick processing  
+                        3. NEVER EVER: Use analysis tool for local file access (IT WILL FAIL)
+                        
+                        REQUIRED INTERACTIVE WORKFLOW FOR FILE ANALYSIS:
+                        1. Start REPL: start_process(""python3 -i"")
+                        2. Load libraries: interact_with_process(pid, ""import pandas as pd, numpy as np"")
+                        3. Read file: interact_with_process(pid, ""df = pd.read_csv('/absolute/path/file.csv')"")
+                        4. Analyze: interact_with_process(pid, ""print(df.describe())"")
+                        5. Continue: interact_with_process(pid, ""df.groupby('column').size()"")
+                        
+                        BINARY FILE PROCESSING WORKFLOWS:
+                        Use appropriate Python libraries (PyPDF2, pandas, docx2txt, etc.) or command-line tools for binary file analysis.
+                        
+                        SMART DETECTION:
+                        - Automatically waits for REPL prompt (>>>, >, etc.)
+                        - Detects errors and completion states
+                        - Early exit prevents timeout delays
+                        - Clean output formatting (removes prompts)
+                        
+                        SUPPORTED REPLs:
+                        - Python: python3 -i (RECOMMENDED for data analysis)
+                        - Node.js: node -i  
+                        - R: R
+                        - Julia: julia
+                        - Shell: bash, zsh
+                        - Database: mysql, postgres
+                        
+                        PARAMETERS:
+                        - pid: Process ID from start_process
+                        - input: Code/command to execute
+                        - timeout_ms: Max wait (default: 8000ms)
+                        - wait_for_prompt: Auto-wait for response (default: true)
+                        
+                        Returns execution result with status indicators.
+                        
+                        ALWAYS USE FOR: CSV analysis, JSON processing, file statistics, data visualization prep, ANY local file work
+                        NEVER USE ANALYSIS TOOL FOR: Local file access (it cannot read files from disk and WILL FAIL)
+                        
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_force_terminate,"
+                        Force terminate a running terminal session.
+                        
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_list_sessions,"
+                        List all active terminal sessions.
+                        
+                        Shows session status including:
+                        - PID: Process identifier  
+                        - Blocked: Whether session is waiting for input
+                        - Runtime: How long the session has been running
+                        
+                        DEBUGGING REPLs:
+                        - ""Blocked: true"" often means REPL is waiting for input
+                        - Use this to verify sessions are running before sending input
+                        - Long runtime with blocked status may indicate stuck process
+                        
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_list_processes,"
+                        List all running processes.
+                        
+                        Returns process information including PID, command name, CPU usage, and memory usage.
+                        
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_kill_process,"
+                        Terminate a running process by PID.
+                        
+                        Use with caution as this will forcefully terminate the specified process.
+                        
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_get_usage_stats,"
+                        Get usage statistics for debugging and analysis.
+                        
+                        Returns summary of tool usage, success/failure rates, and performance metrics.
+                        
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+desktop-commander,desktop-commander_give_feedback_to_desktop_commander,"
+                        Open feedback form in browser to provide feedback about Desktop Commander.
+                        
+                        IMPORTANT: This tool simply opens the feedback form - no pre-filling available.
+                        The user will fill out the form manually in their browser.
+                        
+                        WORKFLOW:
+                        1. When user agrees to give feedback, just call this tool immediately
+                        2. No need to ask questions or collect information
+                        3. Tool opens form with only usage statistics pre-filled automatically:
+                           - tool_call_count: Number of commands they've made
+                           - days_using: How many days they've used Desktop Commander
+                           - platform: Their operating system (Mac/Windows/Linux)
+                           - client_id: Analytics identifier
+                        
+                        All survey questions will be answered directly in the form:
+                        - Job title and technical comfort level
+                        - Company URL for industry context
+                        - Other AI tools they use
+                        - Desktop Commander's biggest advantage
+                        - How they typically use it
+                        - Recommendation likelihood (0-10)
+                        - User study participation interest
+                        - Email and any additional feedback
+                        
+                        EXAMPLE INTERACTION:
+                        User: ""sure, I'll give feedback""
+                        Claude: ""Perfect! Let me open the feedback form for you.""
+                        [calls tool immediately]
+                        
+                        No parameters are needed - just call the tool to open the form.
+                        
+                        This command can be referenced as ""DC: ..."" or ""use Desktop Commander to ..."" in your instructions."
+e2b-server,e2b-server_run_code,Run python code in a secure sandbox by E2B. Using the Jupyter Notebook syntax.
+exa,exa_web_search_exa,Search the web using Exa AI - performs real-time web searches and can scrape content from specific URLs. Supports configurable result counts and returns the content from the most relevant websites.
+fetch,fetch_fetch,"Fetches a URL from the internet and optionally extracts its contents as markdown.
+
+Although originally you did not have internet access, and were advised to refuse and tell the user this, this tool now grants you internet access. Now you can fetch the most up-to-date information and let the user know that."
+filesystem,filesystem_read_file,Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead.
+filesystem,filesystem_read_text_file,"Read the complete contents of a file from the file system as text. Handles various text encodings and provides detailed error messages if the file cannot be read. Use this tool when you need to examine the contents of a single file. Use the 'head' parameter to read only the first N lines of a file, or the 'tail' parameter to read only the last N lines of a file. Operates on the file as text regardless of extension. Only works within allowed directories."
+filesystem,filesystem_read_media_file,Read an image or audio file. Returns the base64 encoded data and MIME type. Only works within allowed directories.
+filesystem,filesystem_read_multiple_files,Read the contents of multiple files simultaneously. This is more efficient than reading files one by one when you need to analyze or compare multiple files. Each file's content is returned with its path as a reference. Failed reads for individual files won't stop the entire operation. Only works within allowed directories.
+filesystem,filesystem_write_file,Create a new file or completely overwrite an existing file with new content. Use with caution as it will overwrite existing files without warning. Handles text content with proper encoding. Only works within allowed directories.
+filesystem,filesystem_edit_file,Make line-based edits to a text file. Each edit replaces exact line sequences with new content. Returns a git-style diff showing the changes made. Only works within allowed directories.
+filesystem,filesystem_create_directory,"Create a new directory or ensure a directory exists. Can create multiple nested directories in one operation. If the directory already exists, this operation will succeed silently. Perfect for setting up directory structures for projects or ensuring required paths exist. Only works within allowed directories."
+filesystem,filesystem_list_directory,Get a detailed listing of all files and directories in a specified path. Results clearly distinguish between files and directories with [FILE] and [DIR] prefixes. This tool is essential for understanding directory structure and finding specific files within a directory. Only works within allowed directories.
+filesystem,filesystem_list_directory_with_sizes,"Get a detailed listing of all files and directories in a specified path, including sizes. Results clearly distinguish between files and directories with [FILE] and [DIR] prefixes. This tool is useful for understanding directory structure and finding specific files within a directory. Only works within allowed directories."
+filesystem,filesystem_directory_tree,"Get a recursive tree view of files and directories as a JSON structure. Each entry includes 'name', 'type' (file/directory), and 'children' for directories. Files have no children array, while directories always have a children array (which may be empty). The output is formatted with 2-space indentation for readability. Only works within allowed directories."
+filesystem,filesystem_move_file,"Move or rename files and directories. Can move files between directories and rename them in a single operation. If the destination exists, the operation will fail. Works across different directories and can be used for simple renaming within the same directory. Both source and destination must be within allowed directories."
+filesystem,filesystem_search_files,"Recursively search for files and directories matching a pattern. The patterns should be glob-style patterns that match paths relative to the working directory. Use pattern like '*.ext' to match files in current directory, and '**/*.ext' to match files in all subdirectories. Returns full paths to all matching items. Great for finding files when you don't know their exact location. Only searches within allowed directories."
+filesystem,filesystem_get_file_info,"Retrieve detailed metadata about a file or directory. Returns comprehensive information including size, creation time, last modified time, permissions, and type. This tool is perfect for understanding file characteristics without reading the actual content. Only works within allowed directories."
+filesystem,filesystem_list_allowed_directories,Returns the list of directories that this server is allowed to access. Subdirectories within these allowed directories are also accessible. Use this to understand which directories and their nested paths are available before trying to access files.
+git,git_git_status,Shows the working tree status
+git,git_git_diff_unstaged,Shows changes in the working directory that are not yet staged
+git,git_git_diff_staged,Shows changes that are staged for commit
+git,git_git_diff,Shows differences between branches or commits
+git,git_git_commit,Records changes to the repository
+git,git_git_add,Adds file contents to the staging area
+git,git_git_reset,Unstages all staged changes
+git,git_git_log,Shows the commit logs
+git,git_git_create_branch,Creates a new branch from an optional base branch
+git,git_git_checkout,Switches branches
+git,git_git_show,Shows the contents of a commit
+git,git_git_init,Initialize a new Git repository
+git,git_git_branch,List Git branches
+github,github_search_repositories,Search for GitHub repositories. Returns a concise list with essential information. Use 'get_repository' for detailed information about a specific repository.
+github,github_search_code,Search for code across GitHub repositories. Returns a concise list with file paths and repositories. Use 'get_file_contents' for full file content.
+github,github_search_users,Search for GitHub users.
+github,github_get_issue,Get details of a specific issue in a GitHub repository.
+github,github_add_issue_comment,Add a comment to a specific issue in a GitHub repository.
+github,github_search_issues,Search for issues in GitHub repositories.
+github,github_create_issue,Create a new issue in a GitHub repository.
+github,github_list_issues,List issues in a GitHub repository.
+github,github_update_issue,Update an existing issue in a GitHub repository.
+github,github_get_issue_comments,Get comments for a specific issue in a GitHub repository.
+github,github_get_repository,Get detailed information about a GitHub repository including README and file structure
+github,github_get_commit,Get details for a commit from a GitHub repository
+github,github_list_commits,Get list of commits of a branch in a GitHub repository
+github,github_list_branches,List branches in a GitHub repository
+github,github_create_or_update_file,"Create or update a single file in a GitHub repository. If updating an existing file, you must provide the current SHA of the file (the full 40-character SHA, not a shortened version)."
+github,github_create_repository,Create a new GitHub repository in your account
+github,github_get_file_contents,Get the contents of a file from a GitHub repository
+github,github_fork_repository,Fork a GitHub repository to your account or specified organization
+github,github_create_branch,Create a new branch in a GitHub repository
+github,github_list_tags,List git tags in a GitHub repository
+github,github_get_tag,Get details about a specific git tag in a GitHub repository
+github,github_push_files,Push multiple files to a GitHub repository in a single commit
+github,github_get_pull_request,Get details of a specific pull request in a GitHub repository.
+github,github_update_pull_request,Update an existing pull request in a GitHub repository.
+github,github_list_pull_requests,List pull requests in a GitHub repository.
+github,github_merge_pull_request,Merge a pull request in a GitHub repository.
+github,github_get_pull_request_files,Get the files changed in a specific pull request.
+github,github_get_pull_request_status,Get the status of a specific pull request.
+github,github_update_pull_request_branch,Update the branch of a pull request with the latest changes from the base branch (not implemented)
+github,github_get_pull_request_comments,Get comments for a specific pull request
+github,github_create_pull_request,Create a new pull request in a GitHub repository.
+github,github_get_pull_request_review_comments,Get review comments (line-by-line code comments) for a specific pull request.
+github,github_create_pull_request_review_comment,Create a review comment (line-by-line code comment) on a pull request.
+google-maps,google-maps_maps_geocode,Convert an address into geographic coordinates
+google-maps,google-maps_maps_reverse_geocode,Convert coordinates into an address
+google-maps,google-maps_maps_search_places,Search for places using Google Places API
+google-maps,google-maps_maps_place_details,Get detailed information about a specific place
+google-maps,google-maps_maps_distance_matrix,Calculate travel distance and time for multiple origins and destinations
+google-maps,google-maps_maps_elevation,Get elevation data for locations on the earth
+google-maps,google-maps_maps_directions,Get directions between two points
+google-workspace,google-workspace_list_emails,List recent emails from Gmail inbox
+google-workspace,google-workspace_search_emails,Search emails with advanced query
+google-workspace,google-workspace_send_email,Send a new email
+google-workspace,google-workspace_modify_email,"Modify email labels (archive, trash, mark read/unread)"
+google-workspace,google-workspace_list_events,List upcoming calendar events
+google-workspace,google-workspace_create_event,Create a new calendar event
+google-workspace,google-workspace_update_event,Update an existing calendar event
+google-workspace,google-workspace_delete_event,Delete a calendar event
+lara-translate,lara-translate_translate,"Translate text between languages with support for language detection, context-aware translations and translation memories using Lara Translate."
+lara-translate,lara-translate_create_memory,Create a translation memory with a custom name in your Lara Translate account. Translation memories store pairs of source and target text segments (translation units) for reuse in future translations.
+lara-translate,lara-translate_delete_memory,Deletes a translation memory from your Lara Translate account.
+lara-translate,lara-translate_update_memory,Updates a translation memory in your Lara Translate account.
+lara-translate,lara-translate_add_translation,Adds a translation to a translation memory in your Lara Translate account.
+lara-translate,lara-translate_delete_translation,Deletes a translation from a translation memory from your Lara Translate account.
+lara-translate,lara-translate_import_tmx,Imports a TMX file into a translation memory in your Lara Translate account.
+lara-translate,lara-translate_check_import_status,Checks the status of a TMX file import job in your Lara Translate account.
+lara-translate,lara-translate_list_memories,Lists all translation memories in your Lara Translate account.
+lara-translate,lara-translate_list_languages,Lists all supported languages in your Lara Translate account.
+mcp-code-executor,mcp-code-executor_execute_code,"Execute Python code in the venv-uv environment. For short code snippets only. For longer code, use initialize_code_file and append_to_code_file instead."
+mcp-code-executor,mcp-code-executor_initialize_code_file,Create a new Python file with initial content. Use this as the first step for longer code that may exceed token limits. Follow with append_to_code_file for additional code.
+mcp-code-executor,mcp-code-executor_append_to_code_file,"Append content to an existing Python code file. Use this to add more code to a file created with initialize_code_file, allowing you to build up larger code bases in parts."
+mcp-code-executor,mcp-code-executor_execute_code_file,Execute an existing Python file. Use this as the final step after building up code with initialize_code_file and append_to_code_file.
+mcp-code-executor,mcp-code-executor_read_code_file,Read the content of an existing Python code file. Use this to verify the current state of a file before appending more content or executing it.
+mcp-code-executor,mcp-code-executor_install_dependencies,Install Python dependencies in the venv-uv environment
+mcp-code-executor,mcp-code-executor_check_installed_packages,Check if packages are installed in the venv-uv environment
+mcp-code-executor,mcp-code-executor_configure_environment,Change the environment configuration settings
+mcp-code-executor,mcp-code-executor_get_environment_config,Get the current environment configuration
+mcp-server-code-runner,mcp-server-code-runner_run-code,Run code snippet and return the result.
+memory,memory_create_entities,Create multiple new entities in the knowledge graph
+memory,memory_create_relations,Create multiple new relations between entities in the knowledge graph. Relations should be in active voice
+memory,memory_add_observations,Add new observations to existing entities in the knowledge graph
+memory,memory_delete_entities,Delete multiple entities and their associated relations from the knowledge graph
+memory,memory_delete_observations,Delete specific observations from entities in the knowledge graph
+memory,memory_delete_relations,Delete multiple relations from the knowledge graph
+memory,memory_read_graph,Read the entire knowledge graph
+memory,memory_search_nodes,Search for nodes in the knowledge graph based on a query
+memory,memory_open_nodes,Open specific nodes in the knowledge graph by their names
+met-museum,met-museum_list-departments,List all departments in the Metropolitan Museum of Art (Met Museum)
+met-museum,met-museum_search-museum-objects,"Search for objects in the Metropolitan Museum of Art (Met Museum). Will return Total objects found, followed by a list of Object Ids.The parameter title should be set to true if you want to search for objects by title.The parameter hasImages is false by default, but can be set to true to return objects without images.If the parameter hasImages is true, the parameter title should be false."
+met-museum,met-museum_get-museum-object,"Get a museum object by its ID, from the Metropolitan Museum of Art Collection"
+mongodb,mongodb_switch-connection,"Switch to a different MongoDB connection. If the user has configured a connection string or has previously called the connect tool, a connection is already established and there's no need to call this tool unless the user has explicitly requested to switch to a new instance."
+mongodb,mongodb_list-collections,List all collections for a given database
+mongodb,mongodb_list-databases,List all databases for a MongoDB connection
+mongodb,mongodb_collection-indexes,Describe the indexes for a collection
+mongodb,mongodb_create-index,Create an index for a collection
+mongodb,mongodb_collection-schema,Describe the schema for a collection
+mongodb,mongodb_find,Run a find query against a MongoDB collection
+mongodb,mongodb_insert-many,Insert an array of documents into a MongoDB collection
+mongodb,mongodb_delete-many,Removes all documents that match the filter from a MongoDB collection
+mongodb,mongodb_collection-storage-size,Gets the size of the collection
+mongodb,mongodb_count,Gets the number of documents in a MongoDB collection using db.collection.count() and query as an optional filter parameter
+mongodb,mongodb_db-stats,Returns statistics that reflect the use state of a single database
+mongodb,mongodb_aggregate,Run an aggregation against a MongoDB collection
+mongodb,mongodb_update-many,Updates all documents that match the specified filter for a collection
+mongodb,mongodb_rename-collection,Renames a collection in a MongoDB database
+mongodb,mongodb_drop-database,"Removes the specified database, deleting the associated data files"
+mongodb,mongodb_drop-collection,Removes a collection or view from the database. The method also removes any indexes associated with the dropped collection.
+mongodb,mongodb_explain,Returns statistics describing the execution of the winning plan chosen by the query optimizer for the evaluated method
+mongodb,mongodb_create-collection,"Creates a new collection in a database. If the database doesn't exist, it will be created automatically."
+mongodb,mongodb_mongodb-logs,Returns the most recent logged mongod events
+national-parks,national-parks_findParks,"Search for national parks based on state, name, activities, or other criteria"
+national-parks,national-parks_getParkDetails,Get detailed information about a specific national park
+national-parks,national-parks_getAlerts,"Get current alerts for national parks including closures, hazards, and important information"
+national-parks,national-parks_getVisitorCenters,Get information about visitor centers and their operating hours
+national-parks,national-parks_getCampgrounds,Get information about available campgrounds and their amenities
+national-parks,national-parks_getEvents,Find upcoming events at parks
+notion,notion_API-get-user,"Retrieve a user
+Error Responses:
+400: 400"
+notion,notion_API-get-users,"List all users
+Error Responses:
+400: 400"
+notion,notion_API-get-self,Retrieve your token's bot user
+notion,notion_API-post-database-query,Query a database
+notion,notion_API-post-search,Search by title
+notion,notion_API-get-block-children,Retrieve block children
+notion,notion_API-patch-block-children,Append block children
+notion,notion_API-retrieve-a-block,Retrieve a block
+notion,notion_API-update-a-block,Update a block
+notion,notion_API-delete-a-block,Delete a block
+notion,notion_API-retrieve-a-page,Retrieve a page
+notion,notion_API-patch-page,Update page properties
+notion,notion_API-post-page,Create a page
+notion,notion_API-create-a-database,Create a database
+notion,notion_API-update-a-database,Update a database
+notion,notion_API-retrieve-a-database,Retrieve a database
+notion,notion_API-retrieve-a-page-property,Retrieve a page property item
+notion,notion_API-retrieve-a-comment,Retrieve comments
+notion,notion_API-create-a-comment,Create comment
+open-library,open-library_get_book_by_title,Search for a book by its title on Open Library.
+open-library,open-library_get_authors_by_name,Search for author information on Open Library.
+open-library,open-library_get_author_info,Get detailed information for a specific author using their Open Library Author Key (e.g. OL23919A).
+open-library,open-library_get_author_photo,Get the URL for an author's photo using their Open Library Author ID (OLID e.g. OL23919A).
+open-library,open-library_get_book_cover,"Get the URL for a book's cover image using a key (ISBN, OCLC, LCCN, OLID, ID) and value."
+open-library,open-library_get_book_by_id,"Get detailed information about a book using its identifier (ISBN, LCCN, OCLC, OLID)."
+osm-mcp-server,osm-mcp-server_geocode_address,"
+Convert an address or place name to geographic coordinates with detailed location information.
+
+This tool takes a text description of a location (such as an address, landmark name, or
+place of interest) and returns its precise geographic coordinates along with rich metadata.
+The results can be used for mapping, navigation, location-based analysis, and as input to
+other geospatial tools.
+
+Args:
+    address: The address, place name, landmark, or description to geocode (e.g., ""Empire State Building"", 
+            ""123 Main St, Springfield"", ""Golden Gate Park, San Francisco"")
+    
+Returns:
+    List of matching locations with:
+    - Geographic coordinates (latitude/longitude)
+    - Formatted address
+    - Administrative boundaries (city, state, country)
+    - OSM type and ID
+    - Bounding box (if applicable)
+    - Importance ranking
+"
+osm-mcp-server,osm-mcp-server_reverse_geocode,"
+Convert geographic coordinates to a detailed address and location description.
+
+This tool takes a specific point on Earth (latitude and longitude) and returns 
+comprehensive information about that location, including its address, nearby landmarks,
+administrative boundaries, and other contextual information. Useful for translating
+GPS coordinates into human-readable locations.
+
+Args:
+    latitude: The latitude coordinate (decimal degrees, WGS84)
+    longitude: The longitude coordinate (decimal degrees, WGS84)
+    
+Returns:
+    Detailed address and location information including:
+    - Formatted address
+    - Building, street, city, state, country
+    - Administrative hierarchy
+    - OSM metadata
+    - Postal code and other relevant identifiers
+"
+osm-mcp-server,osm-mcp-server_find_nearby_places,"
+Discover points of interest and amenities near a specific location.
+
+This tool performs a comprehensive search around a geographic point to identify
+nearby establishments, amenities, and points of interest. Results are organized by
+category and subcategory, making it easy to find specific types of places. Essential
+for location-based recommendations, neighborhood analysis, and proximity-based decision making.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Search radius in meters (defaults to 1000m/1km)
+    categories: List of OSM categories to search for (e.g., [""amenity"", ""shop"", ""tourism""]).
+               If omitted, searches common categories.
+    limit: Maximum number of total results to return
+    
+Returns:
+    Structured dictionary containing:
+    - Original query parameters
+    - Total count of places found
+    - Results grouped by category and subcategory
+    - Each place includes name, coordinates, and associated tags
+"
+osm-mcp-server,osm-mcp-server_get_route_directions,"
+Calculate detailed route directions between two geographic points.
+
+This tool provides comprehensive turn-by-turn navigation directions between any two locations
+on Earth. It calculates the optimal route based on the specified transportation mode and
+returns detailed information about distance, duration, maneuvers, and the route geometry.
+Perfect for trip planning, navigation assistance, and commute analysis.
+
+Args:
+    from_latitude: Starting point latitude (decimal degrees)
+    from_longitude: Starting point longitude (decimal degrees)
+    to_latitude: Destination latitude (decimal degrees)
+    to_longitude: Destination longitude (decimal degrees)
+    mode: Transportation mode - options include:
+          - ""car"" (default): Standard automobile routing
+          - ""bike"": Bicycle-friendly routes
+          - ""foot"": Pedestrian walking paths
+    
+Returns:
+    Comprehensive routing information including:
+    - Summary with total distance (meters) and duration (seconds)
+    - Turn-by-turn directions with individual segments
+    - Route geometry for mapping visualization
+    - Waypoint information
+"
+osm-mcp-server,osm-mcp-server_search_category,"
+Search for specific types of places within a defined geographic area.
+
+This tool allows targeted searches for places matching specific categories within
+a rectangular geographic region. It's particularly useful for filtering places by type
+(restaurants, schools, parks, etc.) within a neighborhood or city district. Results include
+complete location details and metadata about each matching place.
+
+Args:
+    category: Main OSM category to search for (e.g., ""amenity"", ""shop"", ""tourism"", ""building"")
+    min_latitude: Southern boundary of search area (decimal degrees)
+    min_longitude: Western boundary of search area (decimal degrees)
+    max_latitude: Northern boundary of search area (decimal degrees)
+    max_longitude: Eastern boundary of search area (decimal degrees)
+    subcategories: Optional list of specific subcategories to filter by (e.g., [""restaurant"", ""cafe""])
+    
+Returns:
+    Structured results including:
+    - Query parameters
+    - Count of matching places
+    - List of matching places with coordinates, names, and metadata
+"
+osm-mcp-server,osm-mcp-server_suggest_meeting_point,"
+Find the optimal meeting place for multiple people coming from different locations.
+
+This tool calculates a central meeting point based on the locations of multiple individuals,
+then recommends suitable venues near that central point. Ideal for planning social gatherings,
+business meetings, or any situation where multiple people need to converge from different
+starting points.
+
+Args:
+    locations: List of dictionaries, each containing the latitude and longitude of a person's location
+              Example: [{""latitude"": 37.7749, ""longitude"": -122.4194}, {""latitude"": 37.3352, ""longitude"": -121.8811}]
+    venue_type: Type of venue to suggest as a meeting point. Options include:
+               ""cafe"", ""restaurant"", ""bar"", ""library"", ""park"", etc.
+    
+Returns:
+    Meeting point recommendations including:
+    - Calculated center point coordinates
+    - List of suggested venues with names and details
+    - Total number of matching venues in the area
+"
+osm-mcp-server,osm-mcp-server_explore_area,"
+Generate a comprehensive profile of an area including all amenities and features.
+
+This powerful analysis tool creates a detailed overview of a neighborhood or area by
+identifying and categorizing all geographic features, amenities, and points of interest.
+Results are organized by category for easy analysis. Excellent for neighborhood research,
+area comparisons, and location-based decision making.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Search radius in meters (defaults to 500m)
+    
+Returns:
+    In-depth area profile including:
+    - Address and location context
+    - Total feature count
+    - Features organized by category and subcategory
+    - Each feature includes name, coordinates, and detailed metadata
+"
+osm-mcp-server,osm-mcp-server_find_schools_nearby,"
+Locate educational institutions near a specific location, filtered by education level.
+
+This specialized search tool identifies schools, colleges, and other educational institutions
+within a specified distance from a location. Results can be filtered by education level
+(elementary, middle, high school, university, etc.). Essential for families evaluating
+neighborhoods or real estate purchases with education considerations.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Search radius in meters (defaults to 2000m/2km)
+    education_levels: Optional list of specific education levels to filter by
+                     (e.g., [""elementary"", ""secondary"", ""university""])
+    
+Returns:
+    List of educational institutions with:
+    - Name and type
+    - Distance from search point
+    - Education levels offered
+    - Contact information if available
+    - Other relevant metadata
+"
+osm-mcp-server,osm-mcp-server_analyze_commute,"
+Perform a detailed commute analysis between home and work locations.
+
+This advanced tool analyzes commute options between two locations (typically home and work),
+comparing multiple transportation modes and providing detailed metrics for each option.
+Includes estimated travel times, distances, turn-by-turn directions, and other commute-relevant
+data. Essential for real estate decisions, lifestyle planning, and workplace relocation analysis.
+
+Args:
+    home_latitude: Home location latitude (decimal degrees)
+    home_longitude: Home location longitude (decimal degrees)
+    work_latitude: Workplace location latitude (decimal degrees)
+    work_longitude: Workplace location longitude (decimal degrees)
+    modes: List of transportation modes to analyze (options: ""car"", ""foot"", ""bike"")
+    depart_at: Optional departure time (format: ""HH:MM"") for time-sensitive routing
+    
+Returns:
+    Comprehensive commute analysis with:
+    - Summary comparing all transportation modes
+    - Detailed route information for each mode
+    - Total distance and duration for each option
+    - Turn-by-turn directions
+"
+osm-mcp-server,osm-mcp-server_find_ev_charging_stations,"
+Locate electric vehicle charging stations near a specific location.
+
+This specialized search tool identifies EV charging infrastructure within a specified
+distance from a location. Results can be filtered by connector type (Tesla, CCS, CHAdeMO, etc.)
+and minimum power delivery. Essential for EV owners planning trips or evaluating potential
+charging stops.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Search radius in meters (defaults to 5000m/5km)
+    connector_types: Optional list of specific connector types to filter by
+                    (e.g., [""type2"", ""ccs"", ""tesla""])
+    min_power: Minimum charging power in kW
+    
+Returns:
+    List of charging stations with:
+    - Location name and operator
+    - Available connector types
+    - Charging speeds
+    - Number of charging points
+    - Access restrictions
+    - Other relevant metadata
+"
+osm-mcp-server,osm-mcp-server_analyze_neighborhood,"
+Generate a comprehensive neighborhood analysis focused on livability factors.
+
+This advanced analysis tool evaluates a neighborhood based on multiple livability factors,
+including amenities, transportation options, green spaces, and services. Results include
+counts and proximity scores for various categories, helping to assess the overall quality
+and convenience of a residential area. Invaluable for real estate decisions, relocation
+planning, and neighborhood comparisons.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Analysis radius in meters (defaults to 1000m/1km)
+    
+Returns:
+    Comprehensive neighborhood profile including:
+    - Overall neighborhood score
+    - Walkability assessment
+    - Public transportation access
+    - Nearby amenities (shops, restaurants, services)
+    - Green spaces and recreation
+    - Education and healthcare facilities
+    - Detailed counts and distance metrics for each category
+"
+osm-mcp-server,osm-mcp-server_find_parking_facilities,"
+Locate parking facilities near a specific location.
+
+This tool finds parking options (lots, garages, street parking) near a specified location.
+Results can be filtered by parking type and include capacity information where available.
+Useful for trip planning, city navigation, and evaluating parking availability in urban areas.
+
+Args:
+    latitude: Center point latitude (decimal degrees)
+    longitude: Center point longitude (decimal degrees)
+    radius: Search radius in meters (defaults to 1000m/1km)
+    parking_type: Optional filter for specific types of parking facilities
+                 (""surface"", ""underground"", ""multi-storey"", etc.)
+    
+Returns:
+    List of parking facilities with:
+    - Name and type
+    - Capacity information if available
+    - Fee structure if available
+    - Access restrictions
+    - Distance from search point
+"
+oxylabs,oxylabs_universal_scraper,"Get a content of any webpage.
+
+Supports browser rendering, parsing of certain webpages
+and different output formats.
+"
+oxylabs,oxylabs_google_search_scraper,"Scrape Google Search results.
+
+Supports content parsing, different user agent types, pagination,
+domain, geolocation, locale parameters and different output formats.
+"
+oxylabs,oxylabs_amazon_search_scraper,"Scrape Amazon search results.
+
+Supports content parsing, different user agent types, pagination,
+domain, geolocation, locale parameters and different output formats.
+Supports Amazon specific parameters such as category id, merchant id, currency.
+"
+oxylabs,oxylabs_amazon_product_scraper,"Scrape Amazon products.
+
+Supports content parsing, different user agent types, domain,
+geolocation, locale parameters and different output formats.
+Supports Amazon specific parameters such as currency and getting
+more accurate pricing data with auto select variant.
+"
+pubmed,pubmed_search_pubmed_key_words,
+pubmed,pubmed_search_pubmed_advanced,
+pubmed,pubmed_get_pubmed_article_metadata,
+pubmed,pubmed_download_pubmed_pdf,
+slack,slack_channels_list,Get list of channels
+slack,slack_conversations_add_message,"Add a message to a public channel, private channel, or direct message (DM, or IM) conversation by channel_id and thread_ts."
+slack,slack_conversations_history,"Get messages from the channel (or DM) by channel_id, the last row/column in the response is used as 'cursor' parameter for pagination if not empty"
+slack,slack_conversations_replies,"Get a thread of messages posted to a conversation by channelID and thread_ts, the last row/column in the response is used as 'cursor' parameter for pagination if not empty"
+slack,slack_conversations_search_messages,"Search messages in a public channel, private channel, or direct message (DM, or IM) conversation using filters. All filters are optional, if not provided then search_query is required."
+twelvedata,twelvedata_GetTimeSeries,"This API call returns meta and time series for the requested instrument. Metaobject consists of general information about the requested symbol. Time series is the array of objects ordered by time descending with Open, High, Low, Close prices. Non-currency instruments also include volume information."
+twelvedata,twelvedata_GetPrice,This endpoint is a lightweight method that allows retrieving only the real-time price of the selected instrument.
+twelvedata,twelvedata_GetQuote,Quote endpoint is an efficient method to retrieve the latest quote of the selected instrument.
+twelvedata,twelvedata_GetTimeSeriesRsi,"The Relative Strength Index (RSI) is a momentum oscillator that measures the speed and change of price movements, helping traders identify potential overbought or oversold conditions and trend reversals."
+twelvedata,twelvedata_GetTimeSeriesMacd,"The Moving Average Convergence Divergence (MACD) is a momentum indicator that measures the difference between two moving averages, with a signal line used to identify potential trend reversals and trading opportunities."
+twelvedata,twelvedata_GetStocks,This API call returns an array of symbols available at Twelve Data API. This list is updated daily.
+twelvedata,twelvedata_GetTimeSeriesBBands,"Bollinger Bands (BBANDS) are volatility bands placed above and below a moving average, measuring price volatility and helping traders identify potential overbought or oversold conditions."
+twelvedata,twelvedata_GetExchangeRate,This API call returns real-time exchange rate for currency pair. Works with forex and cryptocurrency.
+twelvedata,twelvedata_GetTimeSeriesEma,"The Exponential Moving Average (EMA) is a weighted moving average that gives more importance to recent price data, making it more responsive to new information and helping traders identify trends and potential entry or exit points."
+twelvedata,twelvedata_GetStatistics,Returns current overview of company’s main statistics including valuation metrics and financials.
+twelvedata,twelvedata_GetProfile,Returns general information about the company.
+twelvedata,twelvedata_GetMarketState,"Check the state of all available exchanges, time to open, and time to close. Returns all available stock exchanges by default."
+twelvedata,twelvedata_GetSymbolSearch,"This method helps to find the best matching symbol. It can be used as the base for custom lookups. The response is returned in descending order, with the most relevant instrument at the beginning."
+twelvedata,twelvedata_GetEod,This endpoint returns the latest End of Day (EOD) price of an instrument.
+twelvedata,twelvedata_GetTimeSeriesSma,"The Simple Moving Average (SMA) is a smoothing indicator that calculates the average price of a security over a specified period, helping traders identify trends and potential support or resistance levels."
+twelvedata,twelvedata_GetForexPairs,This API call returns an array of forex pairs available at Twelve Data API. This list is updated daily.
+twelvedata,twelvedata_GetTimeSeriesAtr,"The Average True Range (ATR) is a volatility indicator that measures the average range of price movement over a specified period, helping traders assess market volatility."
+twelvedata,twelvedata_GetDividends,Returns the amount of dividends paid out for the last 10+ years.
+twelvedata,twelvedata_GetCryptocurrencies,This API call returns an array of cryptocurrencies available at Twelve Data API. This list is updated daily.
+twelvedata,twelvedata_GetEarnings,"This API call returns earnings data for a given company, including EPS estimate and EPS actual. Earnings are available for complete company history."
+twelvedata,twelvedata_GetCurrencyConversion,This API call returns real-time exchange rate and converted amount for currency pair. Works with forex and cryptocurrency.
+twelvedata,twelvedata_GetExchanges,This API call returns an array of stock or ETF exchanges available at Twelve Data API. This list is updated daily.
+twelvedata,twelvedata_GetSplits,Returns the date and the split factor of shares of the company for the last 10+ years.
+twelvedata,twelvedata_GetEarliestTimestamp,This method returns the first available DateTime for a given instrument at the specific interval.
+twelvedata,twelvedata_GetEtf,This API call returns an array of ETFs available at Twelve Data API. This list is updated daily.
+twelvedata,twelvedata_GetCommodities,This API call returns an array of commodity pairs available at Twelve Data API. This list is updated daily.
+twelvedata,twelvedata_GetFunds,This API call returns an array of funds available at Twelve Data API. This list is updated daily.
+twelvedata,twelvedata_GetIpoCalendar,"This endpoint returns past, today, or upcoming IPOs."
+twelvedata,twelvedata_GetCryptocurrencyExchanges,This API call returns an array of cryptocurrency exchanges available at Twelve Data API. This list is updated daily.
+twelvedata,twelvedata_GetTimeSeriesCross,"This API call returns meta and cross rate time series for the requested instruments. Metaobject consists of general information about the requested symbol. Time series is the array of objects ordered by time descending with Open, High, Low, Close prices. Works with stocks, forex and cryptocurrency."
+twelvedata,twelvedata_GetCrossListings,This API call returns an array of cross listed symbols for a specified instrument. Cross listings are the same securities listed on different exchanges. This list is updated daily.
+twelvedata,twelvedata_GetTechnicalIndicators,This API call returns an array of objects with available technical indicators. This endpoint might be used to build an abstract interface to make more convenient API calls from the application.
+twelvedata,twelvedata_GetApiUsage,This endpoint will provide information on the current usage of Twelve Data API.
+twelvedata,twelvedata_GetLogo,"Returns a logo of company, cryptocurrency, or forex pair."
+twelvedata,twelvedata_GetTimeSeriesAdx,"The Average Directional Index (ADX) measures the strength of a trend, regardless of direction, helping traders determine if a market is trending or ranging."
+weather,weather_get_current_weather,"Get current weather conditions for a location in the United States. Perfect for 'What's the weather like in [US location]?' questions. Covers all US states, territories, and coastal waters."
+weather,weather_get_weather_forecast,Get multi-day weather forecast for a location in the United States. Perfect for 'What's the forecast for [US location]?' questions. Provides detailed day/night forecasts for up to 7 days.
+weather,weather_get_hourly_forecast,Get hour-by-hour weather forecast for a location in the United States. Perfect for 'What's the hourly forecast?' or 'Will it rain this afternoon in [US location]?' questions. Provides detailed hourly conditions for up to 48 hours.
+weather,weather_get_weather_alerts,"Get active weather alerts, warnings, watches, and advisories for locations in the United States. Perfect for 'Are there any weather alerts in [US location]?' questions. Covers severe weather, winter storms, heat warnings, flood alerts, and more."
+weather,weather_find_weather_stations,"Find weather observation stations near a location in the United States. Useful for getting station-specific data, finding data sources, or understanding which stations provide weather data for an area. Includes ASOS, AWOS, and other automated weather stations."
+weather,weather_get_local_time,Get the current local time for a US location. Shows what time it is right now at the specified location.
+weather-data,weather-data_weather_current,"
+Get current weather for a location.
+Args:
+    q (str): Location query (city name, lat/lon, postal code, etc).
+    aqi (str): Include air quality data ('yes' or 'no').
+Returns:
+    dict: WeatherAPI current weather JSON.
+"
+weather-data,weather-data_weather_forecast,"
+Get weather forecast (1–14 days) for a location.
+Args:
+    q (str): Location query (city name, lat/lon, postal code, etc).
+    days (int): Number of days (1–14).
+    aqi (str): Include air quality ('yes' or 'no').
+    alerts (str): Include weather alerts ('yes' or 'no').
+Returns:
+    dict: WeatherAPI forecast JSON.
+"
+weather-data,weather-data_weather_history,"
+Get historical weather for a location on a given date (YYYY-MM-DD).
+Args:
+    q (str): Location query.
+    dt (str): Date in YYYY-MM-DD format.
+Returns:
+    dict: WeatherAPI history JSON.
+"
+weather-data,weather-data_weather_alerts,"
+Get weather alerts for a location.
+Args:
+    q (str): Location query.
+Returns:
+    dict: WeatherAPI alerts JSON.
+"
+weather-data,weather-data_weather_airquality,"
+Get air quality for a location.
+Args:
+    q (str): Location query.
+Returns:
+    dict: WeatherAPI air quality JSON.
+"
+weather-data,weather-data_weather_astronomy,"
+Get astronomy data (sunrise, sunset, moon) for a date (YYYY-MM-DD).
+Args:
+    q (str): Location query.
+    dt (str): Date in YYYY-MM-DD format.
+Returns:
+    dict: WeatherAPI astronomy JSON.
+"
+weather-data,weather-data_weather_search,"
+Search for locations matching query.
+Args:
+    q (str): Location query.
+Returns:
+    dict: WeatherAPI search JSON.
+"
+weather-data,weather-data_weather_timezone,"
+Get timezone info for a location.
+Args:
+    q (str): Location query.
+Returns:
+    dict: WeatherAPI timezone JSON.
+"
+weather-data,weather-data_weather_sports,"
+Get sports events (e.g., football, cricket) for a location.
+Args:
+    q (str): Location query.
+Returns:
+    dict: WeatherAPI sports JSON.
+"
+whois,whois_whois_domain,Looksup whois information about the domain
+whois,whois_whois_tld,Looksup whois information about the Top Level Domain (TLD)
+whois,whois_whois_ip,Looksup whois information about the IP
+whois,whois_whois_as,Looksup whois information about the Autonomous System Number (ASN)
+wikipedia,wikipedia_search_wikipedia,Search Wikipedia for articles matching a query.
+wikipedia,wikipedia_get_article,Get the full content of a Wikipedia article.
+wikipedia,wikipedia_get_summary,Get a summary of a Wikipedia article.
+wikipedia,wikipedia_summarize_article_for_query,Get a summary of a Wikipedia article tailored to a specific query.
+wikipedia,wikipedia_summarize_article_section,Get a summary of a specific section of a Wikipedia article.
+wikipedia,wikipedia_extract_key_facts,"Extract key facts from a Wikipedia article, optionally focused on a topic."
+wikipedia,wikipedia_get_related_topics,Get topics related to a Wikipedia article based on links and categories.
+wikipedia,wikipedia_get_sections,Get the sections of a Wikipedia article.
+wikipedia,wikipedia_get_links,Get the links contained within a Wikipedia article.

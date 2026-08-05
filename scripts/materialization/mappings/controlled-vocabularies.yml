@@ -1,0 +1,39 @@
+metadata:
+  name: "Controlled Vocabularies"
+  source_ext: "csv"
+
+cvs:
+  # RequirementStatus
+  - type: "tool-coupler-ont:RequirementStatus"
+    uri: "tool-coupler-r:requirementStatus"
+    instances: ["Required", "Optional"]
+
+  # Datatypes
+  - type: "tool-coupler-ont:DataType"
+    uri: "tool-coupler-r:dataType"
+    instances:
+      [
+        "Boolean",
+        "String",
+        "Integer",
+        "Number",
+        "Float",
+        "Object",
+        "Array",
+        "Set",
+        "Dictionary",
+      ]
+
+  # Formats
+  - type: "tool-coupler-ont:Format"
+    uri: "tool-coupler-r:format"
+    instances: ["Audio", "Image", "Video"]
+
+  # ResourceClass
+  - type: "tool-coupler-ont:ResourceClass"
+    uri: "tool-coupler-r:resourceClass"
+    instances: ["Binary", "Directory", "File", "Function", "HTTP", "Text"]
+
+root:
+  datatype: "xsd:string"
+  value: "placeholder"

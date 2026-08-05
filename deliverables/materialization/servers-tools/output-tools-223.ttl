@@ -1,0 +1,40 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.osm-mcp-server a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "osm-mcp-server"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.osm-mcp-server .
+
+tool-coupler-r:metadata.osm-mcp-server.osm-mcp-server_search_category a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Search for specific types of places within a defined geographic area.
+
+This tool allows targeted searches for places matching specific categories within
+a rectangular geographic region. It's particularly useful for filtering places by type
+(restaurants, schools, parks, etc.) within a neighborhood or city district. Results include
+complete location details and metadata about each matching place.
+
+Args:
+    category: Main OSM category to search for (e.g., "amenity", "shop", "tourism", "building")
+    min_latitude: Southern boundary of search area (decimal degrees)
+    min_longitude: Western boundary of search area (decimal degrees)
+    max_latitude: Northern boundary of search area (decimal degrees)
+    max_longitude: Eastern boundary of search area (decimal degrees)
+    subcategories: Optional list of specific subcategories to filter by (e.g., ["restaurant", "cafe"])
+    
+Returns:
+    Structured results including:
+    - Query parameters
+    - Count of matching places
+    - List of matching places with coordinates, names, and metadata"""^^xsd:string ;
+    tool-coupler-ont:hasName "osm-mcp-server_search_category"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_search_category .
+
+tool-coupler-r:server.osm-mcp-server a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.osm-mcp-server ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_search_category .
+
+tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_search_category a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.osm-mcp-server.osm-mcp-server_search_category ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.osm-mcp-server .
+

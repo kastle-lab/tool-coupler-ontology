@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:dataType.String a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:element.notion.notion_API-post-search.filter.Input.filter.property .
+
+tool-coupler-r:input.notion.notion_API-post-search.filter.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:containsElement tool-coupler-r:element.notion.notion_API-post-search.filter.Input.filter.property .
+
+tool-coupler-r:metadata.notion.notion_API-post-search.filter.Input.filter.property a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "The name of the property to filter by. Currently the only property you can filter by is the object type.  Possible values include `object`.   Limitation: Currently the only filter allowed is `object` which will filter by type of object (either `page` or `database`)"^^xsd:string ;
+    tool-coupler-ont:hasName "property"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:element.notion.notion_API-post-search.filter.Input.filter.property .
+
+tool-coupler-r:element.notion.notion_API-post-search.filter.Input.filter.property a tool-coupler-ont:Element ;
+    tool-coupler-ont:elementOf tool-coupler-r:input.notion.notion_API-post-search.filter.Input ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.notion.notion_API-post-search.filter.Input.filter.property ;
+    tool-coupler-ont:isOfDataType tool-coupler-r:dataType.String .
+

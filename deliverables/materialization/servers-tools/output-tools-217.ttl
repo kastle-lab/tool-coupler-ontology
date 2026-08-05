@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.open-library a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "open-library"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.open-library .
+
+tool-coupler-r:metadata.open-library.open-library_get_book_cover a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Get the URL for a book's cover image using a key (ISBN, OCLC, LCCN, OLID, ID) and value."^^xsd:string ;
+    tool-coupler-ont:hasName "open-library_get_book_cover"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.open-library.open-library_get_book_cover .
+
+tool-coupler-r:server.open-library a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.open-library ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.open-library.open-library_get_book_cover .
+
+tool-coupler-r:tool.open-library.open-library_get_book_cover a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.open-library.open-library_get_book_cover ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.open-library .
+

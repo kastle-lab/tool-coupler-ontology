@@ -1,0 +1,4 @@
+server_name,tool_name,parameter_name,schema_type,element_name,element_path,datatype,element_description
+filesystem,filesystem_read_media_file,content,Output,data,content.data,String,
+filesystem,filesystem_read_media_file,content,Output,mimeType,content.mimeType,String,
+filesystem,filesystem_read_media_file,content,Output,type,content.type,String,

@@ -1,0 +1,39 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.osm-mcp-server a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "osm-mcp-server"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.osm-mcp-server .
+
+tool-coupler-r:metadata.osm-mcp-server.osm-mcp-server_geocode_address a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Convert an address or place name to geographic coordinates with detailed location information.
+
+This tool takes a text description of a location (such as an address, landmark name, or
+place of interest) and returns its precise geographic coordinates along with rich metadata.
+The results can be used for mapping, navigation, location-based analysis, and as input to
+other geospatial tools.
+
+Args:
+    address: The address, place name, landmark, or description to geocode (e.g., "Empire State Building", 
+            "123 Main St, Springfield", "Golden Gate Park, San Francisco")
+    
+Returns:
+    List of matching locations with:
+    - Geographic coordinates (latitude/longitude)
+    - Formatted address
+    - Administrative boundaries (city, state, country)
+    - OSM type and ID
+    - Bounding box (if applicable)
+    - Importance ranking"""^^xsd:string ;
+    tool-coupler-ont:hasName "osm-mcp-server_geocode_address"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_geocode_address .
+
+tool-coupler-r:server.osm-mcp-server a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.osm-mcp-server ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_geocode_address .
+
+tool-coupler-r:tool.osm-mcp-server.osm-mcp-server_geocode_address a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.osm-mcp-server.osm-mcp-server_geocode_address ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.osm-mcp-server .
+

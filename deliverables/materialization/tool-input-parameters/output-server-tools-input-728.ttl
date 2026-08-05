@@ -1,0 +1,25 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:dataType.String a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:input.slack.slack_conversations_add_message.thread_ts.Input .
+
+tool-coupler-r:metadata.slack.slack_conversations_add_message.thread_ts.Input a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Unique identifier of either a thread's parent message or a message in the thread_ts must be the timestamp in format 1234567890.123456 of an existing message with 0 or more replies. Optional, if not provided the message will be added to the channel itself, otherwise it will be added to the thread."^^xsd:string ;
+    tool-coupler-ont:hasName "thread_ts"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:input.slack.slack_conversations_add_message.thread_ts.Input .
+
+tool-coupler-r:requirementStatus.Optional a tool-coupler-ont:RequirementStatus ;
+    tool-coupler-ont:requirementStatusOf tool-coupler-r:input.slack.slack_conversations_add_message.thread_ts.Input .
+
+tool-coupler-r:tool.slack.slack_conversations_add_message a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter tool-coupler-r:input.slack.slack_conversations_add_message.thread_ts.Input .
+
+tool-coupler-r:input.slack.slack_conversations_add_message.thread_ts.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.slack.slack_conversations_add_message.thread_ts.Input ;
+    tool-coupler-ont:hasRequirementStatus tool-coupler-r:requirementStatus.Optional ;
+    tool-coupler-ont:isOfDataType tool-coupler-r:dataType.String ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.slack.slack_conversations_add_message .
+

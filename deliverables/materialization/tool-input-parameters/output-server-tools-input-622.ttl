@@ -1,0 +1,25 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:dataType.String a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:input.open-library.open-library_get_book_cover.size.Input .
+
+tool-coupler-r:metadata.open-library.open-library_get_book_cover.size.Input a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "The desired size of the cover (S, M, or L)."^^xsd:string ;
+    tool-coupler-ont:hasName "size"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:input.open-library.open-library_get_book_cover.size.Input .
+
+tool-coupler-r:requirementStatus.Optional a tool-coupler-ont:RequirementStatus ;
+    tool-coupler-ont:requirementStatusOf tool-coupler-r:input.open-library.open-library_get_book_cover.size.Input .
+
+tool-coupler-r:tool.open-library.open-library_get_book_cover a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter tool-coupler-r:input.open-library.open-library_get_book_cover.size.Input .
+
+tool-coupler-r:input.open-library.open-library_get_book_cover.size.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.open-library.open-library_get_book_cover.size.Input ;
+    tool-coupler-ont:hasRequirementStatus tool-coupler-r:requirementStatus.Optional ;
+    tool-coupler-ont:isOfDataType tool-coupler-r:dataType.String ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.open-library.open-library_get_book_cover .
+

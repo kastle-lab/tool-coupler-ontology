@@ -1,0 +1,15 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+
+tool-coupler-r:resourceClass.Binary a tool-coupler-ont:ResourceClass .
+
+tool-coupler-r:resourceClass.Directory a tool-coupler-ont:ResourceClass .
+
+tool-coupler-r:resourceClass.File a tool-coupler-ont:ResourceClass .
+
+tool-coupler-r:resourceClass.Function a tool-coupler-ont:ResourceClass .
+
+tool-coupler-r:resourceClass.HTTP a tool-coupler-ont:ResourceClass .
+
+tool-coupler-r:resourceClass.Text a tool-coupler-ont:ResourceClass .
+

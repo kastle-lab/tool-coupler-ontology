@@ -1,0 +1,9 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+
+tool-coupler-r:format.Audio a tool-coupler-ont:Format .
+
+tool-coupler-r:format.Image a tool-coupler-ont:Format .
+
+tool-coupler-r:format.Video a tool-coupler-ont:Format .
+

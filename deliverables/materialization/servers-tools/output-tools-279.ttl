@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.weather a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "weather"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.weather .
+
+tool-coupler-r:metadata.weather.weather_get_current_weather a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Get current weather conditions for a location in the United States. Perfect for 'What's the weather like in [US location]?' questions. Covers all US states, territories, and coastal waters."^^xsd:string ;
+    tool-coupler-ont:hasName "weather_get_current_weather"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.weather.weather_get_current_weather .
+
+tool-coupler-r:server.weather a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.weather ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.weather.weather_get_current_weather .
+
+tool-coupler-r:tool.weather.weather_get_current_weather a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.weather.weather_get_current_weather ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.weather .
+

@@ -1,0 +1,31 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.desktop-commander a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "desktop-commander"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.desktop-commander .
+
+tool-coupler-r:metadata.desktop-commander.desktop-commander_read_multiple_files a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Read the contents of multiple files simultaneously.
+                        
+                        Each file's content is returned with its path as a reference.
+                        Handles text files normally and renders images as viewable content.
+                        Recognized image types: PNG, JPEG, GIF, WebP.
+                        
+                        Failed reads for individual files won't stop the entire operation.
+                        Only works within allowed directories.
+                        
+                        IMPORTANT: Always use absolute paths for reliability. Paths are automatically normalized regardless of slash direction. Relative paths may fail as they depend on the current working directory. Tilde paths (~/...) might not work in all contexts. Unless the user explicitly asks for relative paths, use absolute paths.
+                        This command can be referenced as "DC: ..." or "use Desktop Commander to ..." in your instructions."""^^xsd:string ;
+    tool-coupler-ont:hasName "desktop-commander_read_multiple_files"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.desktop-commander.desktop-commander_read_multiple_files .
+
+tool-coupler-r:server.desktop-commander a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.desktop-commander ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.desktop-commander.desktop-commander_read_multiple_files .
+
+tool-coupler-r:tool.desktop-commander.desktop-commander_read_multiple_files a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.desktop-commander.desktop-commander_read_multiple_files ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.desktop-commander .
+

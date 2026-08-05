@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.open-library a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "open-library"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.open-library .
+
+tool-coupler-r:metadata.open-library.open-library_get_authors_by_name a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Search for author information on Open Library."^^xsd:string ;
+    tool-coupler-ont:hasName "open-library_get_authors_by_name"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.open-library.open-library_get_authors_by_name .
+
+tool-coupler-r:server.open-library a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.open-library ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.open-library.open-library_get_authors_by_name .
+
+tool-coupler-r:tool.open-library.open-library_get_authors_by_name a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.open-library.open-library_get_authors_by_name ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.open-library .
+

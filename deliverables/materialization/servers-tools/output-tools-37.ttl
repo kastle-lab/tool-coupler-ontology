@@ -1,0 +1,32 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.desktop-commander a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "desktop-commander"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.desktop-commander .
+
+tool-coupler-r:metadata.desktop-commander.desktop-commander_get_config a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription """Get the complete server configuration as JSON. Config includes fields for:
+                        - blockedCommands (array of blocked shell commands)
+                        - defaultShell (shell to use for commands)
+                        - allowedDirectories (paths the server can access)
+                        - fileReadLineLimit (max lines for read_file, default 1000)
+                        - fileWriteLineLimit (max lines per write_file call, default 50)
+                        - telemetryEnabled (boolean for telemetry opt-in/out)
+                        - currentClient (information about the currently connected MCP client)
+                        - clientHistory (history of all clients that have connected)
+                        - version (version of the DesktopCommander)
+                        - systemInfo (operating system and environment details)
+                        This command can be referenced as "DC: ..." or "use Desktop Commander to ..." in your instructions."""^^xsd:string ;
+    tool-coupler-ont:hasName "desktop-commander_get_config"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.desktop-commander.desktop-commander_get_config .
+
+tool-coupler-r:server.desktop-commander a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.desktop-commander ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.desktop-commander.desktop-commander_get_config .
+
+tool-coupler-r:tool.desktop-commander.desktop-commander_get_config a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.desktop-commander.desktop-commander_get_config ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.desktop-commander .
+

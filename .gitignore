@@ -198,3 +198,11 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# additional
+/scripts/data/list-tools.json
+/scripts/data-copy
+/scripts/materialization/old-files
+/scripts/materialization/validate-yamls.py
+/scripts/materialization/flatten-data-copy.py
+/scripts/materialization/mappings-copy

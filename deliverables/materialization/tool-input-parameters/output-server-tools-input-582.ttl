@@ -1,0 +1,25 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:dataType.Array a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:input.notion.notion_API-post-database-query.filter_properties.Input .
+
+tool-coupler-r:metadata.notion.notion_API-post-database-query.filter_properties.Input a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "A list of page property value IDs associated with the database. Use this param to limit the response to a specific page property value or values for pages that meet the `filter` criteria."^^xsd:string ;
+    tool-coupler-ont:hasName "filter_properties"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:input.notion.notion_API-post-database-query.filter_properties.Input .
+
+tool-coupler-r:requirementStatus.Optional a tool-coupler-ont:RequirementStatus ;
+    tool-coupler-ont:requirementStatusOf tool-coupler-r:input.notion.notion_API-post-database-query.filter_properties.Input .
+
+tool-coupler-r:tool.notion.notion_API-post-database-query a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter tool-coupler-r:input.notion.notion_API-post-database-query.filter_properties.Input .
+
+tool-coupler-r:input.notion.notion_API-post-database-query.filter_properties.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.notion.notion_API-post-database-query.filter_properties.Input ;
+    tool-coupler-ont:hasRequirementStatus tool-coupler-r:requirementStatus.Optional ;
+    tool-coupler-ont:isOfDataType tool-coupler-r:dataType.Array ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.notion.notion_API-post-database-query .
+

@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.cli-mcp-server a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "cli-mcp-server"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.cli-mcp-server .
+
+tool-coupler-r:metadata.cli-mcp-server.cli-mcp-server_show_security_rules a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Show what commands and operations are allowed in this environment."^^xsd:string ;
+    tool-coupler-ont:hasName "cli-mcp-server_show_security_rules"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.cli-mcp-server.cli-mcp-server_show_security_rules .
+
+tool-coupler-r:server.cli-mcp-server a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.cli-mcp-server ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.cli-mcp-server.cli-mcp-server_show_security_rules .
+
+tool-coupler-r:tool.cli-mcp-server.cli-mcp-server_show_security_rules a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.cli-mcp-server.cli-mcp-server_show_security_rules ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.cli-mcp-server .
+

@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.twelvedata a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "twelvedata"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.twelvedata .
+
+tool-coupler-r:metadata.twelvedata.twelvedata_GetTimeSeries a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "This API call returns meta and time series for the requested instrument. Metaobject consists of general information about the requested symbol. Time series is the array of objects ordered by time descending with Open, High, Low, Close prices. Non-currency instruments also include volume information."^^xsd:string ;
+    tool-coupler-ont:hasName "twelvedata_GetTimeSeries"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.twelvedata.twelvedata_GetTimeSeries .
+
+tool-coupler-r:server.twelvedata a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.twelvedata ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.twelvedata.twelvedata_GetTimeSeries .
+
+tool-coupler-r:tool.twelvedata.twelvedata_GetTimeSeries a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.twelvedata.twelvedata_GetTimeSeries ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.twelvedata .
+

@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:metadata.brave-search a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "brave-search"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:server.brave-search .
+
+tool-coupler-r:metadata.brave-search.brave-search_brave_web_search a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "Performs a web search using the Brave Search API, ideal for general queries, news, articles, and online content. Use this for broad information gathering, recent events, or when you need diverse web sources. Supports pagination, content filtering, and freshness controls. Maximum 20 results per request, with offset for pagination."^^xsd:string ;
+    tool-coupler-ont:hasName "brave-search_brave_web_search"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:tool.brave-search.brave-search_brave_web_search .
+
+tool-coupler-r:server.brave-search a tool-coupler-ont:Server ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.brave-search ;
+    tool-coupler-ont:hasTool tool-coupler-r:tool.brave-search.brave-search_brave_web_search .
+
+tool-coupler-r:tool.brave-search.brave-search_brave_web_search a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.brave-search.brave-search_brave_web_search ;
+    tool-coupler-ont:toolOf tool-coupler-r:server.brave-search .
+
