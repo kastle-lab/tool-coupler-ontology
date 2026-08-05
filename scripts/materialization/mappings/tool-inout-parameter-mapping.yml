@@ -1,9 +1,8 @@
-# Use w/ server-tools-merged.csv
 metadata:
-  name: "Output Parameter Mapping"
+  name: "InOut Parameter Mapping"
   source_ext: "csv"
 
-# For each row, create a Tool, Output Parameter and Metadata connection
+# For each row, create a Tool, InOut Parameter and Metadata connection.
 root:
   type: ["tool-coupler-ont:Tool"]
   uri: "tool-coupler-r:tool"
@@ -12,17 +11,18 @@ root:
     - p: "tool-coupler-ont:hasParameter"
       inv: "tool-coupler-ont:parameterOf"
       o:
-        type: ["tool-coupler-ont:Parameter", "tool-coupler-ont:Output"]
-        uri: "tool-coupler-r:output"
-        varids: ["server_name", "tool_name", "parameter_name", "output_schema"] 
+        type: ["tool-coupler-ont:Parameter", "tool-coupler-ont:Inout"]
+        uri: "tool-coupler-r:inout"
+        varids: ["server_name", "tool_name", "parameter_name", "schema_type"]
         connections:
           - p: "tool-coupler-ont:hasMetadata"
             inv: "tool-coupler-ont:metadataOf"
             o:
               type: ["tool-coupler-ont:Metadata"]
               uri: "tool-coupler-r:metadata"
-              varids: ["server_name", "tool_name", "parameter_name", "output_schema"]
-              connections: 
+              varids:
+                ["server_name", "tool_name", "parameter_name", "schema_type"]
+              connections:
                 - p: "tool-coupler-ont:hasName"
                   o:
                     datatype: "xsd:string"
@@ -31,15 +31,19 @@ root:
                   o:
                     datatype: "xsd:string"
                     val_source: "parameter_description"
-          - p: "tool-coupler-ont:isRequired"
-            o:
-              datatype: "xsd:boolean"
-              val_source: "is_required"
 
-        # Datatypes
+          # Requirement Status
+          - p: "tool-coupler-ont:hasRequirementStatus"
+            inv: "tool-coupler-ont:requirementStatusOf"
+            o:
+              type: ["tool-coupler-ont:RequirementStatus"]
+              uri: "tool-coupler-r:requirementStatus"
+              varids: ["is_required"]
+
+          # Datatypes
           - p: "tool-coupler-ont:isOfDataType"
             inv: "tool-coupler-ont:dataTypeOf"
             o:
               type: ["tool-coupler-ont:DataType"]
-              uri: "tool-coupler-r:boolean"
-              varids: ["Boolean", "String", "Array", "Integer", "Number", "Object"]
+              uri: "tool-coupler-r:dataType"
+              varids: ["datatype"]

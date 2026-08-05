@@ -1,13 +1,12 @@
-# Use w/ parameters-to-elements.csv
 metadata:
-  name: "Input Element Mapping"
+  name: "Output Element Mapping"
   source_ext: "csv"
 
 # For each row create a Parameter, Element mapping
 root:
-  type: ["tool-coupler-ont:Parameter", "tool-coupler-ont:Input"]
-  uri: "tool-coupler-r:input"
-  varids: ["server_name", "tool_name", "parameter_name", "input_schema"]    
+  type: ["tool-coupler-ont:Parameter", "tool-coupler-ont:Output"]
+  uri: "tool-coupler-r:output"
+  varids: ["server_name", "tool_name", "parameter_name", "schema_type"]
   connections:
     # Element
     - p: "tool-coupler-ont:containsElement"
@@ -15,29 +14,45 @@ root:
       o:
         type: ["tool-coupler-ont:Element"]
         uri: "tool-coupler-r:element"
-        varids: ["server_name", "tool_name", "parameter_name", "input_schema","element_name"]
+        varids:
+          [
+            "server_name",
+            "tool_name",
+            "parameter_name",
+            "schema_type",
+            "element_path",
+          ]
         connections:
           # Datatypes
           - p: "tool-coupler-ont:isOfDataType"
             inv: "tool-coupler-ont:dataTypeOf"
             o:
               type: ["tool-coupler-ont:DataType"]
-              uri: "tool-coupler-r:boolean"
-              varids: ["Boolean", "String", "Array", "Number", "Object"]
+              uri: "tool-coupler-r:dataType"
+              varids: ["datatype"]
+
           # Metadata
           - p: "tool-coupler-ont:hasMetadata"
             inv: "tool-coupler-ont:metadataOf"
             o:
               type: ["tool-coupler-ont:Metadata"]
               uri: "tool-coupler-r:metadata"
-              varids: ["server_name", "tool_name", "parameter_name", "input_schema","element_name"]
-              connections: 
+              varids:
+                [
+                  "server_name",
+                  "tool_name",
+                  "parameter_name",
+                  "schema_type",
+                  "element_path",
+                ]
+              connections:
                 # Description
                 - p: "tool-coupler-ont:hasDescription"
                   o:
                     datatype: "xsd:string"
                     val_source: "element_description"
-                 # Name
+
+                # Name
                 - p: "tool-coupler-ont:hasName"
                   o:
                     datatype: "xsd:string"
