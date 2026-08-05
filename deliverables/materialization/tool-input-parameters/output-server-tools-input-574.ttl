@@ -1,0 +1,25 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:dataType.Object a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:input.notion.notion_API-patch-page.cover.Input .
+
+tool-coupler-r:metadata.notion.notion_API-patch-page.cover.Input a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "A cover image for the page. Only [external file objects](https://developers.notion.com/reference/file-object) are supported."^^xsd:string ;
+    tool-coupler-ont:hasName "cover"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:input.notion.notion_API-patch-page.cover.Input .
+
+tool-coupler-r:requirementStatus.Optional a tool-coupler-ont:RequirementStatus ;
+    tool-coupler-ont:requirementStatusOf tool-coupler-r:input.notion.notion_API-patch-page.cover.Input .
+
+tool-coupler-r:tool.notion.notion_API-patch-page a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter tool-coupler-r:input.notion.notion_API-patch-page.cover.Input .
+
+tool-coupler-r:input.notion.notion_API-patch-page.cover.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.notion.notion_API-patch-page.cover.Input ;
+    tool-coupler-ont:hasRequirementStatus tool-coupler-r:requirementStatus.Optional ;
+    tool-coupler-ont:isOfDataType tool-coupler-r:dataType.Object ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.notion.notion_API-patch-page .
+

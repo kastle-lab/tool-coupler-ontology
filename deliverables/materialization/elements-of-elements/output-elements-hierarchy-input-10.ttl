@@ -1,0 +1,19 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:dataType.Object a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:element.notion.notion_API-create-a-database.title.Input.title.text.link .
+
+tool-coupler-r:element.notion.notion_API-create-a-database.title.Input.title.text a tool-coupler-ont:Element ;
+    tool-coupler-ont:containsElement tool-coupler-r:element.notion.notion_API-create-a-database.title.Input.title.text.link .
+
+tool-coupler-r:metadata.notion.notion_API-create-a-database.title.Input.title.text.link a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasName "link"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:element.notion.notion_API-create-a-database.title.Input.title.text.link .
+
+tool-coupler-r:element.notion.notion_API-create-a-database.title.Input.title.text.link a tool-coupler-ont:Element ;
+    tool-coupler-ont:elementOf tool-coupler-r:element.notion.notion_API-create-a-database.title.Input.title.text ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.notion.notion_API-create-a-database.title.Input.title.text.link ;
+    tool-coupler-ont:isOfDataType tool-coupler-r:dataType.Object .
+

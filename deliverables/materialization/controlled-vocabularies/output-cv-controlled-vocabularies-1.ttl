@@ -1,0 +1,21 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+
+tool-coupler-r:dataType.Array a tool-coupler-ont:DataType .
+
+tool-coupler-r:dataType.Boolean a tool-coupler-ont:DataType .
+
+tool-coupler-r:dataType.Dictionary a tool-coupler-ont:DataType .
+
+tool-coupler-r:dataType.Float a tool-coupler-ont:DataType .
+
+tool-coupler-r:dataType.Integer a tool-coupler-ont:DataType .
+
+tool-coupler-r:dataType.Number a tool-coupler-ont:DataType .
+
+tool-coupler-r:dataType.Object a tool-coupler-ont:DataType .
+
+tool-coupler-r:dataType.Set a tool-coupler-ont:DataType .
+
+tool-coupler-r:dataType.String a tool-coupler-ont:DataType .
+

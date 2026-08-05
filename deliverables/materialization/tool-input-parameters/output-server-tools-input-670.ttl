@@ -1,0 +1,25 @@
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+tool-coupler-r:dataType.Boolean a tool-coupler-ont:DataType ;
+    tool-coupler-ont:dataTypeOf tool-coupler-r:input.oxylabs.oxylabs_amazon_product_scraper.autoselect_variant.Input .
+
+tool-coupler-r:metadata.oxylabs.oxylabs_amazon_product_scraper.autoselect_variant.Input a tool-coupler-ont:Metadata ;
+    tool-coupler-ont:hasDescription "To get accurate pricing/buybox data, set this parameter to true."^^xsd:string ;
+    tool-coupler-ont:hasName "autoselect_variant"^^xsd:string ;
+    tool-coupler-ont:metadataOf tool-coupler-r:input.oxylabs.oxylabs_amazon_product_scraper.autoselect_variant.Input .
+
+tool-coupler-r:requirementStatus.Optional a tool-coupler-ont:RequirementStatus ;
+    tool-coupler-ont:requirementStatusOf tool-coupler-r:input.oxylabs.oxylabs_amazon_product_scraper.autoselect_variant.Input .
+
+tool-coupler-r:tool.oxylabs.oxylabs_amazon_product_scraper a tool-coupler-ont:Tool ;
+    tool-coupler-ont:hasParameter tool-coupler-r:input.oxylabs.oxylabs_amazon_product_scraper.autoselect_variant.Input .
+
+tool-coupler-r:input.oxylabs.oxylabs_amazon_product_scraper.autoselect_variant.Input a tool-coupler-ont:Input,
+        tool-coupler-ont:Parameter ;
+    tool-coupler-ont:hasMetadata tool-coupler-r:metadata.oxylabs.oxylabs_amazon_product_scraper.autoselect_variant.Input ;
+    tool-coupler-ont:hasRequirementStatus tool-coupler-r:requirementStatus.Optional ;
+    tool-coupler-ont:isOfDataType tool-coupler-r:dataType.Boolean ;
+    tool-coupler-ont:parameterOf tool-coupler-r:tool.oxylabs.oxylabs_amazon_product_scraper .
+
