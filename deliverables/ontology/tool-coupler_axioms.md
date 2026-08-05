@@ -177,9 +177,3 @@ subclass: `Output SubClassOf Parameter`
 # Inout SubClassOf Parameter
 subclass: `Inout SubClassOf Parameter`
 
-# Required SubClassOf RequirementStatus
-subclass: `Required SubClassOf RequirementStatus`
-
-# Optional SubClassOf RequirementStatus
-subclass: `Optional SubClassOf RequirementStatus`
-

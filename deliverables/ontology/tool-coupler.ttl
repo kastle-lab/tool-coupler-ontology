@@ -293,11 +293,6 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                            :Tool .
 
 
-###  https://kastle-lab.github.io/tool-coupler/Optional
-:Optional rdf:type owl:Class ;
-          rdfs:subClassOf :RequirementStatus .
-
-
 ###  https://kastle-lab.github.io/tool-coupler/Output
 :Output rdf:type owl:Class ;
         rdfs:subClassOf :Parameter .
@@ -345,11 +340,6 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                            ] ;
            owl:disjointWith :RequirementStatus ,
                             :Tool .
-
-
-###  https://kastle-lab.github.io/tool-coupler/Required
-:Required rdf:type owl:Class ;
-          rdfs:subClassOf :RequirementStatus .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/RequirementStatus
@@ -414,6 +404,16 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
 #################################################################
 #    Individuals
 #################################################################
+
+###  https://kastle-lab.github.io/tool-coupler#Optional
+:Optional rdf:type owl:NamedIndividual ,
+                   :RequirementStatus .
+
+
+###  https://kastle-lab.github.io/tool-coupler#Required
+:Required rdf:type owl:NamedIndividual ,
+                   :RequirementStatus .
+
 
 ###  https://kastle-lab.github.io/tool-coupler/Array
 :Array rdf:type owl:NamedIndividual ,

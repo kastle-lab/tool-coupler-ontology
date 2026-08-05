@@ -454,9 +454,7 @@ if __name__ == "__main__":
         sc = [
             "Input SubClassOf Parameter",
             "Output SubClassOf Parameter",
-            "Inout SubClassOf Parameter",
-            "Required SubClassOf RequirementStatus",
-            "Optional SubClassOf RequirementStatus"
+            "Inout SubClassOf Parameter"
         ]
 
         dis = [
