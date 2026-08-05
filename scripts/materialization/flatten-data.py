@@ -2,14 +2,19 @@ import json
 import csv
 import os
 
-def extract_hierarchy_pairs(prop_dict, parent_name, server_name, tool_name, parameter_name, in_schema_val, out_schema_val, element_data_types, hierarchy_data_types):
+def extract_hierarchy_pairs(prop_dict, parent_name, server_name, tool_name, parameter_name, schema_type, parent_path=""):
     """
     Recursively extract parent-child element pairs and parameter-to-element linkages.
+
+    parent_path carries the dotted ancestry (e.g. "children.paragraph.rich_text")
+    so each hierarchy row records its distinct position in the tree, even when
+    the same parent/child names repeat under different branches.
     """
     param_element_rows = []
     hierarchy_rows = []
     
     for prop_name, prop_data in prop_dict.items():
+        current_path = f"{parent_path}.{prop_name}" if parent_path else prop_name
         raw_type = prop_data.get('type', 'string')
         if isinstance(raw_type, list):
             raw_type = raw_type[0] if raw_type else 'string'
@@ -18,29 +23,28 @@ def extract_hierarchy_pairs(prop_dict, parent_name, server_name, tool_name, para
 
         if not parent_name:
             # Top-level item directly under the parameter
-            element_data_types.add(data_type)
             param_element_rows.append({
                 'server_name': server_name,
                 'tool_name': tool_name,
                 'parameter_name': parameter_name,
-                'input_schema': in_schema_val,
-                'output_schema': out_schema_val,
+                'schema_type': schema_type,
                 'element_name': prop_name,
-                data_type: data_type,
+                'element_path': current_path,
+                'datatype': data_type,
                 'element_description': description
             })
         else:
             # Nested child item belonging to a parent element
-            hierarchy_data_types.add(data_type)
             hierarchy_rows.append({
                 'server_name': server_name,
                 'tool_name': tool_name,
                 'parameter_name': parameter_name,
-                'input_schema': in_schema_val,
-                'output_schema': out_schema_val,
+                'schema_type': schema_type,
                 'parent_element_name': parent_name,
+                'parent_element_path': parent_path,
                 'child_element_name': prop_name,
-                data_type: data_type,
+                'element_path': current_path,
+                'datatype': data_type,
                 'element_element_description': description
             })
             
@@ -58,10 +62,8 @@ def extract_hierarchy_pairs(prop_dict, parent_name, server_name, tool_name, para
                 server_name=server_name,
                 tool_name=tool_name,
                 parameter_name=parameter_name,
-                in_schema_val=in_schema_val,
-                out_schema_val=out_schema_val,
-                element_data_types=element_data_types,
-                hierarchy_data_types=hierarchy_data_types
+                schema_type=schema_type,
+                parent_path=current_path
             )
             param_element_rows.extend(sub_params)
             hierarchy_rows.extend(sub_hierarchy)
@@ -93,7 +95,7 @@ def flatten_data():
     out_hierarchy_path = os.path.join(data_dir, 'elements-hierarchy.csv')
     # ------------------------------------
 
-    # Map servers to tools FIRST so we can add server_name to everything
+    # Map servers to tools FIRST to enable add server_name to everything
     print("Parsing server-tools.txt...")
     tool_to_server = {}
     server_rows = []
@@ -125,11 +127,6 @@ def flatten_data():
     param_rows = []
     all_param_elements = []
     all_hierarchy = []
-    
-    # Store dynamic data types for headers
-    param_data_types = set()
-    element_data_types = set()
-    hierarchy_data_types = set()
 
     for tool in tools_data:
         tool_name = tool.get('name', '')
@@ -153,11 +150,18 @@ def flatten_data():
         all_param_names = set(in_props.keys()).union(set(out_props.keys()))
         
         for p_name in all_param_names:
-            in_schema_val = 'Input' if p_name in in_props else ''
-            out_schema_val = 'Output' if p_name in out_props else ''
+            # Consolidate input/output into a single schema_type field
+            if p_name in in_props and p_name in out_props:
+                schema_type = 'Input/Output'
+            elif p_name in in_props:
+                schema_type = 'Input'
+            else:
+                schema_type = 'Output'
             
             p_data = in_props.get(p_name) or out_props.get(p_name) or {}
-            is_req = 1 if (p_name in in_req or p_name in out_req) else 0
+            
+            # Consolidate required fields into a single boolean text representation
+            is_required = "Required" if (p_name in in_req or p_name in out_req) else "Optional"
             
             raw_type = p_data.get('type', 'string')
             if isinstance(raw_type, list):
@@ -165,18 +169,15 @@ def flatten_data():
             p_type = str(raw_type).capitalize()
             p_desc = p_data.get('description', '')
             
-            param_data_types.add(p_type)
-            
             # 1. Capture ALL root parameters (primitives and complex objects alike)
             param_rows.append({
                 'server_name': server_name,
                 'tool_name': tool_name,
                 'parameter_name': p_name,
-                'input_schema': in_schema_val,
-                'output_schema': out_schema_val,
-                p_type: p_type,
+                'schema_type': schema_type,
+                'datatype': p_type,
                 'parameter_description': p_desc,
-                'is_required': is_req
+                'is_required': is_required
             })
             
             # 2. Check for nested properties to extract elements
@@ -193,10 +194,8 @@ def flatten_data():
                     server_name=server_name,
                     tool_name=tool_name,
                     parameter_name=p_name,
-                    in_schema_val=in_schema_val,
-                    out_schema_val=out_schema_val,
-                    element_data_types=element_data_types,
-                    hierarchy_data_types=hierarchy_data_types
+                    schema_type=schema_type,
+                    parent_path=p_name
                 )
                 all_param_elements.extend(p_elements)
                 all_hierarchy.extend(p_hierarchy)
@@ -214,24 +213,27 @@ def flatten_data():
         writer.writerows(server_rows)
         
     with open(out_params_path, 'w', newline='', encoding='utf-8') as f:
-        fieldnames = ['server_name', 'tool_name', 'parameter_name', 'input_schema', 'output_schema'] + sorted(list(param_data_types)) + ['parameter_description', 'is_required']
+        # Standardized the column headers
+        fieldnames = ['server_name', 'tool_name', 'parameter_name', 'schema_type', 'datatype', 'parameter_description', 'is_required']
         writer = csv.DictWriter(f, fieldnames=fieldnames, restval='')
         writer.writeheader()
         writer.writerows(param_rows)
         
     with open(out_params_elements_path, 'w', newline='', encoding='utf-8') as f:
-        fieldnames = ['server_name', 'tool_name', 'parameter_name', 'input_schema', 'output_schema', 'element_name'] + sorted(list(element_data_types)) + ['element_description']
+        # Standardized the column headers
+        fieldnames = ['server_name', 'tool_name', 'parameter_name', 'schema_type', 'element_name', 'element_path', 'datatype', 'element_description']
         writer = csv.DictWriter(f, fieldnames=fieldnames, restval='')
         writer.writeheader()
         writer.writerows(all_param_elements)
         
     with open(out_hierarchy_path, 'w', newline='', encoding='utf-8') as f:
-        fieldnames = ['server_name', 'tool_name', 'parameter_name', 'input_schema', 'output_schema', 'parent_element_name', 'child_element_name'] + sorted(list(hierarchy_data_types)) + ['element_element_description']
+        # Standardized the column headers
+        fieldnames = ['server_name', 'tool_name', 'parameter_name', 'schema_type', 'parent_element_name', 'parent_element_path', 'child_element_name', 'element_path', 'datatype', 'element_element_description']
         writer = csv.DictWriter(f, fieldnames=fieldnames, restval='')
         writer.writeheader()
         writer.writerows(all_hierarchy)
 
-    print(f"Success! Generated files (tools.csv, servers.csv, parameters.csv, parameters_to_elements.csv, elements_hierarchy.csv) in {data_dir}")
+    print(f"Success! Generated files (tools.csv, servers.csv, parameters.csv, parameters-to-elements.csv, elements-hierarchy.csv) in {data_dir}")
 
 if __name__ == "__main__":
     flatten_data()
