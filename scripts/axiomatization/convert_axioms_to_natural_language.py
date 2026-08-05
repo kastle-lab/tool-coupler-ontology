@@ -188,6 +188,32 @@ def convert_inverse_qualified_scoped_functionality(axiom_string):
     return funct
 
 
+# Proposed change by Fable analysis as quoted below 
+
+"""
+generate_structural_tautology's SubClassOf branch emits malformed syntax. 
+When the input contains SubClassOf, it returns `{b} SubClassOf min 0 {a}` — a cardinality restriction with no property in front of it, which isn't parseable Manchester. 
+It also then feeds that into convert_structural_tautology, which splits on 'min 0' and yields an empty relationship name.
+Empty in this run (st = []), but broken when used.
+"""
+
+# def convert_structural_tautology(axiom_string):
+#     axiom_string = axiom_string.replace('`', '')
+ 
+#     if 'min 0' in axiom_string:
+#         a, rb = axiom_string.split('SubClassOf')
+#         r, b = rb.split('min 0')
+ 
+#         ax17 = f"For all x where x is of type {a.strip()} implies there may exist a y "\
+#             f"and a relationship {r.strip()} with x and y and y is of type {b.strip()}."
+#     else:
+#         # Class-only tautology of the form `A SubClassOf owl:Thing` (no property involved)
+#         a, b = axiom_string.split('SubClassOf')
+ 
+#         ax17 = f"For all x where x is of type {a.strip()}, x is of type {b.strip()}, "\
+#             f"which is trivially true."
+ 
+#     return ax17
 
 def convert_structural_tautology(axiom_string):
     axiom_string = axiom_string.replace('`', '').replace('`', '')
@@ -349,8 +375,8 @@ def convert_run_all(relation_list, name_string, results_dict):
             rl_nl.append(convert_global_range(generate_global_range(x)))
 
         elif name_string == "scoped range":
-            rl_lst.append(generate_existential(x))
-            rl_nl.append(convert_existential(generate_existential(x)))
+            rl_lst.append(generate_scoped_range(x))
+            rl_nl.append(convert_scoped_range(generate_existential(x)))
 
         elif name_string == "existential":
             rl_lst.append(generate_existential(x))
