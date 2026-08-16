@@ -376,7 +376,7 @@ def convert_run_all(relation_list, name_string, results_dict):
 
         elif name_string == "scoped range":
             rl_lst.append(generate_scoped_range(x))
-            rl_nl.append(convert_scoped_range(generate_existential(x)))
+            rl_nl.append(convert_scoped_range(generate_scoped_range(x)))
 
         elif name_string == "existential":
             rl_lst.append(generate_existential(x))
@@ -495,7 +495,8 @@ if __name__ == "__main__":
             "Parameter hasMetadata Metadata",
             "Tool hasMetadata Metadata",
             "Parameter hasRequirementStatus RequirementStatus",
-            "Element hasMetadata Metadata"
+            "Element hasMetadata Metadata",
+            "Tool hasFailureMode FailureMode",
         ]
 
         gd = [
@@ -507,6 +508,8 @@ if __name__ == "__main__":
             "Server hasTool Tool",
             "Tool hasParameter Parameter",
             "Parameter hasRequirementStatus RequirementStatus"
+            "Tool hasFailureMode FailureMode",
+            "FailureMode hasContingencyPlan xsd:string"
         ]
 
         sd = [
@@ -534,6 +537,8 @@ if __name__ == "__main__":
             "Tool hasMetadata Metadata",
             "Parameter hasRequirementStatus RequirementStatus",
             "Element hasMetadata Metadata"
+            "Tool hasFailureMode FailureMode",
+            "FailureMode hasContingencyPlan xsd:string"
         ]
 
         sr = [
@@ -551,6 +556,8 @@ if __name__ == "__main__":
             "Tool hasMetadata Metadata",
             "Parameter hasRequirementStatus RequirementStatus",
             "Element hasMetadata Metadata"
+            "Tool hasFailureMode FailureMode",
+            "FailureMode hasContingencyPlan xsd:string"
         ]
 
         iex = [
@@ -558,6 +565,7 @@ if __name__ == "__main__":
             "Server hasTool Tool",
             "Tool hasParameter Parameter",
             "Parameter hasRequirementStatus RequirementStatus"
+            "Tool hasFailureMode FailureMode",
         ]
 
         fun = [
@@ -587,7 +595,9 @@ if __name__ == "__main__":
             "Parameter hasMetadata Metadata",
             "Tool hasMetadata Metadata",
             "Parameter hasRequirementStatus RequirementStatus",
-            "Element hasMetadata Metadata"
+            "Element hasMetadata Metadata",
+            "FailureMode hasContingencyPlan xsd:string"
+
         ]
 
         ifun = [
