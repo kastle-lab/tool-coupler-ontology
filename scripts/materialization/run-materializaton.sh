@@ -5,7 +5,7 @@
 set -euo pipefail
 
 FOUNDRY="kastle-foundry.py"
-NAMESPACE="https://kastle-lab.github.io/tool-coupler"
+NAMESPACE="https://kastle-lab.github.io/tool-coupler/"
 PREFIX="tool-coupler"
 
 run_step() {
