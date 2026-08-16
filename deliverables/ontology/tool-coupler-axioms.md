@@ -124,6 +124,17 @@ inverse scoped functionality: `Metadata SubClassOf inverse hasMetadata max 1 owl
 
 qualified scoped functionality: `Element SubClassOf hasMetadata max 1 Metadata`
 
+# Tool hasFailureMode FailureMode
+disjoint: `Tool DisjointWith FailureMode`
+
+existential: `Tool SubClassOf hasFailureMode some FailureMode`
+
+global domain: `hasFailureMode some owl:Thing SubClassOf Tool`
+
+global range: `owl:Thing SubClassOf hasFailureMode only FailureMode`
+
+inverse existential: `FailureMode SubClassOf inverse hasFailureMode some Tool`
+
 # Metadata hasName xsd:string
 existential: `Metadata SubClassOf hasName some xsd:string`
 
@@ -132,6 +143,15 @@ global domain: `hasName some owl:Thing SubClassOf Metadata`
 global range: `owl:Thing SubClassOf hasName only xsd:string`
 
 qualified scoped functionality: `Metadata SubClassOf hasName max 1 xsd:string`
+
+# FailureMode hasContingencyPlan xsd:string
+existential: `FailureMode SubClassOf hasContingencyPlan some xsd:string`
+
+global domain: `hasContingencyPlan some owl:Thing SubClassOf FailureMode`
+
+global range: `owl:Thing SubClassOf hasContingencyPlan only xsd:string`
+
+qualified scoped functionality: `FailureMode SubClassOf hasContingencyPlan max 1 xsd:string`
 
 # Metadata hasDescription xsd:string
 global domain: `hasDescription some owl:Thing SubClassOf Metadata`
