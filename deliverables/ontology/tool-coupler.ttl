@@ -12,6 +12,12 @@
 #    Object Properties
 #################################################################
 
+###  https://kastle-lab.github.io/tool-coupler#hasFailureMode
+:hasFailureMode rdf:type owl:ObjectProperty ;
+                rdfs:domain :Tool ;
+                rdfs:range :FailureMode .
+
+
 ###  https://kastle-lab.github.io/tool-coupler/containsElement
 :containsElement rdf:type owl:ObjectProperty ;
                  rdfs:range :Element .
@@ -73,10 +79,25 @@
 #    Data properties
 #################################################################
 
+###  https://kastle-lab.github.io/tool-coupler#hasContingencyPlan
+:hasContingencyPlan rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:string .
+
+
+###  https://kastle-lab.github.io/tool-coupler#isRecoverable
+:isRecoverable rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:boolean .
+
+
+###  https://kastle-lab.github.io/tool-coupler#locationAsString
+:locationAsString rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Location ;
+                  rdfs:range xsd:string .
+
+
 ###  https://kastle-lab.github.io/tool-coupler/asString
 :asString rdf:type owl:DatatypeProperty ;
-          rdfs:range rdfs:Literal ,
-                     xsd:string .
+          rdfs:range xsd:string .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/hasDescription
@@ -121,6 +142,10 @@
 
 ###  http://www.w3.org/2002/07/owl#Thing
 owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasFailureMode ;
+                            owl:allValuesFrom :FailureMode
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :containsElement ;
                             owl:allValuesFrom :Element
                           ] ,
@@ -153,6 +178,10 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                             owl:allValuesFrom :DataType
                           ] ,
                           [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasContingencyPlan ;
+                            owl:allValuesFrom xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :asString ;
                             owl:allValuesFrom xsd:string
                           ] ,
@@ -176,6 +205,25 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                             owl:onProperty :hasURI ;
                             owl:allValuesFrom xsd:anyURI
                           ] .
+
+
+###  https://kastle-lab.github.io/tool-coupler#FailureMode
+:FailureMode rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty [ owl:inverseOf :hasFailureMode
+                                              ] ;
+                               owl:someValuesFrom :Tool
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasContingencyPlan ;
+                               owl:someValuesFrom xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasContingencyPlan ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] ;
+             owl:disjointWith :Tool .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/DataType
@@ -380,6 +428,10 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
 ###  https://kastle-lab.github.io/tool-coupler/Tool
 :Tool rdf:type owl:Class ;
       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasFailureMode ;
+                        owl:someValuesFrom :FailureMode
+                      ] ,
+                      [ rdf:type owl:Restriction ;
                         owl:onProperty :hasMetadata ;
                         owl:someValuesFrom :Metadata
                       ] ,
@@ -405,14 +457,40 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
 #    Individuals
 #################################################################
 
-###  https://kastle-lab.github.io/tool-coupler#Optional
-:Optional rdf:type owl:NamedIndividual ,
-                   :RequirementStatus .
+###  https://kastle-lab.github.io/tool-coupler#HTTPError
+:HTTPError rdf:type owl:NamedIndividual ,
+                    :FailureMode ;
+           :hasContingencyPlan "If the status code is 404, verify that the URL passed to the tool is correct and retry the tool call only once. For all other error status codes, verify the tool and server, then try an alternative tool if available." .
 
 
-###  https://kastle-lab.github.io/tool-coupler#Required
-:Required rdf:type owl:NamedIndividual ,
-                   :RequirementStatus .
+###  https://kastle-lab.github.io/tool-coupler#InvalidValue
+:InvalidValue rdf:type owl:NamedIndividual ,
+                       :FailureMode ;
+              :hasContingencyPlan "Check the parameter value against the tool's allowed values or constraints, correct it, and retry the tool call." .
+
+
+###  https://kastle-lab.github.io/tool-coupler#ParameterCountMismatch
+:ParameterCountMismatch rdf:type owl:NamedIndividual ,
+                                 :FailureMode ;
+                        :hasContingencyPlan "Compare passed argument keys against tool signature. Remove unrecognized properties or add omitted arguments, then re-call." .
+
+
+###  https://kastle-lab.github.io/tool-coupler#ParameterTypeMismatch
+:ParameterTypeMismatch rdf:type owl:NamedIndividual ,
+                                :FailureMode ;
+                       :hasContingencyPlan "You supplied more or fewer arguments than the tool accepts. List the tool's parameters from the schema and compare them to what you sent. Remove any argument not in the schema, and supply any omitted one from the conversation. Do not pad the call with placeholder or null arguments." .
+
+
+###  https://kastle-lab.github.io/tool-coupler#RequiredParameterMissing
+:RequiredParameterMissing rdf:type owl:NamedIndividual ,
+                                   :FailureMode ;
+                          :hasContingencyPlan "Identify the missing required parameter, obtain or infer its value from the context, and retry." .
+
+
+###  https://kastle-lab.github.io/tool-coupler#ToolNotFound
+:ToolNotFound rdf:type owl:NamedIndividual ,
+                       :FailureMode ;
+              :hasContingencyPlan "Do not retry this tool name. Verify the tool name among the available tools and search for an alternative tool matching intent. Then call the correct matching tool, if available." .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Array
@@ -480,6 +558,16 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                  :DataType .
 
 
+###  https://kastle-lab.github.io/tool-coupler/Optional
+:Optional rdf:type owl:NamedIndividual ,
+                   :RequirementStatus .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Required
+:Required rdf:type owl:NamedIndividual ,
+                   :RequirementStatus .
+
+
 ###  https://kastle-lab.github.io/tool-coupler/Set
 :Set rdf:type owl:NamedIndividual ,
               :DataType .
@@ -503,6 +591,13 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
 #################################################################
 #    General axioms
 #################################################################
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasFailureMode ;
+  owl:someValuesFrom owl:Thing ;
+  rdfs:subClassOf :Tool
+] .
+
 
 [ rdf:type owl:Restriction ;
   owl:onProperty :hasFormat ;
