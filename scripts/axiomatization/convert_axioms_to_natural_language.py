@@ -507,7 +507,7 @@ if __name__ == "__main__":
             "Metadata hasName xsd:string",
             "Server hasTool Tool",
             "Tool hasParameter Parameter",
-            "Parameter hasRequirementStatus RequirementStatus"
+            "Parameter hasRequirementStatus RequirementStatus",
             "Tool hasFailureMode FailureMode",
             "FailureMode hasContingencyPlan xsd:string"
         ]
@@ -536,7 +536,7 @@ if __name__ == "__main__":
             "Parameter hasMetadata Metadata",
             "Tool hasMetadata Metadata",
             "Parameter hasRequirementStatus RequirementStatus",
-            "Element hasMetadata Metadata"
+            "Element hasMetadata Metadata",
             "Tool hasFailureMode FailureMode",
             "FailureMode hasContingencyPlan xsd:string"
         ]
@@ -555,7 +555,7 @@ if __name__ == "__main__":
             "Parameter hasMetadata Metadata",
             "Tool hasMetadata Metadata",
             "Parameter hasRequirementStatus RequirementStatus",
-            "Element hasMetadata Metadata"
+            "Element hasMetadata Metadata",
             "Tool hasFailureMode FailureMode",
             "FailureMode hasContingencyPlan xsd:string"
         ]
@@ -564,7 +564,7 @@ if __name__ == "__main__":
             "Metadata hasLocation Location",
             "Server hasTool Tool",
             "Tool hasParameter Parameter",
-            "Parameter hasRequirementStatus RequirementStatus"
+            "Parameter hasRequirementStatus RequirementStatus",
             "Tool hasFailureMode FailureMode",
         ]
 
