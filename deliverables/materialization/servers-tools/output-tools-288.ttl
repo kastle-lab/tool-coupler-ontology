@@ -1,5 +1,5 @@
-@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-couplerlod/ontology/> .
-@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-couplerlod/resource/> .
+@prefix tool-coupler-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/> .
+@prefix tool-coupler-r: <https://kastle-lab.github.io/tool-coupler/lod/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 tool-coupler-r:metadata.weather-data a tool-coupler-ont:Metadata ;
