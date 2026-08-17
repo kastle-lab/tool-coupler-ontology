@@ -1,0 +1,24 @@
+# CQ 6 - What is the description of a Tool's Output Parameters?
+
+PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
+PREFIX tc-r: <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?toolName ?outputParamName ?dataType ?outputParamDescription
+WHERE {
+  # Bind a specific tool resource here
+  # BIND(tc-r:tool.filesystem.filesystem_list_directory_with_sizes AS ?tool)
+
+  ?tool rdf:type tc-ont:Tool ;
+        tc-ont:hasMetadata/tc-ont:hasName ?toolName ;
+        tc-ont:hasParameter ?outputParam .
+  ?outputParam rdf:type ?outClass .
+  VALUES ?outClass { tc-ont:Output tc-ont:Inout }
+
+  OPTIONAL { ?outputParam tc-ont:hasMetadata ?pMeta .
+    OPTIONAL { ?pMeta tc-ont:hasName ?outputParamName }
+    OPTIONAL { ?pMeta tc-ont:hasDescription ?outputParamDescription }
+  }
+  OPTIONAL { ?outputParam tc-ont:isOfDataType ?dataType }
+}
+ORDER BY ?toolName ?outputParamName

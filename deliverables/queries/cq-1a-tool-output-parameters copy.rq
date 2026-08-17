@@ -1,0 +1,22 @@
+# CQ 1a - What is the OutputParameter for a given Tool, and what are its expected data type and Element structure?
+
+PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
+PREFIX tc-r: <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?toolName ?outputParamName ?dataType ?element
+WHERE {
+
+# Bind a specific tool resource here
+# BIND(tc-r:tool.filesystem.filesystem_list_directory_with_sizes AS ?tool)
+
+?tool a tc-ont:Tool ;
+tc-ont:hasParameter ?outputParam .
+?outputParam a tc-ont:Output .
+
+OPTIONAL { ?outputParam tc-ont:isOfDataType ?dataType . }
+OPTIONAL { ?outputParam tc-ont:containsElement ?element . }
+OPTIONAL { ?outputParam tc-ont:hasMetadata/tc-ont:hasName ?outputParamName }
+OPTIONAL { ?tool tc-ont:hasMetadata/tc-ont:hasName ?toolName }
+
+}

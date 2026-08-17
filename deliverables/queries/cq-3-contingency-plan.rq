@@ -1,0 +1,17 @@
+# CQ 3 If a Tool encounters a FailureMode, what is the appropriate response to that FailureMode?
+
+PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
+PREFIX tc-r: <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX tc-tbox: <https://kastle-lab.github.io/tool-coupler/>
+
+SELECT ?contingencyPlan ?recoverable
+WHERE {
+BIND (tc-tbox:HTTPError AS ?failureMode)
+?failureMode tc-tbox:hasContingencyPlan ?contingencyPlan .
+?failureMode tc-tbox:isRecoverable ?recoverable
+}

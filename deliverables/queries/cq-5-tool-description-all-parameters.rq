@@ -1,0 +1,29 @@
+# CQ 5 - What are the descriptions of a Tool and ALL of its Parameters?
+
+PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
+PREFIX tc-r: <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?toolName ?toolDescription ?paramName ?paramType ?requirement ?dataType ?paramDescription
+WHERE {
+  # Bind a specific tool resource here
+  # BIND(tc-r:tool.filesystem.filesystem_list_directory_with_sizes AS ?tool)
+
+  ?tool rdf:type tc-ont:Tool ;
+        tc-ont:hasMetadata ?tMeta .
+  ?tMeta tc-ont:hasName ?toolName .
+  OPTIONAL { ?tMeta tc-ont:hasDescription ?toolDescription }
+
+  OPTIONAL {
+    ?tool tc-ont:hasParameter ?param .
+    ?param rdf:type ?paramType .
+    VALUES ?paramType { tc-ont:Input tc-ont:Output tc-ont:Inout }
+    OPTIONAL { ?param tc-ont:hasMetadata ?pMeta .
+      OPTIONAL { ?pMeta tc-ont:hasName ?paramName }
+      OPTIONAL { ?pMeta tc-ont:hasDescription ?paramDescription }
+    }
+    OPTIONAL { ?param tc-ont:hasRequirementStatus ?requirement }
+    OPTIONAL { ?param tc-ont:isOfDataType ?dataType }
+  }
+}
+ORDER BY ?toolName ?paramType ?paramName
