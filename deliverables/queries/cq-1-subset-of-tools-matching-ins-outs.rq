@@ -1,0 +1,40 @@
+# CQ 1 - What subsets of Tools have Outputs matching the Datatypes and Element structures of other Tool Inputs?
+
+PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
+PREFIX tc-r: <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?sourceToolName ?targetToolName
+WHERE {
+?sourceTool tc-ont:hasParameter ?outputParam .
+?outputParam rdf:type ?outClass ;
+tc-ont:isOfDataType ?dataType .
+VALUES ?outClass { tc-ont:Output tc-ont:Inout }
+
+?targetTool tc-ont:hasParameter ?inputParam .
+?inputParam rdf:type ?inClass ;
+tc-ont:isOfDataType ?dataType .
+VALUES ?inClass { tc-ont:Input tc-ont:Inout }
+
+FILTER (?sourceTool != ?targetTool)
+
+FILTER NOT EXISTS {
+?inputParam tc-ont:containsElement+ ?inEl .
+?inEl tc-ont:isOfDataType ?inElType .
+FILTER NOT EXISTS {
+?outputParam tc-ont:containsElement+ ?outEl .
+?outEl tc-ont:isOfDataType ?inElType .
+FILTER (
+STRAFTER(STRAFTER(STR(?outEl),
+CONCAT(STRAFTER(STRAFTER(STR(?outputParam), "/resource/"), "."), ".")), ".")
+=
+STRAFTER(STRAFTER(STR(?inEl),
+CONCAT(STRAFTER(STRAFTER(STR(?inputParam), "/resource/"), "."), ".")), ".")
+)
+}
+}
+
+OPTIONAL { ?sourceTool tc-ont:hasMetadata/tc-ont:hasName ?sourceToolName }
+OPTIONAL { ?targetTool tc-ont:hasMetadata/tc-ont:hasName ?targetToolName }
+}

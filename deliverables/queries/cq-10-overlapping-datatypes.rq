@@ -1,0 +1,21 @@
+# CQ 10 - If outputs exist from a set of tools, do any datatypes overlap and how many?
+
+PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
+PREFIX tc-r:   <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?dataType ?paramType (COUNT(*) AS ?count)
+WHERE {
+  VALUES ?toolName { "fetch_fetch"^^xsd:string
+   					          "github_get_file_contents"^^xsd:string
+                      "github_search_repositories"^^xsd:string 
+   					          "mcp-code-executor_execute_code"^^xsd:string }
+?tool tc-ont:hasMetadata/tc-ont:hasName ?toolName ;
+        tc-ont:hasParameter ?p .
+  ?p rdf:type ?c ; tc-ont:isOfDataType ?dataType .
+  FILTER (?c IN (tc-ont:Input, tc-ont:Output, tc-ont:Inout))
+  BIND (IF(?c = tc-ont:Input, "input", "output") AS ?paramType)
+}
+GROUP BY ?dataType ?paramType
+ORDER BY ?dataType ?paramType

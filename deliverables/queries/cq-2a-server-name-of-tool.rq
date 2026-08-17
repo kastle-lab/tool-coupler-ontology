@@ -1,0 +1,11 @@
+# CQ 2a - To which Server does a given tool belong?
+
+PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
+PREFIX tc-r: <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+
+SELECT ?serverName
+WHERE {
+BIND (tc-r:tool.airtable.airtable_list_bases AS ?tool)
+?server tc-ont:hasTool ?tool .
+OPTIONAL { ?server tc-ont:hasMetadata/tc-ont:hasName ?serverName }
+}
