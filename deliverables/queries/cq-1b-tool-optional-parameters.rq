@@ -1,4 +1,4 @@
-# CQ 1a - What are all the OptionalParameters for a given Tool, and what are their expected data types and Element structures?
+# CQ 1b - What are all the OptionalParameters for a given Tool, and what are their expected data types and Element structures?
 
 PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
 PREFIX tc-r: <https://kastle-lab.github.io/tool-coupler/lod/resource/>
