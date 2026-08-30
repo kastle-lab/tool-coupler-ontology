@@ -1,4 +1,4 @@
-# CQ 3 If a Tool encounters a FailureMode, what is the appropriate response to that FailureMode?
+# CQ 3 - If a Tool encounters a FailureMode, what is the appropriate response to that FailureMode?
 
 PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
 PREFIX tc-r: <https://kastle-lab.github.io/tool-coupler/lod/resource/>
