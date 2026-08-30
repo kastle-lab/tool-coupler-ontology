@@ -1,3 +1,6 @@
+# CQ 11 - What are all the required input parameters for a given set of tools; and
+what are their descriptions, expected data types, and element structures?
+
 PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
 PREFIX tc-r: <https://kastle-lab.github.io/tool-coupler/lod/resource/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
