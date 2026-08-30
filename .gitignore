@@ -206,3 +206,5 @@ Temporary Items
 /scripts/materialization/validate-yamls.py
 /scripts/materialization/flatten-data-copy.py
 /scripts/materialization/mappings-copy
+
+.vscode
