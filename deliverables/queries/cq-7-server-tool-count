@@ -1,4 +1,4 @@
-# CQ 10 — How many Tools does a given Server have?
+# CQ 7 — How many Tools does a given Server have?
 
 PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
 PREFIX tc-r:   <https://kastle-lab.github.io/tool-coupler/lod/resource/>
