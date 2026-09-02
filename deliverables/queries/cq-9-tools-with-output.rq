@@ -1,0 +1,29 @@
+# CQ 9 - Which servers have Tools that produce an Output, and how many?
+
+PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
+PREFIX tc-r:   <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?serverName 
+       (COUNT(DISTINCT ?tool) AS ?tools) 
+       (COUNT(DISTINCT ?toolWithOutput) AS ?toolsWithOutputs)
+WHERE {
+  ?server rdf:type tc-ont:Server ; 
+          tc-ont:hasTool ?tool .
+  
+  OPTIONAL { 
+    ?server tc-ont:hasMetadata/tc-ont:hasName ?serverName .
+  }
+  
+  OPTIONAL {
+    ?server tc-ont:hasTool ?toolWithOutput .
+    ?toolWithOutput tc-ont:hasParameter ?p .
+    ?p rdf:type ?c . 
+    
+    FILTER (?c IN (tc-ont:Output, tc-ont:Inout))
+  }
+}
+GROUP BY ?serverName
+HAVING (COUNT(DISTINCT ?toolWithOutput) > 0)
+ORDER BY DESC(?toolsWithOutputs)

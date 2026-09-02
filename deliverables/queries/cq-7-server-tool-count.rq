@@ -1,0 +1,17 @@
+# CQ 7 — How many Tools does a given Server have?
+
+PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
+PREFIX tc-r:   <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?serverName (COUNT(DISTINCT ?tool) AS ?toolCount)
+WHERE {
+  # INJECTION POINT
+  VALUES ?serverName { "airtable"^^xsd:string }
+
+  ?server rdf:type tc-ont:Server ;
+          tc-ont:hasMetadata/tc-ont:hasName ?serverName ;
+          tc-ont:hasTool ?tool .
+}
+GROUP BY ?serverName

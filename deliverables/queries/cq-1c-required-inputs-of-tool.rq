@@ -1,0 +1,35 @@
+# CQ 1c - What are all the required InputParameters for a given Tool, and what are their expected Datatypes and Element structures?
+
+PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
+PREFIX tc-r:   <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?param ?paramName ?dataType ?element ?elementName ?elementDataType
+WHERE {
+  
+  # BIND (tc-r:tool.airtable.airtable_search_records AS ?tool)
+
+  ?tool tc-ont:hasParameter ?param .
+  
+  ?param rdf:type tc-ont:Input ;
+         tc-ont:hasRequirementStatus tc-r:requirementStatus.Required .
+
+  OPTIONAL { 
+    ?param tc-ont:hasMetadata/tc-ont:hasName ?paramName .
+  }
+  OPTIONAL { 
+    ?param tc-ont:isOfDataType ?dataType .
+  }
+  OPTIONAL {
+    ?param tc-ont:containsElement ?element .
+    
+    OPTIONAL { 
+      ?element tc-ont:hasMetadata/tc-ont:hasName ?elementName . 
+    }
+    OPTIONAL { 
+      ?element tc-ont:isOfDataType ?elementDataType .
+    }
+  }
+}
+ORDER BY ?serverName

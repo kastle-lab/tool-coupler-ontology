@@ -18,17 +18,30 @@ Given the experimental conditions for using tool benchmarks to evaluate LLM capa
 
 ## Research Questions
 
-**RQ1**: Does combining a KG with an MCP server yield higher efficiency by reducing the number of incorrect tool calls despite possibly taking more time due to a more complex workflow?
+**RQ1**: Will the introduction of an OWL-based KG into an agentic workflow involving tool usage improve the tool-use performance of SLMs? \
+**RQ2**: Does the inclusion of an OWL-based KG improve the error recovery performance of SLMs following MCP tool-use errors?
 
 ## Competency Questions
 
-**Tool Selection, Usage, and Chaining**: This set of CQs focuses on the identification of tools, and the various ways they might relate to eachother
+**Tool Selection, Usage, Chaining, and Failure Recovery**: These CQs focuses on the identification of tools, their inputs and outputs, the various ways they might relate to each other, and how failures can be recovered.
 
-- What set of `tools` might be capable of chaining together based on their `inputs` and `outputs`?
-- Which `tools` take in (`input`) `parameter type` _x_?
-- Which `tools` `output` `parameter type` _x_?
+1. What subsets of `Tools` have `Outputs` matching the `Datatypes` and `Element` structures of other tool `Inputs`? \
+   1a) What is the `OutputParameter` for a given `Tool`, and what are its expected `Datatype` and `Element` structure? \
+   1b) What are all the `Optional` `Parameters` for a given `Tool`, and what are their expected `Datatypes` and `Element` structures? \
+   1c) What are all the `Required` `InputParameters` for a given `Tool`, and what are their expected `Datatypes` and `Element` structures?
+2. What is the list of `Tools` for each available `Server`? \
+   2a) To which `Server` does a given `Tool` belong?
+3. If a `Tool` encounters a `FailureMode`, what is the appropriate response to that `FailureMode`?
+4. What is the description of a given `Tool` and its required `Parameters`?
+5. What are the descriptions of a `Tool` and ALL of its `Parameters`?
+6. What is the description of a Tool's `OutputParameters`?
+7. How many `Tools` does a given `Server` have?
+8. What are the descriptions of the `Tools` from a given set of available `Tools`?
+9. Which `Servers` have `Tools` that produce an `Output`, and how many?
+10. If `Outputs` exist from a set of `Tools`, do any `Datatypes` overlap, and how many?
+11. What are all the required `InputParameters` for a given set of `Tools`; and what are their descriptions, expected `Datatypes`, and `Element` structures?
 
-Bridges Datasets: [MCP-Atlas](https://huggingface.co/datasets/ScaleAI/MCP-Atlas), [Toolathlon](https://toolathlon.xyz/docs/dataset), [Fast-MCP](https://fastmcp.wiki/en/v2/servers/tools), [LLM-STATS](https://llm-stats.com/leaderboards/best-ai-for-tool-calling)
+Bridges Datasets: [MCP-Atlas](https://huggingface.co/datasets/ScaleAI/MCP-Atlas), [Fast-MCP](https://fastmcp.wiki/en/v2/servers/tools)
 
 ---
 
@@ -37,7 +50,6 @@ Bridges Datasets: [MCP-Atlas](https://huggingface.co/datasets/ScaleAI/MCP-Atlas)
 1. [MCP-Atlas](https://huggingface.co/datasets/ScaleAI/MCP-Atlas),
 2. [Toolathlon](https://toolathlon.xyz/docs/dataset),
 3. [Fast-MCP](https://fastmcp.wiki/en/v2/servers/tools)
-4. [LLM-STATS](https://llm-stats.com/leaderboards/best-ai-for-tool-calling)
 
 ## References
 

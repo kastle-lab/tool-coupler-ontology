@@ -1,0 +1,22 @@
+# CQ 2 - What is the list of Tools for each available Server?
+
+PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
+PREFIX tc-r:   <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?serverName 
+       (GROUP_CONCAT(DISTINCT ?toolName; separator=", ") AS ?tools)
+WHERE {
+  ?server rdf:type tc-ont:Server ;
+          tc-ont:hasTool ?tool .
+  
+  OPTIONAL { 
+    ?server tc-ont:hasMetadata/tc-ont:hasName ?serverName . 
+  }
+  OPTIONAL { 
+    ?tool tc-ont:hasMetadata/tc-ont:hasName ?toolName . 
+  }
+}
+GROUP BY ?server ?serverName
+ORDER BY ?serverName
