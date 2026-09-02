@@ -8,8 +8,7 @@ PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
 SELECT ?serverName (COUNT(DISTINCT ?tool) AS ?toolCount)
 WHERE {
   # INJECTION POINT
- VALUES ?serverName { "airtable"^^xsd:string }
-
+  VALUES ?serverName { "airtable"^^xsd:string }
 
   ?server rdf:type tc-ont:Server ;
           tc-ont:hasMetadata/tc-ont:hasName ?serverName ;

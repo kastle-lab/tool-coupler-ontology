@@ -1,28 +1,28 @@
-# CQ 1b - What are all the OptionalParameters for a given Tool, and what are their expected Datatypes and Element structures?
+# CQ 1a - What is the OutputParameter for a given Tool, and what are its expected Datatype and Element structure?
 
 PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
 PREFIX tc-r:   <https://kastle-lab.github.io/tool-coupler/lod/resource/>
 PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-SELECT ?toolName ?optionalParamName ?dataType ?element
+SELECT ?toolName ?outputParamName ?dataType ?element
 WHERE {
 
   # Bind a specific tool resource here
   # BIND(tc-r:tool.filesystem.filesystem_list_directory_with_sizes AS ?tool)
 
   ?tool a tc-ont:Tool ;
-        tc-ont:hasParameter ?optionalParam .
+        tc-ont:hasParameter ?outputParam .
   
-  ?optionalParam tc-ont:hasRequirementStatus tc-r:requirementStatus.Optional .
+  ?outputParam a tc-ont:Output .
 
   OPTIONAL { 
-    ?optionalParam tc-ont:isOfDataType ?dataType . 
+    ?outputParam tc-ont:isOfDataType ?dataType . 
   }
   OPTIONAL { 
-    ?optionalParam tc-ont:containsElement ?element . 
+    ?outputParam tc-ont:containsElement ?element . 
   }
   OPTIONAL { 
-    ?optionalParam tc-ont:hasMetadata/tc-ont:hasName ?optionalParamName . 
+    ?outputParam tc-ont:hasMetadata/tc-ont:hasName ?outputParamName . 
   }
   OPTIONAL { 
     ?tool tc-ont:hasMetadata/tc-ont:hasName ?toolName .

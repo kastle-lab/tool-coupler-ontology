@@ -1,10 +1,9 @@
-# CQ 11 - What are all the required input parameters for a given set of tools; and
-what are their descriptions, expected data types, and element structures?
+# CQ 11 - What are all the required InputParameters for a given set of Tools; and what are their descriptions, expected Datatypes, and Element structures?
 
 PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
-PREFIX tc-r: <https://kastle-lab.github.io/tool-coupler/lod/resource/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX tc-r:   <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 SELECT ?toolName ?paramName ?required ?paramDesc ?dataType ?element ?elementName ?elementDesc ?elementDataType
 WHERE {
@@ -39,20 +38,37 @@ WHERE {
   # 4. Extract Parameter Metadata (Name and Description)
   OPTIONAL {
     ?param tc-ont:hasMetadata ?paramMeta .
-    OPTIONAL { ?paramMeta tc-ont:hasName ?paramName . }
-    OPTIONAL { ?paramMeta tc-ont:hasDescription ?paramDesc . }
+    
+    OPTIONAL { 
+      ?paramMeta tc-ont:hasName ?paramName . 
+    }
+    OPTIONAL { 
+      ?paramMeta tc-ont:hasDescription ?paramDesc . 
+    }
   }
-  OPTIONAL { ?param tc-ont:isOfDataType ?dataType . }
+  
+  OPTIONAL { 
+    ?param tc-ont:isOfDataType ?dataType . 
+  }
 
   # 5. Extract Element Information and Metadata (Name and Description)
   OPTIONAL {
     ?param tc-ont:containsElement ?element .
+    
     OPTIONAL {
       ?element tc-ont:hasMetadata ?elemMeta .
-      OPTIONAL { ?elemMeta tc-ont:hasName ?elementName . }
-      OPTIONAL { ?elemMeta tc-ont:hasDescription ?elementDesc . }
+      
+      OPTIONAL { 
+        ?elemMeta tc-ont:hasName ?elementName . 
+      }
+      OPTIONAL { 
+        ?elemMeta tc-ont:hasDescription ?elementDesc . 
+      }
     }
-    OPTIONAL { ?element tc-ont:isOfDataType ?elementDataType . }
+    
+    OPTIONAL { 
+      ?element tc-ont:isOfDataType ?elementDataType . 
+    }
   }
 }
 ORDER BY ?toolName ?paramName ?elementName
