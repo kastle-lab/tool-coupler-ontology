@@ -28,18 +28,18 @@ Given the experimental conditions for using tool benchmarks to evaluate LLM capa
 1. What subsets of `Tools` have `Outputs` matching the `Datatypes` and `Element` structures of other tool `Inputs`? \
    1a) What is the `OutputParameter` for a given `Tool`, and what are its expected `Datatype` and `Element` structure? \
    1b) What are all the `Optional` `Parameters` for a given `Tool`, and what are their expected `Datatypes` and `Element` structures? \
-   1c) What are all the `Required` `InputParameters` for a given `Tool`, and what are their expected `Datatypes` and `Element structures`?
+   1c) What are all the `Required` `InputParameters` for a given `Tool`, and what are their expected `Datatypes` and `Element` structures?
 2. What is the list of `Tools` for each available `Server`? \
    2a) To which `Server` does a given `Tool` belong?
 3. If a `Tool` encounters a `FailureMode`, what is the appropriate response to that `FailureMode`?
 4. What is the description of a given `Tool` and its required `Parameters`?
 5. What are the descriptions of a `Tool` and ALL of its `Parameters`?
-6. What is the description of a Tool's `Output Parameters`?
+6. What is the description of a Tool's `OutputParameters`?
 7. How many `Tools` does a given `Server` have?
 8. What are the descriptions of the `Tools` from a given set of available `Tools`?
 9. Which `Servers` have `Tools` that produce an `Output`, and how many?
 10. If `Outputs` exist from a set of `Tools`, do any `Datatypes` overlap, and how many?
-11. What are all the required `Input Parameters` for a given set of `Tools`, and what are their descriptions, expected `Datatypes`, and `Element structures`?
+11. What are all the required `InputParameters` for a given set of `Tools`; and what are their descriptions, expected `Datatypes`, and `Element` structures?
 
 Bridges Datasets: [MCP-Atlas](https://huggingface.co/datasets/ScaleAI/MCP-Atlas), [Fast-MCP](https://fastmcp.wiki/en/v2/servers/tools)
 

@@ -1,0 +1,74 @@
+# CQ 11 - What are all the required InputParameters for a given set of Tools; and what are their descriptions, expected Datatypes, and Element structures?
+
+PREFIX tc-ont: <https://kastle-lab.github.io/tool-coupler/lod/ontology/>
+PREFIX tc-r:   <https://kastle-lab.github.io/tool-coupler/lod/resource/>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?toolName ?paramName ?required ?paramDesc ?dataType ?element ?elementName ?elementDesc ?elementDataType
+WHERE {
+  # 1. Filter by the specific set of tool names
+  VALUES ?toolName {
+    "fetch_fetch"^^xsd:string
+    "whois_whois_domain"^^xsd:string
+    "github_search_repositories"^^xsd:string
+    "github_search_code"^^xsd:string
+    "github_search_users"^^xsd:string
+    "github_get_issue"^^xsd:string
+    "github_list_issues"^^xsd:string
+    "github_search_issues"^^xsd:string
+    "github_get_issue_comments"^^xsd:string
+    "github_get_repository"^^xsd:string
+    "github_get_commit"^^xsd:string
+    "github_list_commits"^^xsd:string
+    "github_get_file_contents"^^xsd:string
+    "github_list_branches"^^xsd:string
+    "mcp-code-executor_execute_code"^^xsd:string
+  }
+
+  # 2. Match the Tool entity by its string name
+  ?tool rdf:type tc-ont:Tool ;
+        tc-ont:hasMetadata/tc-ont:hasName ?toolName ;
+        tc-ont:hasParameter ?param .
+
+  # 3. Filter for only Required Input Parameters
+  ?param rdf:type tc-ont:Input ;
+         tc-ont:hasRequirementStatus ?required .
+
+  # 4. Extract Parameter Metadata (Name and Description)
+  OPTIONAL {
+    ?param tc-ont:hasMetadata ?paramMeta .
+    
+    OPTIONAL { 
+      ?paramMeta tc-ont:hasName ?paramName . 
+    }
+    OPTIONAL { 
+      ?paramMeta tc-ont:hasDescription ?paramDesc . 
+    }
+  }
+  
+  OPTIONAL { 
+    ?param tc-ont:isOfDataType ?dataType . 
+  }
+
+  # 5. Extract Element Information and Metadata (Name and Description)
+  OPTIONAL {
+    ?param tc-ont:containsElement ?element .
+    
+    OPTIONAL {
+      ?element tc-ont:hasMetadata ?elemMeta .
+      
+      OPTIONAL { 
+        ?elemMeta tc-ont:hasName ?elementName . 
+      }
+      OPTIONAL { 
+        ?elemMeta tc-ont:hasDescription ?elementDesc . 
+      }
+    }
+    
+    OPTIONAL { 
+      ?element tc-ont:isOfDataType ?elementDataType . 
+    }
+  }
+}
+ORDER BY ?toolName ?paramName ?elementName
