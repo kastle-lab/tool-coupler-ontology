@@ -1,32 +1,63 @@
 # Tool-Coupler
 
-## The Patterns
+Tool-Coupler is an ontology for describing
+the relationships between MCP servers or APIs, their tools, tool parameters, resources, metadata, and tool related failure modes. The repository contains the ontology, ontology design documentation, schema visualizations, source data, and scripts used to prep data and materialize the knowledge graph.
 
-- Metadata
-- Prompt (WIP)
-- Resource
-- Tool
+## Key Resources
 
-## Deliverables
+- [Ontology](deliverables/ontology/tool-coupler.ttl) is the aggregate OWL ontology artifact.
+- [Ontology axioms](deliverables/ontology/tool-coupler-axioms.md) provides the ontology axioms in natural language.
+- [Full schema PDF](deliverables/patterns/full-schema.pdf) provides a visual representation of the complete ontology schema.
+- [Key notions](deliverables/key-notions.md) documents the central concepts represented in the ontology.
+- [Use case](deliverables/use-case.md) describes the motivating use case for the ontology, including the appropriate research and ontology related questions.
 
-The deliverables are structured as follows.
+## Repository Map
 
-1. **Use-Case** \
-   Contains the narrative of our use case and motivation for the research, along with the initially formulated research questions (RQs), competency questions (CQs), and available datasets.
-2. **Key-Notions** \
-   Contains the identified concepts that overlapped with the CQs and the available data. Each key notion has a brief description of the rationale, potential existing patterns for reuse, and applicable datasets.
-3. **Patterns** \
-   This directory includes the schema diagrams for each constructed pattern along with the final schema.
-4. **Ontology** \
-   Contains OWL file with the axioms applied using the Protege software.
-5. **Materialization** \
-   The instance level data materialized by [Kastle-Foundry](https://github.com/kastle-lab/foundry) resides here.
+| Directory                                                     | Intent                                                                                                                                             |
+| ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [deliverables](deliverables/)                                 | Contains the ontology, ontology documentation, schema visualizations, and materialized RDF/TTL artifacts.                                          |
+| [deliverables/ontology](deliverables/ontology/)               | Contains the aggregate OWL ontology and its axiomatization in natural language.                                                                    |
+| [deliverables/patterns](deliverables/patterns/)               | Contains GraphML and PDF visualizations of the complete ontology and its individual patterns, including Tool, Metadata, Resource, and FailureMode. |
+| [deliverables/materialization](deliverables/materialization/) | Contains the materialized RDF/TTL outputs generated from the source data and mappings.                                                             |
+| [deliverables/queries](deliverables/queries/)                 | Contains the SPARQL queries associated with each CQ.                                                                                               |
+| [scripts](scripts/)                                           | Contains scripts, source data, mappings, and utilities used to generate and materialize the ontology data.                                         |
+| [scripts/data](scripts/data/)                                 | Contains the tabular and text source data used during ontology materialization.                                                                    |
+| [scripts/materialization](scripts/materialization/)           | Contains the scripts and mappings used to transform source data into materialized RDF/TTL artifacts.                                               |
+| [scripts/axiomatization](scripts/axiomatization/)             | Contains the script used to convert ontology axioms into natural language.                                                                         |
 
-## Scripts
+## Ontology Patterns
 
-1. **Data** \
-   The data used for materialzing the knowlege graph resides here. Some of the files are too large, but are hosted in other locations: 
-   - mcp-atlas: [list-tools.json](https://gist.github.com/geobio/e1c08cc4d74d96223cb8cf0919a72c3e) \
-   _Note_: If seeking to replicate materialization the `list-tools.json` from `MCP-Atlas` will need to be downloaded from the link above.
-2. **Materialization** \
-   The YAML files and other scripts used for data prep and materialization are located in this directory.
+The ontology is organized around several core patterns:
+
+| Pattern                                                                  | Description                                                               |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| [Tool](deliverables/patterns/tool/tool.pdf)                              | Represents the tool-oriented portion of the ontology.                     |
+| [Metadata](deliverables/patterns/metadata/metadata-pattern.pdf)          | Represents metadata associated with the modeled resources.                |
+| [Resource](deliverables/patterns/resource/resource.pdf)                  | Represents the resource-oriented portion of the ontology.                 |
+| [FailureMode](deliverables/patterns/failuremode/failuremode-pattern.pdf) | Represents failure-mode information associated with the modeled entities. |
+
+## Namespaces
+
+| Prefix   | Namespace                                                 |
+| -------- | --------------------------------------------------------- |
+| `tc-ont` | `https://kastle-lab.github.io/tool-coupler/lod/ontology#` |
+| `tc-r`   | `https://kastle-lab.github.io/tool-coupler/lod/resource#` |
+
+## Tooling
+
+[Kastle Foundry](https://github.com/kastle-lab/foundry) was used to materialize RDF/Turtle graph fragments from the synthetic CSV data and YAML mappings.
+
+## Validation Status
+
+<p>
+  <a href="http://oops.linkeddata.es">
+    <img src="https://oops.linkeddata.es/images/conformance/oops_free.png"
+      alt="free pitfalls were found" height="69.6" width="100" />
+  </a>
+</p>
+
+The ontology has been checked with OOPS and detected no critical pitfalls.
+
+## License
+
+This repository is licensed under the terms in [LICENSE](LICENSE).
