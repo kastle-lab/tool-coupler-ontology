@@ -1,0 +1,49 @@
+{
+  "model_name": "qwen3.5_4b_output",
+  "timestamp": "2026-08-27T00:24:07.142347",
+  "diagnosis_threshold": 1.0,
+  "diagnosis_version": "v2-taxonomy",
+  "scoring": {
+    "total_tasks": 500,
+    "mean_coverage": 0.1441,
+    "median_coverage": 0.0,
+    "pass_rate_0.75": 4.0
+  },
+  "run_health": {
+    "clean_runs": 500,
+    "total_errors": 0,
+    "context_window_errors": 0,
+    "max_turns_errors": 0,
+    "max_tool_calls_errors": 0,
+    "timeout_errors": 0,
+    "sandbox_infra_errors": 0,
+    "model_endpoint_errors": 0,
+    "other_errors": 0,
+    "empty_responses": 125
+  },
+  "diagnosis": {
+    "tasks_diagnosed": 489,
+    "diagnosis_rate_pct": 97.8,
+    "avg_coverage_diagnosed": 0.1248,
+    "category_split": {
+      "tool_call_count": 269,
+      "tool_call_pct": 55.0,
+      "cognitive_count": 220,
+      "cognitive_pct": 45.0
+    },
+    "primary_failure_distribution": {
+      "wrong_tool": 171,
+      "task_misunderstanding": 107,
+      "no_tool_use": 84,
+      "early_termination": 74,
+      "hallucinated_fact": 18,
+      "response_misparsing": 13,
+      "err_recovery": 8,
+      "faulty_synthesis": 8,
+      "malformed_call": 6
+    },
+    "examples": {}
+  },
+  "programmatic_narrative": "Model qwen3.5_4b_output was evaluated on 500 tasks. Mean coverage: 0.1441, median: 0.0. 489 tasks (97.8%) scored below the 1.0 threshold. Clean runs: 500, max tool calls errors: 0, max turns errors: 0, timeouts: 0. Failure categories: tool_call=269 (55.0%), cognitive=220 (45.0%). Top failure modes: wrong_tool (171), task_misunderstanding (107), no_tool_use (84).",
+  "llm_narrative": "Across the 500 evaluation tasks the qwen3.5_4b_output model achieved a mean claim\u2011coverage of only\u202f0.144 (median\u202f0) and met the 75\u202f% coverage threshold on just four instances, indicating very limited effectiveness despite flawless run health (zero infra or endpoint errors). The dominant failure mode was selecting an inappropriate tool: 171 out of the 489 diagnosed failures (35\u202f%) were classified as *wrong_tool*, far exceeding other categories such as task misunderstanding (107) and no\u2011tool use (84). Tool\u2011related mistakes accounted for 269 failures (55\u202f% of all errors), while purely cognitive lapses contributed the remaining 220 (45\u202f%), showing that the model\u2019s primary weakness lies in mapping sub\u2011tasks to the correct MCP APIs rather than reasoning once data are obtained. A concrete remediation is to embed a lightweight tool\u2011selection validator that cross\u2011checks the required capability (e.g., \u201csearch\u201d, \u201cdatabase query\u201d, \u201cdistance matrix\u201d) against the available tool catalog before issuing a call, forcing a fallback to a generic web\u2011search tool when no exact match exists. Compared with other models, qwen3.5_4b_output\u2019s failure profile is distinguished by an unusually high proportion of *wrong_tool* and early\u2011termination errors (74 cases) despite zero runtime exceptions, suggesting that the model\u2019s internal tool\u2011routing logic\u2014not its execution environment\u2014is the bottleneck."
+}

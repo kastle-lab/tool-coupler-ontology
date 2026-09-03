@@ -1,0 +1,50 @@
+{
+  "model_name": "cogito_8b_output",
+  "timestamp": "2026-08-26T16:12:52.193632",
+  "diagnosis_threshold": 1.0,
+  "diagnosis_version": "v2-taxonomy",
+  "scoring": {
+    "total_tasks": 500,
+    "mean_coverage": 0.0905,
+    "median_coverage": 0.0,
+    "pass_rate_0.75": 2.0
+  },
+  "run_health": {
+    "clean_runs": 500,
+    "total_errors": 0,
+    "context_window_errors": 0,
+    "max_turns_errors": 0,
+    "max_tool_calls_errors": 0,
+    "timeout_errors": 0,
+    "sandbox_infra_errors": 0,
+    "model_endpoint_errors": 0,
+    "other_errors": 0,
+    "empty_responses": 2
+  },
+  "diagnosis": {
+    "tasks_diagnosed": 498,
+    "diagnosis_rate_pct": 99.6,
+    "avg_coverage_diagnosed": 0.0869,
+    "category_split": {
+      "tool_call_count": 227,
+      "tool_call_pct": 45.6,
+      "cognitive_count": 271,
+      "cognitive_pct": 54.4
+    },
+    "primary_failure_distribution": {
+      "no_tool_use": 194,
+      "early_termination": 114,
+      "task_misunderstanding": 113,
+      "hallucinated_fact": 30,
+      "wrong_tool": 19,
+      "malformed_call": 12,
+      "response_misparsing": 7,
+      "faulty_synthesis": 6,
+      "err_recovery": 2,
+      "logical_error": 1
+    },
+    "examples": {}
+  },
+  "programmatic_narrative": "Model cogito_8b_output was evaluated on 500 tasks. Mean coverage: 0.0905, median: 0.0. 498 tasks (99.6%) scored below the 1.0 threshold. Clean runs: 500, max tool calls errors: 0, max turns errors: 0, timeouts: 0. Failure categories: tool_call=227 (45.6%), cognitive=271 (54.4%). Top failure modes: no_tool_use (194), early_termination (114), task_misunderstanding (113).",
+  "llm_narrative": "Across the 500 evaluation tasks, cogito_8b_output achieved a mean claim\u2011coverage of only\u202f0.0905 (median\u202f0) and met the 75\u202f% coverage threshold on just two instances, indicating that virtually all responses failed to satisfy the ground\u2011truth requirements. The failure analysis shows that 498 tasks (99.6\u202f%) were diagnosed as erroneous, with the most frequent root cause being *no_tool_use* (194 cases, 38.8\u202f% of failures), followed by early termination (114) and task misunderstanding (113). Although the model performed 227 successful tool calls (45.6\u202f% of the total tasks), the larger share of errors stemmed from purely cognitive missteps\u2014271 tasks (54.4\u202f%) where the model either stopped prematurely or answered without invoking any MCP tools. This pattern suggests that the model\u2019s internal decision\u2011making does not reliably trigger the required tool\u2011use workflow, even when the tooling infrastructure is fully functional (zero sandbox or endpoint errors). A concrete remediation would be to augment the fine\u2011tuning data with explicit \u201ctool\u2011first\u201d exemplars and enforce a hard constraint in the prompting layer that blocks final answer generation until at least one tool call has returned valid data. Compared with other evaluated models, cogito_8b_output\u2019s failure profile is distinguished by an unusually high proportion of *no_tool_use* and early\u2011termination errors rather than tool execution faults, indicating that the bottleneck lies in the model\u2019s ability to recognize when external information is needed."
+}

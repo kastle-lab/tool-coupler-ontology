@@ -1,0 +1,51 @@
+{
+  "model_name": "cogito_3b_output",
+  "timestamp": "2026-08-26T14:42:42.208608",
+  "diagnosis_threshold": 1.0,
+  "diagnosis_version": "v2-taxonomy",
+  "scoring": {
+    "total_tasks": 500,
+    "mean_coverage": 0.0496,
+    "median_coverage": 0.0,
+    "pass_rate_0.75": 0.4
+  },
+  "run_health": {
+    "clean_runs": 500,
+    "total_errors": 0,
+    "context_window_errors": 0,
+    "max_turns_errors": 0,
+    "max_tool_calls_errors": 0,
+    "timeout_errors": 0,
+    "sandbox_infra_errors": 0,
+    "model_endpoint_errors": 0,
+    "other_errors": 0,
+    "empty_responses": 9
+  },
+  "diagnosis": {
+    "tasks_diagnosed": 500,
+    "diagnosis_rate_pct": 100.0,
+    "avg_coverage_diagnosed": 0.0496,
+    "category_split": {
+      "tool_call_count": 257,
+      "tool_call_pct": 51.4,
+      "cognitive_count": 243,
+      "cognitive_pct": 48.6
+    },
+    "primary_failure_distribution": {
+      "no_tool_use": 232,
+      "task_misunderstanding": 122,
+      "early_termination": 96,
+      "wrong_tool": 19,
+      "hallucinated_fact": 14,
+      "err_recovery": 5,
+      "response_misparsing": 5,
+      "faulty_synthesis": 4,
+      "malformed_call": 1,
+      "constraint_violation": 1,
+      "logical_error": 1
+    },
+    "examples": {}
+  },
+  "programmatic_narrative": "Model cogito_3b_output was evaluated on 500 tasks. Mean coverage: 0.0496, median: 0.0. 500 tasks (100.0%) scored below the 1.0 threshold. Clean runs: 500, max tool calls errors: 0, max turns errors: 0, timeouts: 0. Failure categories: tool_call=257 (51.4%), cognitive=243 (48.6%). Top failure modes: no_tool_use (232), task_misunderstanding (122), early_termination (96).",
+  "llm_narrative": "Across the 500 evaluation tasks, cogito_3b_output achieved a mean claim\u2011coverage of only\u202f0.0496 (median\u202f0) and satisfied just 40\u202f% of the \u226575\u202f% coverage threshold, indicating that most queries were answered with virtually no factual content. The dominant failure mode was the complete omission of tool usage, occurring in 232 cases (46.4\u202f% of all tasks); this \u201cno_tool_use\u201d error directly caused every required claim to be missed. Secondary but still substantial problems were task misunderstanding (122 instances, 24.4\u202f%) and early termination after a successful or partial tool call (96 instances, 19.2\u202f%), showing that the model often either mis\u2011interprets the request or aborts before synthesising retrieved data. Tool calls were made in only 257 tasks (51.4\u202f% of the sample), while the remaining 243 (48.6\u202f%) relied solely on internal reasoning, yet even when tools were invoked the outputs were frequently discarded, leading to early\u2011termination failures. To remediate this, we recommend augmenting the training data and inference\u2011time prompting with explicit \u201cmust\u2011use\u2011tool\u201d constraints and step\u2011by\u2011step scaffolding that forces the model to verify whether required external information is available before producing a final answer. What sets cogito_3b_output apart from other evaluated models is the unusually high proportion of pure cognitive attempts (nearly half of all runs) combined with a systematic inability to transition from tool acquisition to claim synthesis, rather than isolated hallucinations or API\u2011specific errors."
+}

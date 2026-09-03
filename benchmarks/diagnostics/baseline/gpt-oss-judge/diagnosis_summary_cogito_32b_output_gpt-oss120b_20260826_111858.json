@@ -1,0 +1,51 @@
+{
+  "model_name": "cogito_32b_output",
+  "timestamp": "2026-08-26T13:07:50.532515",
+  "diagnosis_threshold": 1.0,
+  "diagnosis_version": "v2-taxonomy",
+  "scoring": {
+    "total_tasks": 500,
+    "mean_coverage": 0.1036,
+    "median_coverage": 0.0,
+    "pass_rate_0.75": 2.2
+  },
+  "run_health": {
+    "clean_runs": 500,
+    "total_errors": 0,
+    "context_window_errors": 0,
+    "max_turns_errors": 0,
+    "max_tool_calls_errors": 0,
+    "timeout_errors": 0,
+    "sandbox_infra_errors": 0,
+    "model_endpoint_errors": 0,
+    "other_errors": 0,
+    "empty_responses": 6
+  },
+  "diagnosis": {
+    "tasks_diagnosed": 498,
+    "diagnosis_rate_pct": 99.6,
+    "avg_coverage_diagnosed": 0.1,
+    "category_split": {
+      "tool_call_count": 239,
+      "tool_call_pct": 48.0,
+      "cognitive_count": 259,
+      "cognitive_pct": 52.0
+    },
+    "primary_failure_distribution": {
+      "no_tool_use": 126,
+      "task_misunderstanding": 119,
+      "early_termination": 93,
+      "wrong_tool": 84,
+      "hallucinated_fact": 30,
+      "malformed_call": 18,
+      "err_recovery": 11,
+      "response_misparsing": 10,
+      "faulty_synthesis": 5,
+      "logical_error": 1,
+      "constraint_violation": 1
+    },
+    "examples": {}
+  },
+  "programmatic_narrative": "Model cogito_32b_output was evaluated on 500 tasks. Mean coverage: 0.1036, median: 0.0. 498 tasks (99.6%) scored below the 1.0 threshold. Clean runs: 500, max tool calls errors: 0, max turns errors: 0, timeouts: 0. Failure categories: tool_call=239 (48.0%), cognitive=259 (52.0%). Top failure modes: no_tool_use (126), task_misunderstanding (119), early_termination (93).",
+  "llm_narrative": "Across the 500 evaluation tasks, cogito_32b_output achieved a mean claim\u2011coverage of only\u202f10.36\u202f% (median\u202f0\u202f%) and passed just\u202f2.2\u202f% of cases at the \u226575\u202f% coverage threshold, indicating that the model reliably completed virtually none of the multi\u2011step, tool\u2011driven queries. The dominant failure modes were cognitive: 126 instances (25.2\u202f%) involved no tool use, 119 (23.8\u202f%) stemmed from task misunderstanding, and 93 (18.6\u202f%) ended in early termination; together these three categories account for roughly two\u2011thirds of all failures. Tool\u2011related breakdowns were less frequent but still significant\u201484 cases (16.8\u202f%) used the wrong tool and 30 (6\u202f%) produced malformed calls, contributing to a total of 239 tool\u2011call errors (48\u202f% of all failures) versus 259 purely cognitive errors (52\u202f%). The clearest actionable improvement is to enforce a \u201ctool\u2011first\u201d validation layer that checks whether at least one successful tool call has been made before the model proceeds to synthesis, and to add an automated retry/recovery loop for malformed or failed calls. What sets cogito_32b_output apart from other models in this benchmark is its relatively clean runtime environment (zero infra errors) combined with a systematic inability to translate retrieved data into final answers, as evidenced by the high proportion of cognitive mis\u2011steps and premature exits rather than execution failures."
+}

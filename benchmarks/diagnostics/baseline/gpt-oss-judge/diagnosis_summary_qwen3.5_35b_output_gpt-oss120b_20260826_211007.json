@@ -1,0 +1,50 @@
+{
+  "model_name": "qwen3.5_35b_output",
+  "timestamp": "2026-08-26T22:38:01.367483",
+  "diagnosis_threshold": 1.0,
+  "diagnosis_version": "v2-taxonomy",
+  "scoring": {
+    "total_tasks": 500,
+    "mean_coverage": 0.2346,
+    "median_coverage": 0.0,
+    "pass_rate_0.75": 10.6
+  },
+  "run_health": {
+    "clean_runs": 500,
+    "total_errors": 0,
+    "context_window_errors": 0,
+    "max_turns_errors": 0,
+    "max_tool_calls_errors": 0,
+    "timeout_errors": 0,
+    "sandbox_infra_errors": 0,
+    "model_endpoint_errors": 0,
+    "other_errors": 0,
+    "empty_responses": 65
+  },
+  "diagnosis": {
+    "tasks_diagnosed": 472,
+    "diagnosis_rate_pct": 94.4,
+    "avg_coverage_diagnosed": 0.1892,
+    "category_split": {
+      "tool_call_count": 220,
+      "tool_call_pct": 46.6,
+      "cognitive_count": 252,
+      "cognitive_pct": 53.4
+    },
+    "primary_failure_distribution": {
+      "wrong_tool": 123,
+      "task_misunderstanding": 121,
+      "no_tool_use": 88,
+      "early_termination": 84,
+      "hallucinated_fact": 19,
+      "response_misparsing": 12,
+      "faulty_synthesis": 12,
+      "err_recovery": 8,
+      "logical_error": 4,
+      "malformed_call": 1
+    },
+    "examples": {}
+  },
+  "programmatic_narrative": "Model qwen3.5_35b_output was evaluated on 500 tasks. Mean coverage: 0.2346, median: 0.0. 472 tasks (94.4%) scored below the 1.0 threshold. Clean runs: 500, max tool calls errors: 0, max turns errors: 0, timeouts: 0. Failure categories: tool_call=220 (46.6%), cognitive=252 (53.4%). Top failure modes: wrong_tool (123), task_misunderstanding (121), no_tool_use (88).",
+  "llm_narrative": "Across the 500 evaluation tasks, qwen3.5_35b_output achieved a mean claim\u2011coverage of\u202f0.2346 and a median of\u202f0, with only\u202f10.6\u202f% of instances reaching the 75\u202f% coverage threshold. Failure diagnostics flagged 472 cases (94.4\u202f% of the sample), split almost evenly between tool\u2011driven errors (220 calls, 46.6\u202f%) and pure cognitive lapses (252, 53.4\u202f%). The most common root causes were selecting the wrong tool (123 occurrences) and misreading the task description (121), together accounting for more than half of all failures; no\u2011tool use (88) and early termination (84) were also prominent, while hallucinations and parsing errors were relatively rare. This pattern indicates that the model frequently initiates inappropriate or unnecessary tool calls and then aborts reasoning before integrating retrieved data, rather than struggling with complex inference per se. A concrete remediation is to embed a lightweight verification step after each tool invocation that checks whether the returned schema matches the expected fields and, if not, forces a re\u2011selection of the correct tool before proceeding. Compared with other models, qwen3.5_35b_output\u2019s failure profile is distinguished by a high incidence of actionable tool\u2011misuse (\u224826\u202f% of all tasks) despite flawless run health, suggesting that its internal tool\u2011routing policy\u2014not its underlying language capabilities\u2014is the primary bottleneck."
+}

@@ -1,0 +1,51 @@
+{
+  "model_name": "granite4.1_30b_output",
+  "timestamp": "2026-08-26T17:43:08.520915",
+  "diagnosis_threshold": 1.0,
+  "diagnosis_version": "v2-taxonomy",
+  "scoring": {
+    "total_tasks": 500,
+    "mean_coverage": 0.1696,
+    "median_coverage": 0.0,
+    "pass_rate_0.75": 4.6
+  },
+  "run_health": {
+    "clean_runs": 500,
+    "total_errors": 0,
+    "context_window_errors": 0,
+    "max_turns_errors": 0,
+    "max_tool_calls_errors": 0,
+    "timeout_errors": 0,
+    "sandbox_infra_errors": 0,
+    "model_endpoint_errors": 0,
+    "other_errors": 0,
+    "empty_responses": 2
+  },
+  "diagnosis": {
+    "tasks_diagnosed": 490,
+    "diagnosis_rate_pct": 98.0,
+    "avg_coverage_diagnosed": 0.1527,
+    "category_split": {
+      "tool_call_count": 157,
+      "tool_call_pct": 32.0,
+      "cognitive_count": 333,
+      "cognitive_pct": 68.0
+    },
+    "primary_failure_distribution": {
+      "task_misunderstanding": 158,
+      "no_tool_use": 104,
+      "early_termination": 78,
+      "wrong_tool": 46,
+      "hallucinated_fact": 42,
+      "response_misparsing": 28,
+      "faulty_synthesis": 20,
+      "logical_error": 6,
+      "malformed_call": 5,
+      "err_recovery": 2,
+      "constraint_violation": 1
+    },
+    "examples": {}
+  },
+  "programmatic_narrative": "Model granite4.1_30b_output was evaluated on 500 tasks. Mean coverage: 0.1696, median: 0.0. 490 tasks (98.0%) scored below the 1.0 threshold. Clean runs: 500, max tool calls errors: 0, max turns errors: 0, timeouts: 0. Failure categories: tool_call=157 (32.0%), cognitive=333 (68.0%). Top failure modes: task_misunderstanding (158), no_tool_use (104), early_termination (78).",
+  "llm_narrative": "Across the 500 evaluation tasks, granite4.1_30b_output achieved a mean claim\u2011coverage of only\u202f0.1696 (median\u202f0) and a pass\u2011rate at the 75\u202f% coverage threshold of 4.6\u202f%, indicating that roughly one in twenty\u2011two queries was answered satisfactorily. Failure diagnostics covered 490 instances (98\u202f% of runs), with cognitive errors dominating (333 cases,\u202f68\u202f%) while tool\u2011call problems accounted for 157 cases (32\u202f%). The most frequent root causes were task misunderstanding (158 occurrences), no\u2011tool\u2011use (104) and early termination (78), together responsible for over half of all failures; these stem primarily from the model mis\u2011parsing the multi\u2011step prompt and consequently either selecting inappropriate tools or stopping before synthesising the retrieved data. The tool\u2011call vs cognitive split shows that even when the correct APIs are invoked, the model often fails to incorporate their outputs, suggesting a weak integration layer between retrieval and reasoning. A concrete remediation is to augment the training pipeline with supervised fine\u2011tuning on annotated \u201ctool\u2011use + synthesis\u201d examples that explicitly enforce parsing of tool specifications and mandatory incorporation of returned fields before final generation. This failure profile distinguishes granite4.1_30b_output from models that mainly err on tool selection: its dominant weakness lies in prompt comprehension and downstream reasoning rather than raw API invocation."
+}
