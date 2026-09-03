@@ -13,17 +13,18 @@ the relationships between MCP servers or APIs, their tools, tool parameters, res
 
 ## Repository Map
 
-| Directory                                                     | Intent                                                                                                                                             |
-| ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [deliverables](deliverables/)                                 | Contains the ontology, ontology documentation, schema visualizations, and materialized RDF/TTL artifacts.                                          |
-| [deliverables/ontology](deliverables/ontology/)               | Contains the aggregate OWL ontology and its axiomatization in natural language.                                                                    |
-| [deliverables/patterns](deliverables/patterns/)               | Contains GraphML and PDF visualizations of the complete ontology and its individual patterns, including Tool, Metadata, Resource, and FailureMode. |
-| [deliverables/materialization](deliverables/materialization/) | Contains the materialized RDF/TTL outputs generated from the source data and mappings.                                                             |
-| [deliverables/queries](deliverables/queries/)                 | Contains the SPARQL queries associated with each CQ.                                                                                               |
-| [scripts](scripts/)                                           | Contains scripts, source data, mappings, and utilities used to generate and materialize the ontology data.                                         |
-| [scripts/data](scripts/data/)                                 | Contains the tabular and text source data used during ontology materialization.                                                                    |
-| [scripts/materialization](scripts/materialization/)           | Contains the scripts and mappings used to transform source data into materialized RDF/TTL artifacts.                                               |
-| [scripts/axiomatization](scripts/axiomatization/)             | Contains the script used to convert ontology axioms into natural language.                                                                         |
+| Directory                                                     | Intent                                                                                                                                                   |
+| ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [deliverables](deliverables/)                                 | Contains the ontology, ontology documentation, schema visualizations, and materialized RDF/TTL artifacts.                                                |
+| [deliverables/ontology](deliverables/ontology/)               | Contains the aggregate OWL ontology and its axiomatization in natural language.                                                                          |
+| [deliverables/patterns](deliverables/patterns/)               | Contains GraphML and PDF visualizations of the complete ontology and its individual patterns, including Tool, Metadata, Resource, and FailureMode.       |
+| [deliverables/materialization](deliverables/materialization/) | Contains the materialized RDF/TTL outputs generated from the source data and mappings.                                                                   |
+| [deliverables/queries](deliverables/queries/)                 | Contains the SPARQL queries associated with each CQ.                                                                                                     |
+| [scripts](scripts/)                                           | Contains scripts, source data, mappings, and utilities used to generate and materialize the ontology data.                                               |
+| [scripts/data](scripts/data/)                                 | Contains the tabular and text source data used during ontology materialization.                                                                          |
+| [scripts/materialization](scripts/materialization/)           | Contains the scripts and mappings used to transform source data into materialized RDF/TTL artifacts.                                                     |
+| [scripts/axiomatization](scripts/axiomatization/)             | Contains the script used to convert ontology axioms into natural language.                                                                               |
+| [benchmarks](benchmarks)                                      | Contains the benchmark data for evaluations, scoring, and diagnostics from the MCP-Atlas benchmark.                                                      |
 
 ## Ontology Patterns
 
