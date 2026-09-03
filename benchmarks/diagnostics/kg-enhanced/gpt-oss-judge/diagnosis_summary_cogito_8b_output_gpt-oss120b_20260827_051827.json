@@ -1,0 +1,47 @@
+{
+  "model_name": "cogito_8b_output",
+  "timestamp": "2026-08-27T06:45:59.887475",
+  "diagnosis_threshold": 1.0,
+  "diagnosis_version": "v2-taxonomy",
+  "scoring": {
+    "total_tasks": 500,
+    "mean_coverage": 0.0638,
+    "median_coverage": 0.0,
+    "pass_rate_0.75": 0.4
+  },
+  "run_health": {
+    "clean_runs": 500,
+    "total_errors": 0,
+    "context_window_errors": 0,
+    "max_turns_errors": 0,
+    "max_tool_calls_errors": 0,
+    "timeout_errors": 0,
+    "sandbox_infra_errors": 0,
+    "model_endpoint_errors": 0,
+    "other_errors": 0,
+    "empty_responses": 0
+  },
+  "diagnosis": {
+    "tasks_diagnosed": 500,
+    "diagnosis_rate_pct": 100.0,
+    "avg_coverage_diagnosed": 0.0638,
+    "category_split": {
+      "tool_call_count": 251,
+      "tool_call_pct": 50.2,
+      "cognitive_count": 249,
+      "cognitive_pct": 49.8
+    },
+    "primary_failure_distribution": {
+      "no_tool_use": 248,
+      "task_misunderstanding": 117,
+      "early_termination": 106,
+      "hallucinated_fact": 15,
+      "response_misparsing": 8,
+      "wrong_tool": 3,
+      "faulty_synthesis": 3
+    },
+    "examples": {}
+  },
+  "programmatic_narrative": "Model cogito_8b_output was evaluated on 500 tasks. Mean coverage: 0.0638, median: 0.0. 500 tasks (100.0%) scored below the 1.0 threshold. Clean runs: 500, max tool calls errors: 0, max turns errors: 0, timeouts: 0. Failure categories: tool_call=251 (50.2%), cognitive=249 (49.8%). Top failure modes: no_tool_use (248), task_misunderstanding (117), early_termination (106).",
+  "llm_narrative": "Across the 500 evaluated tasks, cogito_8b_output achieved a mean claim\u2011coverage of only\u202f0.0638 (median\u202f0) and satisfied just 40\u202f% of the \u226575\u202f% coverage threshold, despite flawless run health (zero infra\u2011 or endpoint errors). The dominant failure mode was outright omission of tool usage: 248 instances (49.6\u202f% of all tasks) fell into the \u201cno_tool_use\u201d category, followed by task misunderstanding (117 cases, 23.4\u202f%) and early termination (106 cases, 21.2\u202f%). Although the model did make a tool call in roughly half of the attempts (251 calls; 50.2\u202f% of tasks), those cognitive\u2011only runs (249 tasks) never produced usable evidence, and even when tools were invoked the downstream reasoning was frequently abandoned before any factual claim could be synthesized. To remediate this, we recommend augmenting the prompting framework with a mandatory\u2011tool\u2011call check that forces the model to embed at least one verified tool output into its final answer, coupled with a post\u2011hoc verification step that rejects responses lacking such evidence. What sets cogito_8b_output apart is that its failure profile is driven almost entirely by self\u2011imposed omission rather than incorrect data handling; the model repeatedly opts not to engage the available MCP APIs, leading to systematic zero\u2011coverage outcomes despite otherwise stable execution."
+}

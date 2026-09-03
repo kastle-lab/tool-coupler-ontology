@@ -1,0 +1,51 @@
+{
+  "model_name": "qwen3.5_9b_output",
+  "timestamp": "2026-08-27T16:17:53.107965",
+  "diagnosis_threshold": 1.0,
+  "diagnosis_version": "v2-taxonomy",
+  "scoring": {
+    "total_tasks": 500,
+    "mean_coverage": 0.1678,
+    "median_coverage": 0.0,
+    "pass_rate_0.75": 5.2
+  },
+  "run_health": {
+    "clean_runs": 500,
+    "total_errors": 0,
+    "context_window_errors": 0,
+    "max_turns_errors": 0,
+    "max_tool_calls_errors": 0,
+    "timeout_errors": 0,
+    "sandbox_infra_errors": 0,
+    "model_endpoint_errors": 0,
+    "other_errors": 0,
+    "empty_responses": 71
+  },
+  "diagnosis": {
+    "tasks_diagnosed": 486,
+    "diagnosis_rate_pct": 97.2,
+    "avg_coverage_diagnosed": 0.1439,
+    "category_split": {
+      "tool_call_count": 338,
+      "tool_call_pct": 69.5,
+      "cognitive_count": 148,
+      "cognitive_pct": 30.5
+    },
+    "primary_failure_distribution": {
+      "wrong_tool": 152,
+      "err_recovery": 151,
+      "task_misunderstanding": 61,
+      "early_termination": 59,
+      "no_tool_use": 31,
+      "response_misparsing": 10,
+      "logical_error": 9,
+      "hallucinated_fact": 6,
+      "malformed_call": 4,
+      "faulty_synthesis": 2,
+      "constraint_violation": 1
+    },
+    "examples": {}
+  },
+  "programmatic_narrative": "Model qwen3.5_9b_output was evaluated on 500 tasks. Mean coverage: 0.1678, median: 0.0. 486 tasks (97.2%) scored below the 1.0 threshold. Clean runs: 500, max tool calls errors: 0, max turns errors: 0, timeouts: 0. Failure categories: tool_call=338 (69.5%), cognitive=148 (30.5%). Top failure modes: wrong_tool (152), err_recovery (151), task_misunderstanding (61).",
+  "llm_narrative": "Across the 500 evaluation tasks, qwen3.5_9b_output achieved a mean claim\u2011coverage of only\u202f0.1678 (median\u202f0) and a sub\u20115\u202f% pass rate at the 75\u202f% coverage threshold, meaning that 486 runs (97.2\u202f%) failed to satisfy the required claims. The dominant failure mode was tool misuse: 338 of the failures (69.5\u202f%) involved an incorrect or unavailable tool call, with \u201cwrong_tool\u201d (152 instances) and \u201cerr_recovery\u201d (151 instances) together accounting for 62\u202f% of all errors, indicating that the model rarely recovers after a tool\u2011not\u2011found response. The remaining 148 failures (30.5\u202f%) were purely cognitive\u2014task misunderstanding, early termination, or logical errors\u2014but these contributed far less to the overall coverage gap than the tool\u2011related issues. An immediate remediation is to augment the model\u2019s prompting or fine\u2011tuning with a \u201ctool\u2011validation and fallback\u201d routine that checks for tool existence before calling and automatically retries with an appropriate alternative when a NotFound error occurs. What sets qwen3.5_9b_output apart is its systematic inability to adapt after the first tool error, leading to cascaded omissions of downstream sub\u2011tasks, whereas other models tend to mix cognitive and tool errors more evenly."
+}

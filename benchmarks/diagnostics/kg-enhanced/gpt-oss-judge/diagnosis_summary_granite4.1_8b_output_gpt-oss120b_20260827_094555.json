@@ -1,0 +1,50 @@
+{
+  "model_name": "granite4.1_8b_output",
+  "timestamp": "2026-08-27T11:26:31.181091",
+  "diagnosis_threshold": 1.0,
+  "diagnosis_version": "v2-taxonomy",
+  "scoring": {
+    "total_tasks": 500,
+    "mean_coverage": 0.0584,
+    "median_coverage": 0.0,
+    "pass_rate_0.75": 0.8
+  },
+  "run_health": {
+    "clean_runs": 500,
+    "total_errors": 0,
+    "context_window_errors": 0,
+    "max_turns_errors": 0,
+    "max_tool_calls_errors": 0,
+    "timeout_errors": 0,
+    "sandbox_infra_errors": 0,
+    "model_endpoint_errors": 0,
+    "other_errors": 0,
+    "empty_responses": 226
+  },
+  "diagnosis": {
+    "tasks_diagnosed": 496,
+    "diagnosis_rate_pct": 99.2,
+    "avg_coverage_diagnosed": 0.0508,
+    "category_split": {
+      "tool_call_count": 166,
+      "tool_call_pct": 33.5,
+      "cognitive_count": 330,
+      "cognitive_pct": 66.5
+    },
+    "primary_failure_distribution": {
+      "early_termination": 202,
+      "task_misunderstanding": 97,
+      "wrong_tool": 82,
+      "no_tool_use": 61,
+      "hallucinated_fact": 19,
+      "err_recovery": 14,
+      "malformed_call": 9,
+      "response_misparsing": 6,
+      "logical_error": 4,
+      "faulty_synthesis": 2
+    },
+    "examples": {}
+  },
+  "programmatic_narrative": "Model granite4.1_8b_output was evaluated on 500 tasks. Mean coverage: 0.0584, median: 0.0. 496 tasks (99.2%) scored below the 1.0 threshold. Clean runs: 500, max tool calls errors: 0, max turns errors: 0, timeouts: 0. Failure categories: tool_call=166 (33.5%), cognitive=330 (66.5%). Top failure modes: early_termination (202), task_misunderstanding (97), wrong_tool (82).",
+  "llm_narrative": "Across the 500 evaluation tasks the granite4.1_8b_output model achieved a mean claim\u2011coverage of only\u202f0.0584 (median\u202f0) despite an apparently high pass\u2011rate at the 0.75 threshold (80\u202f%). The dominant failure mode was early termination, accounting for 202 of the 496 diagnosed failures (\u224841\u202f%), followed by task misunderstanding (97 cases, \u224820\u202f%) and wrong\u2011tool selection (82 cases, \u224817\u202f%). Only 166 failures (33.5\u202f% of the total) involved a tool\u2011call error, whereas 330 failures (66.5\u202f%) were purely cognitive \u2013 the model either stopped after gathering data or misinterpreted the prompt, leaving the reasoning chain unfinished. A concrete remediation is to augment the prompting/fine\u2011tuning pipeline with an explicit \u201cfinal synthesis\u201d checkpoint that forces the assistant to verify that all required claims have been addressed before ending the turn. What sets granite4.1_8b_output apart from other models is its relatively good ability to issue correct tool calls (the majority of tool\u2011related attempts succeeded) but a systematic inability to transition from data collection to answer generation, resulting in 226 empty responses (45\u202f% of runs)."
+}
