@@ -544,14 +544,14 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
 ###  https://kastle-lab.github.io/tool-coupler/ParameterCountMismatch
 :ParameterCountMismatch rdf:type owl:NamedIndividual ,
                                  :FailureMode ;
-                        :hasContingencyPlan "Compare passed argument keys against tool signature. Remove unrecognized properties or add omitted arguments, then re-call." ;
+                        :hasContingencyPlan "You supplied more or fewer arguments than the tool accepts. List the tool's parameters from the schema and compare them to what you sent. Remove any argument not in the schema, and supply any omitted one from the conversation. Do not pad the call with placeholder or null arguments." ;
                         :isRecoverable "true"^^xsd:boolean .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/ParameterTypeMismatch
 :ParameterTypeMismatch rdf:type owl:NamedIndividual ,
                                 :FailureMode ;
-                       :hasContingencyPlan "You supplied more or fewer arguments than the tool accepts. List the tool's parameters from the schema and compare them to what you sent. Remove any argument not in the schema, and supply any omitted one from the conversation. Do not pad the call with placeholder or null arguments." ;
+                       :hasContingencyPlan "A parameter's value has the wrong type. Compare passed argument keys against tool signature. Keep the value and re-encode it to the declared type and then make another attempt to call the tool. Do not substitute a different value while fixing the type.\"" ;
                        :isRecoverable "true"^^xsd:boolean .
 
 
