@@ -1,0 +1,4 @@
+server_name,tool_name,definition_id,parameter_name,schema_type,element_name,element_path,datatype,element_description
+multi_turn_func_doc/trading_bot,multi_turn_func_doc/trading_bot_get_transaction_history,sha256:cafd6ac458f82a46713f9e1c2c934fb06e8b532cba2c033a567d0f9da0ce1f6e,transaction_history,Output,type,transaction_history.type,String,"Type of transaction. [Enum]: [""deposit"", ""withdrawal""]"
+multi_turn_func_doc/trading_bot,multi_turn_func_doc/trading_bot_get_transaction_history,sha256:cafd6ac458f82a46713f9e1c2c934fb06e8b532cba2c033a567d0f9da0ce1f6e,transaction_history,Output,amount,transaction_history.amount,Float,Amount involved in the transaction.
+multi_turn_func_doc/trading_bot,multi_turn_func_doc/trading_bot_get_transaction_history,sha256:cafd6ac458f82a46713f9e1c2c934fb06e8b532cba2c033a567d0f9da0ce1f6e,transaction_history,Output,timestamp,transaction_history.timestamp,String,"Timestamp of the transaction, formatted as 'YYYY-MM-DD HH:MM:SS'."

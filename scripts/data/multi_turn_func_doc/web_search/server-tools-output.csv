@@ -1,0 +1,2 @@
+server_name,tool_name,definition_id,tool_description,parameter_name,schema_type,datatype,parameter_description,is_required
+multi_turn_func_doc/web_search,multi_turn_func_doc/web_search_fetch_url_content,sha256:04bde01a51d71ce38b3ed0ab47e11afb51c4763b027ad1fad8c4f5198a35098e,This tool belongs to the Web Search API category. It provides functions to search the web and browse search results. Tool description: This function retrieves content from the provided URL and processes it based on the selected mode.,content,Output,String,The processed web content as a string.,Optional

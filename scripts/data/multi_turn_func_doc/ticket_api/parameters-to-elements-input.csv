@@ -1,0 +1,5 @@
+server_name,tool_name,definition_id,parameter_name,schema_type,element_name,element_path,datatype,element_description
+multi_turn_func_doc/ticket_api,multi_turn_func_doc/ticket_api_edit_ticket,sha256:775402e1d533b1ea731896dc80d203901a2148428029fd9252baf3caca368f5b,updates,Input,title,updates.title,String,[Optional] New title for the ticket.
+multi_turn_func_doc/ticket_api,multi_turn_func_doc/ticket_api_edit_ticket,sha256:775402e1d533b1ea731896dc80d203901a2148428029fd9252baf3caca368f5b,updates,Input,description,updates.description,String,[Optional] New description for the ticket.
+multi_turn_func_doc/ticket_api,multi_turn_func_doc/ticket_api_edit_ticket,sha256:775402e1d533b1ea731896dc80d203901a2148428029fd9252baf3caca368f5b,updates,Input,status,updates.status,String,[Optional] New status for the ticket.
+multi_turn_func_doc/ticket_api,multi_turn_func_doc/ticket_api_edit_ticket,sha256:775402e1d533b1ea731896dc80d203901a2148428029fd9252baf3caca368f5b,updates,Input,priority,updates.priority,Integer,[Optional] New priority for the ticket.

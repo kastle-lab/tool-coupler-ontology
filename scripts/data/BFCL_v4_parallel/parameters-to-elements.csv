@@ -1,0 +1,3 @@
+server_name,tool_name,definition_id,parameter_name,schema_type,element_name,element_path,datatype,element_description
+BFCL_v4_parallel,BFCL_v4_parallel_update_user_info,sha256:67d66ef95bd77d61295832315d2d9ce89f3677a531d9081f4a9d0ea6341ed97d,update_info,Input,name,update_info.name,String,The customer's updated name.
+BFCL_v4_parallel,BFCL_v4_parallel_update_user_info,sha256:67d66ef95bd77d61295832315d2d9ce89f3677a531d9081f4a9d0ea6341ed97d,update_info,Input,email,update_info.email,String,The customer's updated email.
