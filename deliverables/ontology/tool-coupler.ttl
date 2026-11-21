@@ -12,12 +12,6 @@
 #    Object Properties
 #################################################################
 
-###  https://kastle-lab.github.io/tool-coupler#hasToolGoal
-:hasToolGoal rdf:type owl:ObjectProperty ;
-             rdfs:domain :Tool ;
-             rdfs:range :ToolGoal .
-
-
 ###  https://kastle-lab.github.io/tool-coupler/containsElement
 :containsElement rdf:type owl:ObjectProperty ;
                  rdfs:range :Element .
@@ -68,6 +62,12 @@
 :hasTool rdf:type owl:ObjectProperty ;
          rdfs:domain :Server ;
          rdfs:range :Tool .
+
+
+###  https://kastle-lab.github.io/tool-coupler/hasToolGoal
+:hasToolGoal rdf:type owl:ObjectProperty ;
+             rdfs:domain :Tool ;
+             rdfs:range :ToolGoal .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/isOfDataType
@@ -148,10 +148,6 @@
 
 ###  http://www.w3.org/2002/07/owl#Thing
 owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasToolGoal ;
-                            owl:allValuesFrom :ToolGoal
-                          ] ,
-                          [ rdf:type owl:Restriction ;
                             owl:onProperty :containsElement ;
                             owl:allValuesFrom :Element
                           ] ,
@@ -182,6 +178,10 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :hasTool ;
                             owl:allValuesFrom :Tool
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasToolGoal ;
+                            owl:allValuesFrom :ToolGoal
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :isOfDataType ;
@@ -217,135 +217,80 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                           ] .
 
 
-###  https://kastle-lab.github.io/tool-coupler#Acquisition
+###  https://kastle-lab.github.io/tool-coupler#Execution
+:Execution rdf:type owl:Class ;
+           rdfs:subClassOf :ToolGoal .
+
+
+###  https://kastle-lab.github.io/tool-coupler#Generation
+:Generation rdf:type owl:Class ;
+            rdfs:subClassOf :ToolGoal .
+
+
+###  https://kastle-lab.github.io/tool-coupler#Inaction
+:Inaction rdf:type owl:Class ;
+          rdfs:subClassOf :ToolGoal .
+
+
+###  https://kastle-lab.github.io/tool-coupler#Simulation
+:Simulation rdf:type owl:Class ;
+            rdfs:subClassOf :ToolGoal .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Acquisition
 :Acquisition rdf:type owl:Class ;
              rdfs:subClassOf :Retrieval .
 
 
-###  https://kastle-lab.github.io/tool-coupler#Addition
+###  https://kastle-lab.github.io/tool-coupler/Addition
 :Addition rdf:type owl:Class ;
           rdfs:subClassOf :Update .
 
 
-###  https://kastle-lab.github.io/tool-coupler#Alphabetic
+###  https://kastle-lab.github.io/tool-coupler/Alphabetic
 :Alphabetic rdf:type owl:Class ;
-            rdfs:subClassOf :Alphanumeric .
+            rdfs:subClassOf :Sorting .
 
 
-###  https://kastle-lab.github.io/tool-coupler#Alphanumeric
+###  https://kastle-lab.github.io/tool-coupler/Alphanumeric
 :Alphanumeric rdf:type owl:Class ;
               rdfs:subClassOf :Sorting .
 
 
-###  https://kastle-lab.github.io/tool-coupler#Analysis
+###  https://kastle-lab.github.io/tool-coupler/Analysis
 :Analysis rdf:type owl:Class ;
           rdfs:subClassOf :ToolGoal .
 
 
-###  https://kastle-lab.github.io/tool-coupler#Calculation
+###  https://kastle-lab.github.io/tool-coupler/Calculation
 :Calculation rdf:type owl:Class ;
              rdfs:subClassOf :Transformation .
 
 
-###  https://kastle-lab.github.io/tool-coupler#Clearing
+###  https://kastle-lab.github.io/tool-coupler/Clearing
 :Clearing rdf:type owl:Class ;
           rdfs:subClassOf :Removal .
 
 
-###  https://kastle-lab.github.io/tool-coupler#Comparison
+###  https://kastle-lab.github.io/tool-coupler/Comparison
 :Comparison rdf:type owl:Class ;
             rdfs:subClassOf :Examination .
 
 
-###  https://kastle-lab.github.io/tool-coupler#Conversion
+###  https://kastle-lab.github.io/tool-coupler/Conversion
 :Conversion rdf:type owl:Class ;
             rdfs:subClassOf :Transformation .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Deletion
-:Deletion rdf:type owl:Class ;
-          rdfs:subClassOf :Removal .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Examination
-:Examination rdf:type owl:Class ;
-             rdfs:subClassOf :Analysis .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Filtering
-:Filtering rdf:type owl:Class ;
-           rdfs:subClassOf :Analysis .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Modification
-:Modification rdf:type owl:Class ;
-              rdfs:subClassOf :Update .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Numeric
-:Numeric rdf:type owl:Class ;
-         rdfs:subClassOf :Alphanumeric .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Rank
-:Rank rdf:type owl:Class ;
-      rdfs:subClassOf :Sorting .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Removal
-:Removal rdf:type owl:Class ;
-         rdfs:subClassOf :Update .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Representation
-:Representation rdf:type owl:Class ;
-                rdfs:subClassOf :Conversion .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Retrieval
-:Retrieval rdf:type owl:Class ;
-           rdfs:subClassOf :ToolGoal .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Search
-:Search rdf:type owl:Class ;
-        rdfs:subClassOf :Retrieval .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Sorting
-:Sorting rdf:type owl:Class ;
-         rdfs:subClassOf :Analysis .
-
-
-###  https://kastle-lab.github.io/tool-coupler#ToolGoal
-:ToolGoal rdf:type owl:Class ;
-          owl:disjointWith :Tool .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Transformation
-:Transformation rdf:type owl:Class ;
-                rdfs:subClassOf :ToolGoal .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Update
-:Update rdf:type owl:Class ;
-        rdfs:subClassOf :Transformation .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Value
-:Value rdf:type owl:Class ;
-       rdfs:subClassOf :Conversion .
-
-
-###  https://kastle-lab.github.io/tool-coupler#Verification
-:Verification rdf:type owl:Class ;
-              rdfs:subClassOf :Examination .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/DataType
 :DataType rdf:type owl:Class ;
           owl:disjointWith :Element ,
                            :Parameter .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Deletion
+:Deletion rdf:type owl:Class ;
+          rdfs:subClassOf :Removal .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Element
@@ -372,6 +317,11 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                           :Parameter .
 
 
+###  https://kastle-lab.github.io/tool-coupler/Examination
+:Examination rdf:type owl:Class ;
+             rdfs:subClassOf :Analysis .
+
+
 ###  https://kastle-lab.github.io/tool-coupler/FailureMode
 :FailureMode rdf:type owl:Class ;
              rdfs:subClassOf [ rdf:type owl:Restriction ;
@@ -389,6 +339,11 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                                owl:onDataRange xsd:string
                              ] ;
              owl:disjointWith :Tool .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Filtering
+:Filtering rdf:type owl:Class ;
+           rdfs:subClassOf :Analysis .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Format
@@ -476,6 +431,16 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                            :Tool .
 
 
+###  https://kastle-lab.github.io/tool-coupler/Modification
+:Modification rdf:type owl:Class ;
+              rdfs:subClassOf :Update .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Numeric
+:Numeric rdf:type owl:Class ;
+         rdfs:subClassOf :Sorting .
+
+
 ###  https://kastle-lab.github.io/tool-coupler/Output
 :Output rdf:type owl:Class ;
         rdfs:subClassOf :Parameter .
@@ -525,6 +490,21 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                             :Tool .
 
 
+###  https://kastle-lab.github.io/tool-coupler/Rank
+:Rank rdf:type owl:Class ;
+      rdfs:subClassOf :Sorting .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Removal
+:Removal rdf:type owl:Class ;
+         rdfs:subClassOf :Update .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Representation
+:Representation rdf:type owl:Class ;
+                rdfs:subClassOf :Conversion .
+
+
 ###  https://kastle-lab.github.io/tool-coupler/RequirementStatus
 :RequirementStatus rdf:type owl:Class ;
                    rdfs:subClassOf [ rdf:type owl:Restriction ;
@@ -540,6 +520,16 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
 
 ###  https://kastle-lab.github.io/tool-coupler/ResourceClass
 :ResourceClass rdf:type owl:Class .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Retrieval
+:Retrieval rdf:type owl:Class ;
+           rdfs:subClassOf :ToolGoal .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Search
+:Search rdf:type owl:Class ;
+        rdfs:subClassOf :Retrieval .
 
 
 ###  https://kastle-lab.github.io/tool-coupler/Server
@@ -560,13 +550,14 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
         owl:disjointWith :Tool .
 
 
+###  https://kastle-lab.github.io/tool-coupler/Sorting
+:Sorting rdf:type owl:Class ;
+         rdfs:subClassOf :Analysis .
+
+
 ###  https://kastle-lab.github.io/tool-coupler/Tool
 :Tool rdf:type owl:Class ;
       rdfs:subClassOf [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasToolGoal ;
-                        owl:someValuesFrom :ToolGoal
-                      ] ,
-                      [ rdf:type owl:Restriction ;
                         owl:onProperty :hasFailureMode ;
                         owl:someValuesFrom :FailureMode
                       ] ,
@@ -575,14 +566,13 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                         owl:someValuesFrom :Metadata
                       ] ,
                       [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasToolGoal ;
+                        owl:someValuesFrom :ToolGoal
+                      ] ,
+                      [ rdf:type owl:Restriction ;
                         owl:onProperty [ owl:inverseOf :hasTool
                                        ] ;
                         owl:someValuesFrom :Server
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasToolGoal ;
-                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onClass :ToolGoal
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :hasMetadata ;
@@ -590,11 +580,41 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
                         owl:onClass :Metadata
                       ] ,
                       [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasToolGoal ;
+                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :ToolGoal
+                      ] ,
+                      [ rdf:type owl:Restriction ;
                         owl:onProperty [ owl:inverseOf :hasTool
                                        ] ;
                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                         owl:onClass :Server
-                      ] .
+                      ] ;
+      owl:disjointWith :ToolGoal .
+
+
+###  https://kastle-lab.github.io/tool-coupler/ToolGoal
+:ToolGoal rdf:type owl:Class .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Transformation
+:Transformation rdf:type owl:Class ;
+                rdfs:subClassOf :ToolGoal .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Update
+:Update rdf:type owl:Class ;
+        rdfs:subClassOf :Transformation .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Value
+:Value rdf:type owl:Class ;
+       rdfs:subClassOf :Conversion .
+
+
+###  https://kastle-lab.github.io/tool-coupler/Verification
+:Verification rdf:type owl:Class ;
+              rdfs:subClassOf :Examination .
 
 
 #################################################################
@@ -743,13 +763,6 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
 #################################################################
 
 [ rdf:type owl:Restriction ;
-  owl:onProperty :hasToolGoal ;
-  owl:someValuesFrom owl:Thing ;
-  rdfs:subClassOf :Tool
-] .
-
-
-[ rdf:type owl:Restriction ;
   owl:onProperty :hasFailureMode ;
   owl:someValuesFrom owl:Thing ;
   rdfs:subClassOf :Tool
@@ -788,6 +801,13 @@ owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
   owl:onProperty :hasTool ;
   owl:someValuesFrom owl:Thing ;
   rdfs:subClassOf :Server
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasToolGoal ;
+  owl:someValuesFrom owl:Thing ;
+  rdfs:subClassOf :Tool
 ] .
 
 

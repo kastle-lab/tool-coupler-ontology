@@ -33,11 +33,11 @@ subclass: `Rank SubClassOf Sorting`
 # Alphanumeric SubClassOf Sorting
 subclass: `Alphanumeric SubClassOf Sorting`
 
-# Numeric SubClassOf Alphanumeric
-subclass: `Numeric SubClassOf Alphanumeric`
+# Numeric SubClassOf Sorting
+subclass: `Numeric SubClassOf Sorting`
 
-# Alphabetic SubClassOf Alphanumeric
-subclass: `Alphabetic SubClassOf Alphanumeric`
+# Alphabetic SubClassOf Sorting
+subclass: `Alphabetic SubClassOf Sorting`
 
 # Examination SubClassOf Analysis
 subclass: `Examination SubClassOf Analysis`
@@ -80,4 +80,16 @@ subclass: `Deletion SubClassOf Removal`
 
 # Clearing SubClassOf Removal
 subclass: `Clearing SubClassOf Removal`
+
+# Generation SubClassOf ToolGoal
+subclass: `Generation SubClassOf ToolGoal`
+
+# Execution SubClassOf ToolGoal
+subclass: `Execution SubClassOf ToolGoal`
+
+# Inaction SubClassOf ToolGoal
+subclass: `Inaction SubClassOf ToolGoal`
+
+# Simulation SubClassOf ToolGoal
+subclass: `Simulation SubClassOf ToolGoal`
 

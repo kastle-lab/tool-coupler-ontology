@@ -486,8 +486,8 @@ if __name__ == "__main__":
             "Sorting SubClassOf Analysis",
             "Rank SubClassOf Sorting",
             "Alphanumeric SubClassOf Sorting",
-            "Numeric SubClassOf Alphanumeric",
-            "Alphabetic SubClassOf Alphanumeric",
+            "Numeric SubClassOf Sorting",
+            "Alphabetic SubClassOf Sorting",
             "Examination SubClassOf Analysis",
             "Verification SubClassOf Examination",
             "Comparison SubClassOf Examination",
@@ -501,7 +501,11 @@ if __name__ == "__main__":
             "Modification SubClassOf Update",
             "Removal SubClassOf Update",
             "Deletion SubClassOf Removal",
-            "Clearing SubClassOf Removal"
+            "Clearing SubClassOf Removal",
+            "Generation SubClassOf ToolGoal",
+            "Execution SubClassOf ToolGoal",
+            "Inaction SubClassOf ToolGoal",
+            "Simulation SubClassOf ToolGoal"
         ]
 
         dis = [
