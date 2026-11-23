@@ -2,15 +2,7 @@
 
 ## Narrative
 
-With the advent of Large Language Models (LLMs), scientists and everyday
-users have been experimenting with ways to integrate them into their workflows
-or improve their experimentation processes. A common method for achieving this
-is to create assistants that have access to domain-specific data via techniques
-such as RAG, fine-tuning, few-shot prompting, and other various methodologies
-[1]. To further enhance the capabilities of these LLM assistants, Model
-Context Protocol (MCP) servers were introduced and is becoming the standard
-framework for quickly implementing agentic tool usage, as an alternative to
-Application Programming Interfaces (APIs) [2].
+With the advent of Large Language Models (LLMs), scientists and everyday users have been experimenting with ways to integrate them into their workflows or improve their experimentation processes. A common method for achieving this is to create assistants that have access to domain-specific data via techniques such as RAG, fine-tuning, few-shot prompting, and other various methodologies [1]. To further enhance the capabilities of these LLM assistants, Model Context Protocol (MCP) servers were introduced and is becoming the standard framework for quickly implementing agentic tool usage, as an alternative to Application Programming Interfaces (APIs) [2].
 
 When LLM models are paired with an MCP server, many issues can arise. For example, to name a few issues that frequently occur are tool selection failure (i.e., not identifying and selecting a tool that exists), incorrect tool calls, non-explicit expected tool chain breaks, tool misuse, tool and argument hallucinations, and forgotten context as the context window threshold is reached [3]. To remedy the issue with tool chains within an MCP, it is recommended to explicitly chain tools together, i.e., call other tools within the initially called tool. While an acceptable solution to some of the errors noted above, explicit tool chaining is not allowed or typically absent in datasets when testing or benchmarking an LLM's reasoning capabilities.
 
@@ -23,7 +15,7 @@ Given the experimental conditions for using tool benchmarks to evaluate LLM capa
 
 ## Competency Questions
 
-**Tool Selection, Usage, Chaining, and Failure Recovery**: These CQs focuses on the identification of tools, their inputs and outputs, the various ways they might relate to each other, and how failures can be recovered.
+**Tool Selection, Usage, Chaining, and Failure Recovery**: These CQs focus on the identification of tools, their inputs and outputs, their intents, the various ways they might relate to each other, and how failures can be recovered.
 
 1. What subsets of `Tools` have `Outputs` matching the `Datatypes` and `Element` structures of other tool `Inputs`? \
    1a) What is the `OutputParameter` for a given `Tool`, and what are its expected `Datatype` and `Element` structure? \
@@ -40,6 +32,11 @@ Given the experimental conditions for using tool benchmarks to evaluate LLM capa
 9. Which `Servers` have `Tools` that produce an `Output`, and how many?
 10. If `Outputs` exist from a set of `Tools`, do any `Datatypes` overlap, and how many?
 11. What are all the required `InputParameters` for a given set of `Tools`; and what are their descriptions, expected `Datatypes`, and `Element` structures?
+12. What is the `ToolGoal` of a given `Tool`?
+13. What are all of the `Tools` with a given `ToolGoal`?
+14. What are the `ToolGoals` of `Tools` that use `Input`/`Output`/`Inout` `Parameters`?
+15. What are the `ToolGoals` of `Tools` that have given `Dataypes` for their `Parameters`?
+16. What are all of the `ToolGoals` from a given `Server`?
 
 Bridges Datasets: [MCP-Atlas](https://huggingface.co/datasets/ScaleAI/MCP-Atlas), [Fast-MCP](https://fastmcp.wiki/en/v2/servers/tools)
 

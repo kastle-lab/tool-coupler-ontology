@@ -480,7 +480,35 @@ if __name__ == "__main__":
         sc = [
             "Input SubClassOf Parameter",
             "Output SubClassOf Parameter",
-            "Inout SubClassOf Parameter"
+            "Inout SubClassOf Parameter",
+            "Retrieval SubClassOf ToolGoal",
+            "Search SubClassOf Retrieval",
+            "Acquisition SubClassOf Retrieval",
+            "Analysis subClassOf ToolGoal",
+            "Filtering SubClassOf Analysis",
+            "Sorting SubClassOf Analysis",
+            "Rank SubClassOf Sorting",
+            "Alphanumeric SubClassOf Sorting",
+            "Numeric SubClassOf Sorting",
+            "Alphabetic SubClassOf Sorting",
+            "Examination SubClassOf Analysis",
+            "Verification SubClassOf Examination",
+            "Comparison SubClassOf Examination",
+            "Transformation SubClassOf ToolGoal",
+            "Calculation SubClassOf Transformation",
+            "Conversion SubClassOf Transformation",
+            "Value SubClassOf Conversion",
+            "Representation SubClassOf Conversion",
+            "Update SubClassOf Transformation",
+            "Additon SubClassOf Update",
+            "Modification SubClassOf Update",
+            "Removal SubClassOf Update",
+            "Deletion SubClassOf Removal",
+            "Clearing SubClassOf Removal",
+            "Generation SubClassOf ToolGoal",
+            "Execution SubClassOf ToolGoal",
+            "Inaction SubClassOf ToolGoal",
+            "Simulation SubClassOf ToolGoal"
         ]
 
         dis = [
@@ -497,6 +525,7 @@ if __name__ == "__main__":
             "Parameter hasRequirementStatus RequirementStatus",
             "Element hasMetadata Metadata",
             "Tool hasFailureMode FailureMode",
+            "Tool hasGoal ToolGoal"
         ]
 
         gd = [
@@ -509,7 +538,8 @@ if __name__ == "__main__":
             "Tool hasParameter Parameter",
             "Parameter hasRequirementStatus RequirementStatus",
             "Tool hasFailureMode FailureMode",
-            "FailureMode hasContingencyPlan xsd:string"
+            "FailureMode hasContingencyPlan xsd:string",
+            "Tool hasGoal ToolGoal"
         ]
 
         sd = [
@@ -538,7 +568,8 @@ if __name__ == "__main__":
             "Parameter hasRequirementStatus RequirementStatus",
             "Element hasMetadata Metadata",
             "Tool hasFailureMode FailureMode",
-            "FailureMode hasContingencyPlan xsd:string"
+            "FailureMode hasContingencyPlan xsd:string",
+            "Tool hasGoal ToolGoal"
         ]
 
         sr = [
@@ -557,7 +588,8 @@ if __name__ == "__main__":
             "Parameter hasRequirementStatus RequirementStatus",
             "Element hasMetadata Metadata",
             "Tool hasFailureMode FailureMode",
-            "FailureMode hasContingencyPlan xsd:string"
+            "FailureMode hasContingencyPlan xsd:string",
+            "Tool hasGoal ToolGoal"
         ]
 
         iex = [
@@ -596,8 +628,8 @@ if __name__ == "__main__":
             "Tool hasMetadata Metadata",
             "Parameter hasRequirementStatus RequirementStatus",
             "Element hasMetadata Metadata",
-            "FailureMode hasContingencyPlan xsd:string"
-
+            "FailureMode hasContingencyPlan xsd:string",
+            "Tool hasGoal ToolGoal"
         ]
 
         ifun = [

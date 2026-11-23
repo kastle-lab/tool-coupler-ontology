@@ -35,6 +35,7 @@ The ontology is organized around several core patterns:
 | [Metadata](deliverables/patterns/metadata/metadata-pattern.pdf)          | Represents metadata associated with the modeled resources.                |
 | [Resource](deliverables/patterns/resource/resource.pdf)                  | Represents the resource-oriented portion of the ontology.                 |
 | [FailureMode](deliverables/patterns/failuremode/failuremode-pattern.pdf) | Represents failure-mode information associated with the modeled entities. |
+| [ToolGoal](deliverables/patterns/toolgoal/toolgoal-pattern.pdf)          | Represents a hierarchy of goal types for tools. |
 
 ## Namespaces
 
