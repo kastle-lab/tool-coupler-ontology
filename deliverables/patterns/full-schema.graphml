@@ -1639,7 +1639,7 @@ locationAsString<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false"
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-176.9083628527635" sy="98.0616562381332" tx="0.0" ty="0.0"/>
+          <y:Path sx="-176.9031309739288" sy="101.80242389927176" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
